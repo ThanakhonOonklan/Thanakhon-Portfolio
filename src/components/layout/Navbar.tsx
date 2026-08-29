@@ -1,13 +1,18 @@
-﻿'use client';
+'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { navItems } from '@/data/navigation';
 import { useLocale, useTranslation } from '@/hooks';
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuLink,
+} from '@/components/ui';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
 
   const { t } = useTranslation();
   const { locale, setLocale } = useLocale();
@@ -35,15 +40,14 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex flex-col items-center px-3 sm:px-6 pointer-events-none">
-      {/* Floating Pill Island */}
+    <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex flex-col items-center px-3 sm:px-6 pointer-events-none select-none">
+      {/* Floating Island: Seamless & Frameless at top of Hero, pills only on scroll (No shadows) */}
       <nav
-        ref={navRef}
         aria-label="Main Navigation"
-        className={`pointer-events-auto w-full max-w-5xl rounded-2xl transition-all duration-300 border border-white/10 px-3.5 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between ${
+        className={`pointer-events-auto w-full max-w-5xl rounded-2xl transition-all duration-500 px-4 sm:px-6 py-2.5 flex items-center justify-between ${
           isScrolled
-            ? 'bg-[#101010]/90 backdrop-blur-2xl shadow-[0_12px_35px_rgba(0,0,0,0.7)] border-white/15'
-            : 'bg-[#141414]/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.5)]'
+            ? 'bg-[#14171F]/50 backdrop-blur-md border border-white/[0.07]'
+            : 'bg-transparent border border-transparent backdrop-blur-none'
         }`}
       >
         {/* Left: Brand Monogram & Name */}
@@ -53,37 +57,44 @@ export default function Navbar() {
           className="flex items-center gap-2.5 group cursor-pointer"
         >
           {/* Monogram Squircle Badge */}
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white flex items-center justify-center text-black font-serif italic font-black text-sm sm:text-base shadow-sm group-hover:scale-105 transition-transform duration-300">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white flex items-center justify-center text-black font-serif italic font-black text-xs sm:text-sm group-hover:scale-105 transition-transform duration-300">
             T
           </div>
-          <span className="font-[family-name:var(--font-heading)] font-en-heading text-sm sm:text-base tracking-[0.16em] text-white group-hover:text-[var(--accent)] transition-colors duration-300">
+          <span className="font-[family-name:var(--font-heading)] font-en-heading text-xs sm:text-sm tracking-[0.16em] text-white/80 group-hover:text-[var(--accent)] transition-colors duration-300">
             THANAKHON
           </span>
         </a>
 
-        {/* Center: Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-1 lg:gap-2">
-          {navItems.map((item) => {
-            const key = item.href.replace('#', '').replace(/-/g, '_');
-            return (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
-                className="px-2.5 lg:px-3 py-1.5 rounded-lg text-[11px] lg:text-xs font-semibold uppercase tracking-[0.14em] text-neutral-400 hover:text-white hover:bg-white/5 transition-all duration-200"
-              >
-                {t(`nav.${key}`)}
-              </a>
-            );
-          })}
-        </div>
+        {/* Center: Desktop Navigation via NavigationMenu (Soft dim text, pink hover, no box) */}
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList className="gap-3 lg:gap-5">
+            {navItems.map((item) => {
+              const key = item.href.replace('#', '').replace(/-/g, '_');
+              return (
+                <NavigationMenuItem key={item.name}>
+                  <NavigationMenuLink
+                    href={item.href}
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleClick(e, item.href)}
+                    className="px-1.5 py-1 text-[11px] font-medium tracking-[0.14em] text-white/30 hover:text-[var(--accent)] hover:bg-transparent focus:bg-transparent data-active:bg-transparent bg-transparent transition-colors duration-200 cursor-pointer"
+                  >
+                    {t(`nav.${key}`)}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              );
+            })}
+          </NavigationMenuList>
+        </NavigationMenu>
 
-        {/* Right: Language Switcher + Hire Me CTA + Mobile Hamburger */}
+        {/* Right: Language Switcher + Mobile Hamburger */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Language Switcher */}
           <button
             onClick={toggleLocale}
-            className="px-2.5 py-1 rounded-full border border-white/15 hover:border-white/40 bg-white/5 text-[11px] font-bold uppercase tracking-wider text-neutral-300 hover:text-white transition-all duration-200 flex items-center gap-1 cursor-pointer"
+            className={`px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 flex items-center gap-1 cursor-pointer ${
+              isScrolled
+                ? 'border border-white/10 bg-white/[0.03] text-white/40 hover:text-[var(--accent)]'
+                : 'border border-transparent bg-transparent text-white/35 hover:text-[var(--accent)]'
+            }`}
             aria-label="Toggle language"
           >
             <span className={locale === 'en' ? 'text-white font-bold' : 'opacity-40'}>EN</span>
@@ -91,18 +102,9 @@ export default function Navbar() {
             <span className={locale === 'th' ? 'text-white font-bold' : 'opacity-40'}>TH</span>
           </button>
 
-          {/* Hire Me CTA Button */}
-          <a
-            href="#contact"
-            onClick={(e) => handleClick(e, '#contact')}
-            className="hidden sm:inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/30 hover:border-[var(--accent)] text-white hover:text-[var(--accent)] text-xs font-medium tracking-wider bg-white/5 hover:bg-white/10 transition-all duration-300 hover:shadow-[0_0_15px_rgba(242,140,166,0.25)] cursor-pointer"
-          >
-            {t('nav.hire_me') || 'Hire Me'}
-          </a>
-
           {/* Mobile Menu Hamburger */}
           <button
-            className="md:hidden p-1.5 text-white hover:text-[var(--accent)] transition-colors focus:outline-none cursor-pointer"
+            className="md:hidden p-1.5 text-white/60 hover:text-[var(--accent)] transition-colors focus:outline-none cursor-pointer"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             aria-label="Toggle menu"
           >
@@ -133,7 +135,7 @@ export default function Navbar() {
           isMobileOpen ? 'max-h-[85vh] mt-2 opacity-100' : 'max-h-0 mt-0 opacity-0'
         }`}
       >
-        <div className="rounded-2xl bg-[#121212]/95 backdrop-blur-2xl border border-white/10 p-4 shadow-2xl flex flex-col gap-2">
+        <div className="rounded-2xl bg-[#12141C]/90 backdrop-blur-2xl border border-white/[0.08] p-4 flex flex-col gap-1.5">
           {navItems.map((item, index) => {
             const key = item.href.replace('#', '').replace(/-/g, '_');
             return (
@@ -141,7 +143,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className="text-xs font-semibold uppercase tracking-[0.15em] text-neutral-300 hover:text-[var(--accent)] hover:bg-white/5 px-3 py-2.5 rounded-lg transition-all duration-200"
+                className="text-xs font-medium tracking-[0.14em] text-white/40 hover:text-[var(--accent)] px-3 py-2 rounded-lg transition-colors duration-200"
                 style={{
                   transitionDelay: `${index * 30}ms`,
                 }}
@@ -150,17 +152,6 @@ export default function Navbar() {
               </a>
             );
           })}
-
-          {/* Mobile Hire Me Button */}
-          <div className="pt-2 mt-1 border-t border-white/10">
-            <a
-              href="#contact"
-              onClick={(e) => handleClick(e, '#contact')}
-              className="w-full inline-flex items-center justify-center py-2.5 rounded-xl border border-[var(--accent)]/50 text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black font-semibold text-xs uppercase tracking-wider transition-all duration-200"
-            >
-              {t('nav.hire_me') || 'Hire Me'}
-            </a>
-          </div>
         </div>
       </div>
 
