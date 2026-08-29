@@ -13,7 +13,7 @@ export default function Contact() {
       id="contact"
       className="section-bg-gradient"
       style={{
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: 'transparent',
         paddingTop: 'var(--space-section)',
         paddingBottom: 'var(--space-section)',
       }}

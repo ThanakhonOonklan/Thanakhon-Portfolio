@@ -10,7 +10,7 @@ export default function Skills() {
     <section
       id="skills"
       style={{
-        backgroundColor: 'var(--bg-primary)',
+        backgroundColor: 'transparent',
         paddingTop: 'var(--space-section)',
         paddingBottom: 'var(--space-section)',
       }}

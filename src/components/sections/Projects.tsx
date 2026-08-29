@@ -11,7 +11,7 @@ export default function Projects() {
     <section
       id="projects"
       style={{
-        backgroundColor: 'var(--bg-primary)',
+        backgroundColor: 'transparent',
         paddingTop: 'var(--space-section)',
         paddingBottom: 'var(--space-section)',
       }}
@@ -28,14 +28,6 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div key={project.id}>
               <ProjectCaseStudy project={project} index={index} />
-              
-              {/* Divider between projects */}
-              {index < projects.length - 1 && (
-                <div
-                  className="divider"
-                  style={{ marginTop: 'var(--space-section)' }}
-                />
-              )}
             </div>
           ))}
         </div>

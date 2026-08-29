@@ -21,7 +21,7 @@ export default function Experience() {
       id="experience"
       className="section-bg-gradient"
       style={{
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: 'transparent',
         paddingTop: 'var(--space-section)',
         paddingBottom: 'var(--space-section)',
       }}
@@ -141,11 +141,6 @@ export default function Experience() {
                   )}
                 </div>
               </div>
-
-              {/* Divider */}
-              {index < experienceItems.length - 1 && (
-                <div className="divider mt-[var(--space-block)] lg:ml-[calc(2/12*100%+1/12*100%)]" />
-              )}
             </div>
           ))}
         </div>

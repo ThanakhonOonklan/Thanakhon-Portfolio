@@ -53,7 +53,7 @@ export default function OtherSkills() {
       id="other-skills"
       ref={sectionRef}
       style={{
-        backgroundColor: 'var(--bg-primary)',
+        backgroundColor: 'transparent',
         paddingTop: 'var(--space-section)',
         paddingBottom: 'var(--space-section)',
       }}
