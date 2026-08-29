@@ -55,33 +55,11 @@
   margin-bottom: var(--space-element);
 }
 
-/* Accent text */
-.text-accent {
-  color: var(--accent);
-}
-
 /* Divider line */
 .divider {
   width: 100%;
   height: 1px;
   background: var(--border);
-}
-
-/* Glassmorphism card */
-.glass-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Text with soft pink gradient */
-.gradient-text-accent {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* Accent Glow on Hover */

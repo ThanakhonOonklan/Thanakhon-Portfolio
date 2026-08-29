@@ -1,35 +1,20 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { otherSkills } from '@/data/otherSkills';
 import { useLocale, useTranslation } from '@/hooks';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { useSmoothScroll } from '@/providers/SmoothScrollProvider';
-
-gsap.registerPlugin(ScrollTrigger);
+import { registerGSAP } from '@/lib/gsap';
+import { Lightbox } from '@/components/ui';
 
 export default function OtherSkills() {
+  registerGSAP();
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
   const { isEN } = useLocale();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const lenis = useSmoothScroll();
-
-  useEffect(() => {
-    if (selectedImage) {
-      lenis?.stop();
-      document.body.style.overflow = 'hidden';
-    } else {
-      lenis?.start();
-      document.body.style.overflow = '';
-    }
-    return () => {
-      lenis?.start();
-      document.body.style.overflow = '';
-    };
-  }, [selectedImage, lenis]);
 
   useGSAP(() => {
     // GSAP pinning logic removed as per user request
@@ -189,33 +174,11 @@ export default function OtherSkills() {
       </div>
 
       {/* Lightbox Modal */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0F0F0F]/95 backdrop-blur-sm p-4 md:p-8"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button 
-            className="absolute right-4 sm:right-6 text-[var(--text-muted)] hover:text-white transition-colors duration-300 bg-black/20 hover:bg-white/10 rounded-full p-2 z-10"
-            style={{ top: 'max(env(safe-area-inset-top, 16px), 16px)' }}
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedImage(null);
-            }}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-          
-          <img 
-            src={selectedImage} 
-            alt="Expanded view" 
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
+      <Lightbox
+        isOpen={!!selectedImage}
+        imageUrl={selectedImage}
+        onClose={() => setSelectedImage(null)}
+      />
     </section>
   );
 }

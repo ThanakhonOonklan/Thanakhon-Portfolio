@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Anton, Inter, Sarabun, Geist } from "next/font/google";
+import { Anton, Inter, Sarabun } from "next/font/google";
 import "./globals.css";
 import { AppProviders } from "@/providers";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
+import { SITE_CONFIG } from "@/constants";
 
 const anton = Anton({
   variable: "--font-heading",
@@ -27,9 +25,8 @@ const sarabun = Sarabun({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description:
-    "Thanakhon Oonklan",
+  title: SITE_CONFIG.title,
+  description: SITE_CONFIG.description,
 };
 
 export default function RootLayout({
@@ -38,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${anton.variable} ${inter.variable} ${sarabun.variable} bg-black text-white antialiased`}
         suppressHydrationWarning

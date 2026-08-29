@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 // ============================================
 // Project — Case-study storytelling structure
 // ============================================
@@ -7,10 +5,6 @@ export interface Project {
   id: number;
   title: string;
   subtitle: string;
-  summary: string;
-  problem?: string;
-  solution?: string;
-  process?: string[];
   whatIDid: string[];
   techStack: string[];
   features: string[];
@@ -24,7 +18,6 @@ export interface Project {
   year: string;
   // English translation fields
   subtitleEn?: string;
-  summaryEn?: string;
   whatIDidEn?: string[];
   featuresEn?: string[];
   resultsEn?: string[];
@@ -55,20 +48,7 @@ export interface Experience {
 }
 
 // ============================================
-// Education
-// ============================================
-export interface Education {
-  id: number;
-  institution: string;
-  degree: string;
-  field: string;
-  period: string;
-  description?: string;
-  location?: string;
-}
-
-// ============================================
-// Certificate — New type
+// Certificate
 // ============================================
 export interface Certificate {
   id: number;
@@ -78,15 +58,6 @@ export interface Certificate {
   imageUrl?: string;
   skills?: string[];
   credentialUrl?: string;
-}
-
-// ============================================
-// Social Link
-// ============================================
-export interface SocialLink {
-  name: string;
-  url: string;
-  icon: ReactNode;
 }
 
 // ============================================

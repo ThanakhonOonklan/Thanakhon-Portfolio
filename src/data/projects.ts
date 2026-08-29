@@ -1,11 +1,10 @@
-﻿import { Project } from '@/types';
+import { Project } from '@/types';
 
 export const projects: Project[] = [
   {
     id: 1,
     title: 'Thinking Skills Games for Kids',
     subtitle: 'เว็บแอปพลิเคชันเกมเพื่อการเรียนรู้สำหรับเด็ก ที่ออกแบบช่วยพัฒนา ทักษะการคิดวิเคราะห์ ทักษะการแก้ปัญหา ทักษะการคิดเชิงตรรกะ ทักษะการสังเกต ทักษะการคิดอย่างเป็นลำดับ ผ่านระบบเกมแบบ Interactive',
-    summary: 'เว็บแอปพลิเคชันเกมเพื่อการเรียนรู้สำหรับเด็ก ที่ออกแบบช่วยพัฒนา ทักษะการคิดวิเคราะห์ ทักษะการแก้ปัญหา ทักษะการคิดเชิงตรรกะ ทักษะการสังเกต ทักษะการคิดอย่างเป็นลำดับ ผ่านระบบเกมแบบ Interactive',
     whatIDid: [
       'ในโปรเจกต์นี้ ผมรับหน้าที่เป็น Frontend Developer โดยมีหน้าที่ออกแบบและพัฒนา UI เเละระบบต่างๆ ของทุกหน้า',
       'เเละออกแบบตัวละครภายในเกม ระบบอนิเมชัน รวมถึงพัฒนา Logic ต่าง ๆ ภายในเกม',
@@ -77,7 +76,6 @@ export const projects: Project[] = [
     id: 2,
     title: 'IoT Equipment System',
     subtitle: 'ระบบยืม-คืนอุปกรณ์ IoT แบบ Web Application พร้อมติดตามสถานะแบบ Real-time และระบบจัดการผู้ใช้งาน',
-    summary: 'ระบบยืม-คืนอุปกรณ์ IoT แบบ Web Application พร้อมติดตามสถานะแบบ Real-time และระบบจัดการผู้ใช้งาน',
     whatIDid: [
       'รับจ้างพัฒนาระบบยืม-คืนอุปกรณ์ IoT แบบ Web Application ให้กับเพื่อนนักศึกษาเพื่อใช้เป็นโปรเจกต์จบการศึกษา',
       'รับผิดชอบทั้ง Frontend และ Backend ตั้งแต่ต้นจนจบคนเดียว',
@@ -105,9 +103,8 @@ export const projects: Project[] = [
     year: '2025',
     githubUrl: 'https://github.com/ThanakhonOonklan',
     subtitleEn: 'An IoT equipment borrowing and returning Web Application with real-time status tracking and user management.',
-    summaryEn: 'An IoT equipment borrowing and returning Web Application with real-time status tracking and user management.',
     whatIDidEn: [
-      'Developed an IoT equipment borrowing and returning web application for a fellow student’s graduation project.',
+      'Developed an IoT equipment borrowing and returning web application for a fellow student\'s graduation project.',
       'Solely responsible for both Frontend and Backend development from scratch to deployment.',
     ],
     featuresEn: [
@@ -124,8 +121,7 @@ export const projects: Project[] = [
   {
     id: 3,
     title: 'ESP32 Robot Controller',
-    subtitle: 'รถหุ่นยนต์บังคับด้วย ESP32 ',
-    summary: 'รถหุ่นยนต์ Omnidirectional ขับเคลื่อน 4 ล้อ ควบคุมผ่านมือด้วย ESP32 แบบ Wireless',
+    subtitle: 'รถหุ่นยนต์ Omnidirectional ขับเคลื่อน 4 ล้อ ควบคุมผ่านมือด้วย ESP32 แบบ Wireless',
     whatIDid: [
       'พัฒนารถหุ่นยนต์ Omnidirectional ขับเคลื่อน 4 ล้อควบคุมผ่านมือด้วย ESP32',
       'ออกแบบและประกอบทุกส่วนคนเดียวตั้งแต่ Hardware จนถึง Firmware เเละโค้ด',
@@ -149,7 +145,6 @@ export const projects: Project[] = [
     year: '2023',
     githubUrl: 'https://github.com/ThanakhonOonklan',
     subtitleEn: 'An Omnidirectional 4-wheel Mecanum robot controlled wirelessly via a mobile device using ESP32.',
-    summaryEn: 'An Omnidirectional 4-wheel Mecanum robot controlled wirelessly via a mobile device using ESP32.',
     whatIDidEn: [
       'Developed an Omnidirectional 4-wheel Mecanum robot wirelessly controlled via mobile using ESP32.',
       'Designed and assembled all parts solo, from Hardware to Firmware.',
@@ -167,7 +162,6 @@ export const projects: Project[] = [
     id: 4,
     title: 'Internship Experience',
     subtitle: 'เขียนโค้ดบังคับรถหุ่นยนต์ด้วย ESP32 เเละนำไปใช้งานจริง',
-    summary: 'ประสบการณ์ฝึกงานในฐานะ Robotics Assistant พัฒนาและสอนการควบคุมหุ่นยนต์',
     whatIDid: [
       'ฝึกงานในฐานะ Robotics Assistant',
       'เขียนโปรแกรมควบคุมรถหุ่นยนต์ ด้วย ESP32 ให้บังคับผ่าน PS4 Controller',
@@ -196,7 +190,6 @@ export const projects: Project[] = [
     category: 'Experience',
     year: '2025',
     subtitleEn: 'Internship experience as a Robotics Assistant, developing and teaching robot control.',
-    summaryEn: 'Internship experience as a Robotics Assistant, developing and teaching robot control.',
     whatIDidEn: [
       'Interned as a Robotics Assistant.',
       'Programmed an ESP32 robot car to be controlled via a PS4 Controller.',
@@ -212,13 +205,10 @@ export const projects: Project[] = [
       'Gained end-to-end experience from writing code to real-world practical application.',
     ],
   },
-
-
   {
     id: 5,
     title: 'RalphGuard',
     subtitle: 'ระบบประเมินความเสี่ยงการระคายเคืองและความเป็นพิษของสารเคมีด้วยแบบจำลองคอมพิวเตอร์ (in-silico) เพื่อลดการพึ่งพาการทดลองในสัตว์',
-    summary: 'ระบบประเมินความเสี่ยงการระคายเคืองและความเป็นพิษของสารเคมีด้วยแบบจำลองคอมพิวเตอร์ เพื่อลดการพึ่งพาการทดลองในสัตว์ โดยใช้การวิเคราะห์โครงสร้างโมเลกุลร่วมกับ Machine Learning (QSAR)',
     whatIDid: [
       'รับผิดชอบด้าน Frontend Development ทั้งหมด ตั้งแต่การออกแบบ UI/UX, พัฒนา Component, 3D Visualization ด้วย React Three Fiber และ Deploy',
       'พัฒนาหน้า Formula Builder สำหรับสร้างสูตรผสมแบบ Interactive และหน้าแสดงผลการประเมินแบบ Real-time',
@@ -276,7 +266,6 @@ export const projects: Project[] = [
     year: '2026',
     githubUrl: 'https://github.com/ThanakhonOonklan',
     subtitleEn: 'An in-silico chemical irritation and toxicity risk screening platform powered by QSAR Machine Learning, designed to reduce reliance on animal testing.',
-    summaryEn: 'An in-silico chemical irritation and toxicity risk screening platform using molecular structure analysis combined with Machine Learning (QSAR) to predict hazard across 4 toxicity endpoints.',
     whatIDidEn: [
       'Owned the entire Frontend Development — UI/UX design, component development, 3D Visualization with React Three Fiber, and deployment.',
       'Built the Formula Builder page for interactive mixture creation and the real-time assessment result display.',
@@ -300,12 +289,10 @@ export const projects: Project[] = [
       'Gained experience working as a team on a national-level competition project, spanning Research, Engineering, and Presentation.',
     ],
   },
-
   {
     id: 6,
     title: 'StepCharge: Footstep Piezoelectric Energy Harvesting',
     subtitle: 'ระบบต้นแบบเก็บเกี่ยวพลังงานจากการเหยียบ แปลงแรงกดเชิงกลจากการก้าวเดินเป็นพลังงานไฟฟ้า กักเก็บลงแบตเตอรี่ 18650 และจ่ายไฟออก 5V แบบ Standalone',
-    summary: 'ระบบต้นแบบเก็บเกี่ยวพลังงานจากการเหยียบ (Footstep Piezoelectric Energy Harvesting System) แปลงพลังงานกลจากการก้าวเดินเป็นพลังงานไฟฟ้าผ่าน Piezoelectric Harvester จัดการแรงดันและประจุไฟฟ้าเข้าสู่แบตเตอรี่ Li-ion 18650 พร้อมวงจรบูสต์ไฟ 5V จ่ายพลังงานให้อุปกรณ์ภายนอกและบอร์ดประมวลผลได้แบบ Standalone 100%',
     whatIDid: [
       'ออกแบบและต่อวงจรระบบเก็บเกี่ยวพลังงานครบวงจร (Energy Harvesting Circuit) ตั้งแต่ Piezo Array, Rectifier, Nanopower Harvester จนถึง Battery Storage',
       'ปรับจูนและ Calibration วงจรบูสต์แรงดัน MT3608 และวงจรชาร์จแบตเตอรี่ TP4056 ให้ทำงานประสานกับ LTC3588 เพื่อชาร์จแบตเตอรี่ 18650 ได้อย่างปลอดภัยและมีประสิทธิภาพ',
@@ -343,7 +330,6 @@ export const projects: Project[] = [
     year: '2026',
     githubUrl: 'https://github.com/ThanakhonOonklan',
     subtitleEn: 'A footstep piezoelectric energy harvesting prototype that converts mechanical pressure from walking into electrical energy, stores it in 18650 Li-ion batteries, and supplies 5V output for standalone operation.',
-    summaryEn: 'A Footstep Piezoelectric Energy Harvesting System prototype that converts mechanical footstep energy into electricity via a piezoelectric harvester, regulates and stores energy in 18650 Li-ion batteries, and provides a 5V boost output for external loads and standalone microcontrollers.',
     whatIDidEn: [
       'Designed and wired the complete end-to-end energy harvesting circuit from Piezo Array, Rectifier, Nanopower Harvester, to Battery Storage.',
       'Calibrated and tuned the MT3608 boost converter and TP4056 charger to interface with the LTC3588 for safe and efficient 18650 Li-ion charging.',

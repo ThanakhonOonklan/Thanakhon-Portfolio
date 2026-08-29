@@ -213,14 +213,7 @@ export function ProjectGallery({ projectNumber, images = [], imageUrl, uiPreview
           ))}
         </div>
       )}
-
-      {/* CSS keyframe for progress bar */}
-      <style>{`
-        @keyframes progressBar {
-          from { transform: scaleX(0); }
-          to   { transform: scaleX(1); }
-        }
-      `}</style>
     </div>
   );
 }
+

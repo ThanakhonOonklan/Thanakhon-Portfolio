@@ -1,46 +1,18 @@
 'use client';
 
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { certificates } from '@/data/certificates';
 import { useTranslation } from '@/hooks';
-import type { Certificate } from '@/types/portfolio';
+import { Lightbox } from '@/components/ui';
+import type { Certificate } from '@/types';
 
 export default function Certificates() {
-  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
   const [activeCert, setActiveCert] = useState<Certificate | null>(null);
-
-  const openModal = useCallback((cert: Certificate) => {
-    if (cert.imageUrl) setActiveCert(cert);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setActiveCert(null);
-  }, []);
-
-  // Close on Escape key
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeModal();
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [closeModal]);
-
-  // Prevent body scroll when modal open
-  useEffect(() => {
-    if (activeCert) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [activeCert]);
 
   return (
     <section
       id="certificates"
-      ref={sectionRef}
       className="section-bg-gradient"
       style={{
         backgroundColor: 'var(--bg-secondary)',
@@ -66,11 +38,11 @@ export default function Certificates() {
               key={cert.id}
               className="gsap-reveal group overflow-hidden"
               data-cert-index={index}
-              onClick={() => openModal(cert)}
+              onClick={() => cert.imageUrl && setActiveCert(cert)}
               role={cert.imageUrl ? 'button' : undefined}
               aria-label={cert.imageUrl ? `View ${cert.title}` : undefined}
               tabIndex={cert.imageUrl ? 0 : undefined}
-              onKeyDown={(e) => { if (e.key === 'Enter') openModal(cert); }}
+              onKeyDown={(e) => { if (e.key === 'Enter' && cert.imageUrl) setActiveCert(cert); }}
               style={{ cursor: cert.imageUrl ? 'zoom-in' : 'default' }}
             >
               {cert.imageUrl ? (
@@ -140,40 +112,12 @@ export default function Certificates() {
       </div>
 
       {/* Lightbox Modal */}
-      {activeCert && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8"
-          style={{ backgroundColor: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(10px)' }}
-          onClick={closeModal}
-          role="dialog"
-          aria-modal="true"
-          aria-label={activeCert.title}
-        >
-          <div
-            className="relative max-w-4xl w-full flex flex-col items-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close button */}
-            <button
-              onClick={closeModal}
-              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-20 text-white/70 hover:text-white transition-colors duration-200 flex items-center gap-2 text-sm font-[family-name:var(--font-body)] bg-black/40 backdrop-blur-sm rounded-full px-3 py-2"
-              aria-label="Close"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
-              {t('contact.exit')}
-            </button>
-
-            {/* Full image — no frame */}
-            <img
-              src={activeCert.imageUrl}
-              alt={activeCert.title}
-              className="w-full h-auto object-contain max-h-[85vh] shadow-2xl"
-            />
-          </div>
-        </div>
-      )}
+      <Lightbox
+        isOpen={!!activeCert}
+        imageUrl={activeCert?.imageUrl ?? null}
+        alt={activeCert?.title}
+        onClose={() => setActiveCert(null)}
+      />
     </section>
   );
 }

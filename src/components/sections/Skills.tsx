@@ -1,17 +1,14 @@
 'use client';
 
-import { useRef } from 'react';
 import { skills } from '@/data/skills';
 import { useTranslation } from '@/hooks';
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
 
   return (
     <section
       id="skills"
-      ref={sectionRef}
       style={{
         backgroundColor: 'var(--bg-primary)',
         paddingTop: 'var(--space-section)',

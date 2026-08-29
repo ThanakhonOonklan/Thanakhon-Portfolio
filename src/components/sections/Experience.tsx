@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef } from 'react';
 import { useTranslation } from '@/hooks';
 
 interface ExperienceItem {
@@ -12,7 +11,6 @@ interface ExperienceItem {
 }
 
 export default function Experience() {
-  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
 
   const items = t('experience.items', { returnObjects: true }) as ExperienceItem[];
@@ -21,7 +19,6 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      ref={sectionRef}
       className="section-bg-gradient"
       style={{
         backgroundColor: 'var(--bg-secondary)',

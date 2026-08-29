@@ -29,5 +29,3 @@ export const skills: Skill[] = [
   { name: 'TensorFlow',    category: 'Other',       iconUrl: `${BASE}/tensorflow-colored.svg` },
   { name: 'Arduino',       category: 'Other',       iconUrl: `${BASE}/arduino-colored.svg` },
 ];
-
-export const skillCategories = ['Frontend', 'Backend', 'Tools', 'Other'];

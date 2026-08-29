@@ -1,18 +1,15 @@
 'use client';
 
-import { useRef } from 'react';
 import { projects } from '@/data/projects';
 import { ProjectCaseStudy } from '@/components/projects';
 import { useTranslation } from '@/hooks';
 
 export default function Projects() {
-  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
 
   return (
     <section
       id="projects"
-      ref={sectionRef}
       style={{
         backgroundColor: 'var(--bg-primary)',
         paddingTop: 'var(--space-section)',
