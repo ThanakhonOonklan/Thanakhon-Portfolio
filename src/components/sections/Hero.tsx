@@ -8,8 +8,13 @@ import { PortraitFallback } from '@/components/ui';
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const [imgError, setImgError] = useState(false);
+
+  // Spotlight Mouse Coordinates (relative to textContainerRef)
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     registerGSAP();
@@ -43,11 +48,27 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (!textContainerRef.current) return;
+    const rect = textContainerRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+    setIsHovered(true);
+  };
+
+  const handlePointerLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <section
       id="hero"
       ref={sectionRef}
-      className="relative h-screen min-h-[850px] w-full flex items-end justify-center overflow-hidden select-none"
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      className="relative h-screen min-h-[850px] w-full flex items-end justify-center overflow-hidden select-none cursor-default"
       style={{ backgroundColor: 'var(--bg-primary)', userSelect: 'none', WebkitUserSelect: 'none' }}
     >
       {/* Background Layer: 3 Concentric Circles (Fixed Scale) */}
@@ -65,16 +86,40 @@ export default function Hero() {
         ref={nameRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 pointer-events-none select-none flex items-center justify-center whitespace-nowrap"
       >
-        <h1
-          className="font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent"
-          style={{
-            fontSize: '180px',
-            WebkitTextStroke: '2px rgba(255, 255, 255, 0.45)',
-            lineHeight: 0.85,
-          }}
-        >
-          THANAKHON OONKLAN
-        </h1>
+        <div ref={textContainerRef} className="relative inline-block">
+          {/* Base Layer: White Stroke Text */}
+          <h1
+            className="font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent block"
+            style={{
+              fontSize: '180px',
+              WebkitTextStroke: '2px rgba(255, 255, 255, 0.45)',
+              lineHeight: 0.95,
+              paddingTop: '35px',
+              paddingBottom: '35px',
+            }}
+          >
+            THANAKHON OONKLAN
+          </h1>
+
+          {/* Spotlight Layer: Perfectly Aligned Pixel-for-Pixel with Base Layer */}
+          <h1
+            aria-hidden="true"
+            className="absolute inset-0 font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent transition-opacity duration-300 pointer-events-none block"
+            style={{
+              fontSize: '180px',
+              WebkitTextStroke: '2.5px #F28CA6',
+              lineHeight: 0.95,
+              paddingTop: '35px',
+              paddingBottom: '35px',
+              opacity: isHovered ? 1 : 0,
+              maskImage: `radial-gradient(circle 280px at ${mousePos.x}px ${mousePos.y}px, black 35%, transparent 100%)`,
+              WebkitMaskImage: `radial-gradient(circle 280px at ${mousePos.x}px ${mousePos.y}px, black 35%, transparent 100%)`,
+              filter: 'drop-shadow(0 0 16px rgba(242, 140, 166, 0.6))',
+            }}
+          >
+            THANAKHON OONKLAN
+          </h1>
+        </div>
       </div>
 
       {/* Foreground Layer: Person Portrait (Fixed Absolute Scale: z-20) */}
