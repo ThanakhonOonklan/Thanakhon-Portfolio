@@ -23,11 +23,12 @@ export default function Skills() {
 
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <span className="section-label block mb-4 gsap-reveal font-[family-name:var(--font-body)]">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.25em] text-[#9CA3AF] font-mono mb-2 gsap-reveal">
             {t('skills_section.label')}
           </span>
           <h2
-            className="section-title gsap-reveal font-en-heading uppercase"
+            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
+            style={{ fontFamily: 'var(--font-heading)' }}
           >
             {t('skills_section.title')}
           </h2>

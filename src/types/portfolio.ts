@@ -56,6 +56,7 @@ export interface Certificate {
   organization: string;
   year: string;
   imageUrl?: string;
+  isPortrait?: boolean;
   skills?: string[];
   credentialUrl?: string;
 }
