@@ -2,10 +2,11 @@
 
 import { projects } from '@/data/projects';
 import { ProjectCaseStudy } from '@/components/projects/ProjectCaseStudy';
-import { useTranslation } from '@/hooks';
+import { useTranslation, useLocale } from '@/hooks';
 
 export default function Projects() {
   const { t } = useTranslation();
+  const { isEN } = useLocale();
 
   return (
     <>
@@ -41,6 +42,17 @@ export default function Projects() {
                 index={index}
               />
             ))}
+          </div>
+
+          {/* View More Projects Button */}
+          <div className="flex justify-center mt-12 sm:mt-16">
+            <a
+              href="/projects"
+              className="flex items-center justify-center px-5 py-2.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-200"
+              style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)', fontSize: '14px', color: '#9CA3AF' }}
+            >
+              <span>{isEN ? 'View All Projects' : 'ดูโครงการเพิ่มเติม'}</span>
+            </a>
           </div>
 
         </div>

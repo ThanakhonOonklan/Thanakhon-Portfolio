@@ -80,20 +80,17 @@
     "items": [
       {
         "year": "2026",
-        "company": "Thinking Skills Games for Kids",
-        "role": "Frontend Developer",
+        "company": "StepCharge",
+        "role": "Footstep Piezoelectric Energy Harvesting",
         "description": [
-          "พัฒนา UI และระบบเกมทั้งหมด 7 มินิเกม 9 ด่านร่วม 63 ด่าน",
-          "ออกแบบและพัฒนาสำหรับกลุ่มเป้าหมายเด็กอายุ 5–7 ปี",
-          "พัฒนาระบบอนิเมชัน และ Game Logic ภายในเกม",
-          "รองรับ 2 ภาษา (ไทย/อังกฤษ)"
+          "ออกแบบและต่อวงจรระบบเก็บเกี่ยวพลังงานครบวงจร (Energy Harvesting Circuit) ตั้งแต่ Piezo Array, Rectifier, Nanopower Harvester จนถึง Battery Storage",
+          "ปรับจูนและ Calibration วงจรบูสต์แรงดัน MT3608 และวงจรชาร์จแบตเตอรี่ TP4056 ให้ทำงานประสานกับ LTC3588",
+          "พัฒนา Firmware ภาษา C++/Arduino บนบอร์ด Arduino UNO R3 สำหรับตรวจวัดระดับพลังงานสะสมและนับก้าวแบบ Real-time",
+          "ทดสอบและยืนยันการทำงานแบบ Standalone จ่ายไฟ 5V 2A สำหรับเลี้ยงระบบและชาร์จโหลดภายนอกได้สำเร็จ"
         ],
         "skills": [
-          "Next.js",
-          "TypeScript",
-          "Tailwind CSS",
-          "PostgreSQL",
-          "Figma"
+          "Arduino",
+          "C++"
         ]
       },
       {
@@ -125,11 +122,23 @@
           "ร่วมพัฒนาแอปอ่านบัตรประชาชน"
         ],
         "skills": [
-          "ESP32",
-          "ESP8266",
-          "Arduino",
-          "IoT",
-          "C++"
+          "Arduino"
+        ]
+      },
+      {
+        "year": "2024",
+        "company": "การแข่งขันฝีมือแรงงานแห่งชาติ ครั้งที่ 31",
+        "role": "Industrial Robot Control",
+        "description": [
+          "ฝึกควบคุมหุ่นยนต์อุตสาหกรรม (ABB, KUKA, Yaskawa) สำหรับงานเดินเส้นและหยิบวางชิ้นงานผ่าน Teach Pendant",
+          "เขียนโปรแกรมการเคลื่อนที่แบบ Joint, Linear และ Circular",
+          "ตั้งค่า Tool, Base, WorkObject และ User Frame พร้อมลำดับการทำงานของปุ่ม Start, ไฟสถานะ และ Gripper",
+          "ออกแบบ Template โปรแกรมเพื่อช่วยให้เขียนงานได้เร็วขึ้นในการแข่งขันแบบจำกัดเวลา"
+        ],
+        "skills": [
+          "ABB RAPID",
+          "KUKA KRL",
+          "Yaskawa INFORM"
         ]
       }
     ]

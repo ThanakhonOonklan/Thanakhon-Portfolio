@@ -80,20 +80,17 @@
     "items": [
       {
         "year": "2026",
-        "company": "Thinking Skills Games for Kids",
-        "role": "Junior Frontend Developer",
+        "company": "StepCharge",
+        "role": "Footstep Piezoelectric Energy Harvesting",
         "description": [
-          "Developed UI and game systems for 7 mini-games with 9 levels each (63 levels total)",
-          "Designed for a target audience of children aged 5–7 years old",
-          "Built animation systems and game logic for all mini-games",
-          "Supports 2 languages (Thai / English)"
+          "Designed and built an end-to-end energy harvesting circuit from Piezo Array, Rectifier, Nanopower Harvester, to Battery Storage",
+          "Calibrated MT3608 boost converter and TP4056 charger with LTC3588 for safe 18650 Li-ion charging",
+          "Developed C++/Arduino firmware on Arduino UNO R3 to monitor accumulated energy and count steps in real time",
+          "Verified standalone 5V 2A power output to power microcontrollers and charge external devices"
         ],
         "skills": [
-          "Next.js",
-          "TypeScript",
-          "Tailwind CSS",
-          "PostgreSQL",
-          "Figma"
+          "Arduino",
+          "C++"
         ]
       },
       {
@@ -125,11 +122,23 @@
           "Collaborated on developing a National ID card reader application"
         ],
         "skills": [
-          "ESP32",
-          "ESP8266",
-          "Arduino",
-          "IoT",
-          "C++"
+          "Arduino"
+        ]
+      },
+      {
+        "year": "2024",
+        "company": "31st National Skills Competition",
+        "role": "Industrial Robot Control",
+        "description": [
+          "Programmed and controlled industrial robots (ABB, KUKA, Yaskawa) for welding-path and pick-and-place tasks via Teach Pendant",
+          "Programmed Joint, Linear, and Circular motion paths",
+          "Configured Tool, Base, WorkObject, and User Frame along with Gripper and I/O sequences",
+          "Designed reusable program templates to accelerate execution in time-limited competitions"
+        ],
+        "skills": [
+          "ABB RAPID",
+          "KUKA KRL",
+          "Yaskawa INFORM"
         ]
       }
     ]

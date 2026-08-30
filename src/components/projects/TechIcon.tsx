@@ -46,11 +46,20 @@ const SKILL_ICONS_MAP: Record<string, string> = {
   'Scikit-learn': 'sklearn',
   'TensorFlow': 'tensorflow',
 
-  // Tools & Deployment
+  // Tools & Design & Deployment
   'Vercel': 'vercel',
   'Arduino': 'arduino',
+  'ESP32': 'arduino',
+  'ESP8266': 'arduino',
+  'IoT': 'arduino',
   'VS Code': 'vscode',
   'Figma': 'figma',
+  'Photoshop': 'ps',
+  'Illustrator': 'ai',
+  'Canva': 'canva',
+  'Blender': 'blender',
+  'Premiere': 'pr',
+  'After Effects': 'ae',
   'Postman': 'postman',
   'Git': 'git',
   'GitHub': 'github',
@@ -65,9 +74,13 @@ interface TechIconProps {
 export function TechIcon({ tech }: TechIconProps) {
   const iconSlug = SKILL_ICONS_MAP[tech];
 
-  // If no official SkillIcon exists, do not render
+  // If no official SkillIcon exists, render a clean badge
   if (!iconSlug) {
-    return null;
+    return (
+      <span className="inline-flex items-center text-[12px] font-mono font-medium text-[#9CA3AF] px-3 py-1 bg-white/5 border border-white/10 rounded-lg hover:border-white/20 hover:text-white transition-colors select-none">
+        {tech}
+      </span>
+    );
   }
 
   return (

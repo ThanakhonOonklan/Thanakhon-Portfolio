@@ -7,7 +7,6 @@ import { TechIcon } from './TechIcon';
 import { gsap } from 'gsap';
 import { registerGSAP } from '@/lib/gsap';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown } from 'lucide-react';
 
 interface ProjectCaseStudyProps {
   project: Project;
@@ -26,8 +25,6 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
   const isEven = index % 2 === 1;
   const { isEN } = useLocale();
   const rowRef = useRef<HTMLElement>(null);
-  
-  const [isExpanded, setIsExpanded] = useState(false);
 
   const subtitle = isEN && project.subtitleEn ? project.subtitleEn : project.subtitle;
   const whatIDid = isEN && project.whatIDidEn ? project.whatIDidEn : project.whatIDid;
@@ -38,16 +35,7 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
     ? project.images
     : project.imageUrl ? [project.imageUrl] : [];
 
-  // Image cycling state — store a list like the Trait deck
-  const [imageQueue, setImageQueue] = useState(() => allImages.map((src, i) => ({ src, id: i })));
-
-  const cycleImage = () => {
-    if (imageQueue.length <= 1) return;
-    setImageQueue((prev) => {
-      const [first, ...rest] = prev;
-      return [...rest, first];
-    });
-  };
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     registerGSAP();
@@ -117,25 +105,113 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
             {subtitle}
           </p>
 
-          {/* Tech Stack Icons (no border, clean icons) */}
-          <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 py-1">
-            {project.techStack.map((tech) => (
-              <TechIcon key={tech} tech={tech} />
-            ))}
+          {/* Details Section */}
+          <div className="flex flex-col gap-6 border-t border-white/[0.05] pt-6">
+
+            {/* What I Did */}
+            {whatIDid && whatIDid.length > 0 && (
+              <div>
+                <h4
+                  className="font-en-body text-[18px] font-bold text-white uppercase tracking-wider"
+                  style={{ fontFamily: 'var(--font-body)', marginBottom: '16px' }}
+                >
+                  {isEN ? 'Role & Responsibilities' : 'หน้าที่และความรับผิดชอบ'}
+                </h4>
+                <ul className="flex flex-col gap-1.5">
+                  {whatIDid.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="text-[#9CA3AF] leading-relaxed flex items-start gap-3"
+                      style={{ fontSize: '16px', fontWeight: 400, fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 bg-white/20" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Features */}
+            {features && features.length > 0 && (
+              <div>
+                <h4
+                  className="font-en-body text-[18px] font-bold text-white uppercase tracking-wider"
+                  style={{ fontFamily: 'var(--font-body)', marginBottom: '16px' }}
+                >
+                  {isEN ? 'Key Features' : 'ฟีเจอร์เด่น'}
+                </h4>
+                <ul className="flex flex-col gap-1.5">
+                  {features.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="text-[#9CA3AF] leading-relaxed flex items-start gap-3"
+                      style={{ fontSize: '16px', fontWeight: 400, fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 bg-white/20" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Results */}
+            {results && results.length > 0 && (
+              <div>
+                <h4
+                  className="font-en-body text-[18px] font-bold text-white uppercase tracking-wider"
+                  style={{ fontFamily: 'var(--font-body)', marginBottom: '16px' }}
+                >
+                  {isEN ? 'Results & Impact' : 'ผลลัพธ์ที่ได้'}
+                </h4>
+                <ul className="flex flex-col gap-1.5">
+                  {results.map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="text-[#9CA3AF] leading-relaxed flex items-start gap-3"
+                      style={{ fontSize: '16px', fontWeight: 400, fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 bg-white/20" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Tech Stack */}
+            <div>
+              <h4
+                className="font-en-body text-[18px] font-bold text-white uppercase tracking-wider"
+                style={{ fontFamily: 'var(--font-body)', marginBottom: '16px' }}
+              >
+                {isEN ? 'Tech Stack' : 'เทคโนโลยีที่ใช้'}
+              </h4>
+              <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
+                {project.techStack.map((tech) => (
+                  <TechIcon key={tech} tech={tech} />
+                ))}
+              </div>
+            </div>
+
           </div>
 
           {/* Action links */}
-          <div className="flex items-center gap-5 pt-1">
+          <div className="flex flex-wrap items-center gap-3 pt-4 mt-auto border-t border-white/[0.05]">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 font-[family-name:var(--font-body)] font-en-body font-semibold uppercase tracking-[0.15em] text-[11px] hover:text-white transition-colors duration-200"
-                style={{ color: '#9CA3AF' }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-200 group"
+                style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)', fontSize: '14px', color: '#c9d1d9' }}
               >
-                <GithubIcon className="w-3.5 h-3.5" />
-                GitHub
+                <GithubIcon className="w-4 h-4 shrink-0" />
+                <span>{isEN ? 'View Project Details' : 'ดูรายละเอียดโครงการ'}</span>
+                <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
               </a>
             )}
 
@@ -144,161 +220,74 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 font-[family-name:var(--font-body)] font-en-body font-semibold uppercase tracking-[0.15em] text-[11px] transition-colors duration-200"
-                style={{ color: 'var(--accent)' }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[var(--accent)]/30 bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 hover:border-[var(--accent)]/60 transition-all duration-200 group"
+                style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)', fontSize: '14px', color: 'var(--accent)' }}
               >
-                View Live
-                <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+                <span>{isEN ? 'Launch Live Demo' : 'เปิดดูเว็บไซต์จริง'}</span>
+                <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                 </svg>
               </a>
             )}
-
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className={`flex items-center gap-1.5 font-[family-name:var(--font-body)] font-en-body font-semibold uppercase tracking-[0.15em] text-[11px] transition-colors duration-200 cursor-pointer ${
-                isExpanded ? 'text-white' : 'text-[#9CA3AF] hover:text-white'
-              }`}
-            >
-              {isExpanded ? 'Hide Details' : 'Details'}
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-            </button>
           </div>
-
-          {/* Inline Expanded Details */}
-          <AnimatePresence>
-            {isExpanded && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.4, ease: 'easeInOut' }}
-                className="overflow-hidden"
-              >
-                <div className="pt-8 flex flex-col gap-10 border-t border-white/[0.05] mt-4">
-                  
-                  {/* What I Did */}
-                  {whatIDid && whatIDid.length > 0 && (
-                    <div>
-                      <h4
-                        className="font-en-body text-[13px] font-bold text-white uppercase tracking-[0.15em] mb-4"
-                        style={{ fontFamily: 'var(--font-body)' }}
-                      >
-                        {isEN ? 'Role & Responsibilities' : 'หน้าที่และความรับผิดชอบ'}
-                      </h4>
-                      <ul className="flex flex-col gap-3">
-                        {whatIDid.map((item, idx) => (
-                          <li
-                            key={idx}
-                            className="text-[14px] text-[#9CA3AF] leading-relaxed font-[family-name:var(--font-body)] flex items-start gap-3"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 bg-white/20" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Features */}
-                  {features && features.length > 0 && (
-                    <div>
-                      <h4
-                        className="font-en-body text-[13px] font-bold text-white uppercase tracking-[0.15em] mb-4"
-                        style={{ fontFamily: 'var(--font-body)' }}
-                      >
-                        {isEN ? 'Key Features' : 'ฟีเจอร์เด่น'}
-                      </h4>
-                      <ul className="flex flex-col gap-3">
-                        {features.map((item, idx) => (
-                          <li
-                            key={idx}
-                            className="text-[14px] text-[#9CA3AF] leading-relaxed font-[family-name:var(--font-body)] flex items-start gap-3"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 bg-white/20" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Results */}
-                  {results && results.length > 0 && (
-                    <div>
-                      <h4
-                        className="font-en-body text-[13px] font-bold text-white uppercase tracking-[0.15em] mb-4"
-                        style={{ fontFamily: 'var(--font-body)' }}
-                      >
-                        {isEN ? 'Results & Impact' : 'ผลลัพธ์ที่ได้'}
-                      </h4>
-                      <ul className="flex flex-col gap-3">
-                        {results.map((item, idx) => (
-                          <li
-                            key={idx}
-                            className="text-[14px] text-[#9CA3AF] leading-relaxed font-[family-name:var(--font-body)] flex items-start gap-3"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 bg-white/20" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
 
-        {/* ── Image Side: Stacked card deck (60%, Sticky scroll) ── */}
+        {/* ── Image Side: Gallery with thumbnails (60%, Sticky scroll) ── */}
         <div className={`lg:col-span-7 sticky top-28 self-start z-10 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-          {imageQueue.length > 0 ? (
-            <div
-              className="relative w-full cursor-pointer select-none"
-              style={{ aspectRatio: '16 / 10' }}
-              onClick={cycleImage}
-            >
-              <AnimatePresence mode="popLayout">
-                {imageQueue.slice(0, 3).map((img, idx) => {
-                  const yOffsets = [0, 10, 20];
-                  const scaleOffsets = [1, 0.97, 0.94];
-                  const opacities = [1, 0.5, 0.25];
+          {allImages.length > 0 ? (
+            <div className="flex flex-col gap-3">
+              {/* Main Image */}
+              <div className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-neutral-900 shadow-2xl">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={selectedIndex}
+                    src={allImages[selectedIndex]}
+                    alt={`${project.title} — photo ${selectedIndex + 1}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25, ease: 'easeInOut' }}
+                    className="w-full h-auto block"
+                    draggable={false}
+                  />
+                </AnimatePresence>
 
-                  return (
-                    <motion.div
-                      key={img.id}
-                      layout
-                      initial={{ scale: 0.88, opacity: 0, y: -20 }}
-                      animate={{
-                        scale: scaleOffsets[idx],
-                        opacity: opacities[idx],
-                        y: yOffsets[idx],
-                        zIndex: 3 - idx,
-                      }}
-                      exit={{ scale: 0.85, opacity: 0, y: 30 }}
-                      transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-                      className="absolute inset-0 rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-900"
+                {/* Image counter */}
+                {allImages.length > 1 && (
+                  <div className="absolute top-3 right-3 z-20 pointer-events-none">
+                    <span className="text-[11px] text-white/80 bg-black/60 backdrop-blur-sm rounded-full px-2.5 py-1 border border-white/15 font-[family-name:var(--font-body)] tracking-wider">
+                      {selectedIndex + 1} / {allImages.length}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Thumbnail Strip */}
+              {allImages.length > 1 && (
+                <div className="flex gap-2 overflow-x-auto scrollbar-none pb-0.5">
+                  {allImages.map((src, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedIndex(idx)}
+                      className={`relative shrink-0 rounded-md overflow-hidden border-2 transition-all duration-200 ${
+                        idx === selectedIndex
+                          ? 'border-white/60 opacity-100'
+                          : 'border-white/10 opacity-50 hover:opacity-80 hover:border-white/30'
+                      }`}
+                      style={{ width: '72px', height: '48px' }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={img.src}
-                        alt={`${project.title} — photo ${img.id + 1}`}
+                        src={src}
+                        alt={`thumbnail ${idx + 1}`}
                         className="w-full h-full object-cover object-top"
                         draggable={false}
                       />
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
-
-              {/* Photo counter badge */}
-              {imageQueue.length > 1 && (
-                <div className="absolute bottom-3 left-3 z-20 pointer-events-none">
-                  <span className="text-[10px] text-white/80 bg-black/60 backdrop-blur-sm rounded-full px-2.5 py-1 border border-white/15 font-[family-name:var(--font-body)] tracking-wider uppercase shadow-xl">
-                    {imageQueue.length} photos — tap to cycle
-                  </span>
+                    </button>
+                  ))}
                 </div>
               )}
             </div>

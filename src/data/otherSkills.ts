@@ -6,10 +6,10 @@ export const otherSkills: OtherSkillItem[] = [
     title: 'Infographic Design',
     category: 'Design',
     description:
-      'ออกแบบ Infographic สำหรับกิจกรรม FutureSkill โดยใช้ Figma และ Illustrator ในการสร้างสื่อที่ดึงดูดและสื่อสารข้อมูลได้ชัดเจน',
+      'ออกแบบ Infographic สำหรับกิจกรรม FutureSkill โดยใช้ Figma และ Canva ในการสร้างสื่อที่ดึงดูดและสื่อสารข้อมูลได้ชัดเจน',
     descriptionEn:
-      'Designed infographic materials for the FutureSkill event using Figma and Illustrator to create visually engaging and informative content.',
-    tools: ['Figma', 'Photoshop', 'Illustrator'],
+      'Designed infographic materials for the FutureSkill event using Figma and Canva to create visually engaging and informative content.',
+    tools: ['Figma', 'Canva'],
     images: [
       '/images/projects/Infographic-Design/FutureSkill-Poster.webp',
       '/images/projects/Infographic-Design/FutureSkill-Display.webp',
