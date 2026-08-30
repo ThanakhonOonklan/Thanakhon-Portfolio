@@ -40,11 +40,11 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex flex-col items-center px-3 sm:px-6 pointer-events-none select-none">
+    <header className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex flex-col items-center w-full pointer-events-none select-none px-2 sm:px-0">
       {/* Floating Island: Seamless & Frameless at top of Hero, pills only on scroll (No shadows) */}
       <nav
         aria-label="Main Navigation"
-        className={`pointer-events-auto w-full max-w-5xl rounded-2xl transition-all duration-500 px-4 sm:px-6 py-2.5 flex items-center justify-between ${
+        className={`pointer-events-auto w-full max-w-7xl rounded-2xl transition-all duration-500 px-4 sm:px-6 md:px-8 py-2.5 flex items-center justify-between ${
           isScrolled
             ? 'bg-[#14171F]/50 backdrop-blur-md border border-white/[0.07]'
             : 'bg-transparent border border-transparent backdrop-blur-none'
@@ -127,7 +127,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu Container */}
       <div
-        className={`pointer-events-auto md:hidden w-full max-w-5xl overflow-hidden transition-all duration-300 ${
+        className={`pointer-events-auto md:hidden w-full max-w-7xl overflow-hidden transition-all duration-300 ${
           isMobileOpen ? 'max-h-[85vh] mt-2 opacity-100' : 'max-h-0 mt-0 opacity-0'
         }`}
       >

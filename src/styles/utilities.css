@@ -48,9 +48,11 @@
   color: var(--accent);
 }
 
-/* Section title — oversized Anton heading */
+/* Section title — Anton heading (56px max) */
 .section-title {
-  font-size: var(--text-display);
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
   margin-bottom: var(--space-element);
 }
@@ -87,5 +89,44 @@
   background: radial-gradient(circle at 50% 50%, rgba(242, 140, 166, 0.03) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+}
+
+/* About Section Styles (Exact Richard-Portfolio Specification) */
+.about-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #9CA3AF;
+  max-width: 100%;
+  margin-top: 16px;
+}
+
+.about-description p {
+  margin-bottom: 16px;
+}
+
+.about-description p:last-child {
+  margin-bottom: 0;
+}
+
+.about-resume-link {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.about-resume-link:hover {
+  opacity: 0.7 !important;
+}
+
+.about-profile-badge {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 

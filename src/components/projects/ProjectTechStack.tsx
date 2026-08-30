@@ -21,12 +21,13 @@ export function ProjectTechStack({ whatIDid, techStack, features, results }: Pro
           {whatIDid.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-[family-name:var(--font-body)]"
+              className="flex items-start gap-3 font-[family-name:var(--font-body)] leading-relaxed"
+              style={{ fontSize: '15px', color: '#9CA3AF' }}
             >
               <span className="text-[var(--accent)] shrink-0 h-[1.625em] flex items-center justify-center">
                 <div className="w-1.5 h-1.5 rounded-full bg-current" />
               </span>
-              <span className="leading-relaxed">{item}</span>
+              <span>{item}</span>
             </li>
           ))}
         </ul>
@@ -39,7 +40,8 @@ export function ProjectTechStack({ whatIDid, techStack, features, results }: Pro
           {techStack.map((tech) => (
             <span
               key={tech}
-              className="inline-flex items-center justify-center text-[11px] font-medium text-[var(--text-secondary)] font-[family-name:var(--font-body)] px-4 py-1.5 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-full hover:border-[var(--accent)] hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-[0_0_12px_var(--glow-accent)] hover:bg-white/[0.01] font-en-body"
+              className="inline-flex items-center justify-center text-[11px] font-medium font-[family-name:var(--font-body)] px-4 py-1.5 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-full hover:border-[var(--accent)] hover:text-white transition-all duration-300 cursor-default shadow-sm hover:shadow-[0_0_12px_var(--glow-accent)] hover:bg-white/[0.01] font-en-body"
+              style={{ color: '#9CA3AF' }}
             >
               {tech}
             </span>
@@ -54,12 +56,13 @@ export function ProjectTechStack({ whatIDid, techStack, features, results }: Pro
           {features.map((feature, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-sm text-[var(--text-secondary)] font-[family-name:var(--font-body)]"
+              className="flex items-start gap-3 font-[family-name:var(--font-body)] leading-relaxed"
+              style={{ fontSize: '15px', color: '#9CA3AF' }}
             >
               <span className="text-[var(--accent)] shrink-0 h-[1.625em] flex items-center justify-center">
                 <div className="w-1.5 h-1.5 rounded-full bg-current" />
               </span>
-              <span className="leading-relaxed">{feature}</span>
+              <span>{feature}</span>
             </li>
           ))}
         </ul>
@@ -72,9 +75,10 @@ export function ProjectTechStack({ whatIDid, techStack, features, results }: Pro
           {results.map((result, i) => (
             <p
               key={i}
-              className="text-sm text-white font-[family-name:var(--font-body)] font-medium flex items-center gap-2"
+              className="font-[family-name:var(--font-body)] flex items-center gap-2 leading-relaxed"
+              style={{ fontSize: '15px', color: '#9CA3AF' }}
             >
-              <span className="text-[var(--accent)]">↗</span> {result}
+              <span className="text-[var(--accent)] shrink-0">↗</span> {result}
             </p>
           ))}
         </div>

@@ -1,31 +1,32 @@
 import { Skill } from '@/types';
 
-const BASE = 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills';
+const SKILL_ICONS = 'https://skillicons.dev/icons?i=';
 
 export const skills: Skill[] = [
   // Frontend
-  { name: 'HTML5',        category: 'Frontend',   iconUrl: `${BASE}/html5-colored.svg` },
-  { name: 'CSS3',         category: 'Frontend',   iconUrl: `${BASE}/css3-colored.svg` },
-  { name: 'JavaScript',   category: 'Frontend',   iconUrl: `${BASE}/javascript-colored.svg` },
-  { name: 'TypeScript',   category: 'Frontend',   iconUrl: `${BASE}/typescript-colored.svg` },
-  { name: 'React',        category: 'Frontend',   iconUrl: `${BASE}/react-colored.svg` },
-  { name: 'Next.js',      category: 'Frontend',   iconUrl: `${BASE}/nextjs-colored-dark.svg` },
-  { name: 'Tailwind CSS',  category: 'Frontend',    iconUrl: `${BASE}/tailwindcss-colored.svg` },
-  { name: 'Material UI',   category: 'Frontend',    iconUrl: `${BASE}/materialui-colored.svg` },
+  { name: 'HTML5',        category: 'Frontend',   iconUrl: `${SKILL_ICONS}html` },
+  { name: 'CSS3',         category: 'Frontend',   iconUrl: `${SKILL_ICONS}css` },
+  { name: 'JavaScript',   category: 'Frontend',   iconUrl: `${SKILL_ICONS}js` },
+  { name: 'TypeScript',   category: 'Frontend',   iconUrl: `${SKILL_ICONS}ts` },
+  { name: 'React',        category: 'Frontend',   iconUrl: `${SKILL_ICONS}react` },
+  { name: 'Next.js',      category: 'Frontend',   iconUrl: `${SKILL_ICONS}nextjs` },
+  { name: 'Tailwind CSS',  category: 'Frontend',    iconUrl: `${SKILL_ICONS}tailwind` },
+  { name: 'Material UI',   category: 'Frontend',    iconUrl: `${SKILL_ICONS}materialui` },
   // Tools & Design
-  { name: 'VS Code',       category: 'Tools',       iconUrl: `${BASE}/visualstudiocode-colored.svg` },
-  { name: 'Figma',         category: 'Tools',       iconUrl: `${BASE}/figma-colored.svg` },
+  { name: 'VS Code',       category: 'Tools',       iconUrl: `${SKILL_ICONS}vscode` },
+  { name: 'Figma',         category: 'Tools',       iconUrl: `${SKILL_ICONS}figma` },
 
   // Backend & Database
-  { name: 'Node.js',       category: 'Backend',     iconUrl: `${BASE}/nodejs-colored.svg` },
-  { name: 'REST API',      category: 'Backend',     iconUrl: 'https://raw.githubusercontent.com/gilbarbara/logos/main/logos/openapi.svg' },
-  { name: 'PHP',           category: 'Backend',     iconUrl: `${BASE}/php-colored.svg` },
-  { name: 'MySQL',         category: 'Backend',     iconUrl: `${BASE}/mysql-colored.svg` },
+  { name: 'Node.js',       category: 'Backend',     iconUrl: `${SKILL_ICONS}nodejs` },
+  { name: 'REST API',      category: 'Backend',     iconUrl: `${SKILL_ICONS}postman` },
+  { name: 'PHP',           category: 'Backend',     iconUrl: `${SKILL_ICONS}php` },
+  { name: 'MySQL',         category: 'Backend',     iconUrl: `${SKILL_ICONS}mysql` },
 
   // Other Technologies
-  { name: 'Python',        category: 'Other',       iconUrl: `${BASE}/python-colored.svg` },
-  { name: 'Java',          category: 'Other',       iconUrl: `${BASE}/java-colored.svg` },
-  { name: 'Flutter',       category: 'Other',       iconUrl: `${BASE}/flutter-colored.svg` },
-  { name: 'TensorFlow',    category: 'Other',       iconUrl: `${BASE}/tensorflow-colored.svg` },
-  { name: 'Arduino',       category: 'Other',       iconUrl: `${BASE}/arduino-colored.svg` },
+  { name: 'Python',        category: 'Other',       iconUrl: `${SKILL_ICONS}py` },
+  { name: 'Java',          category: 'Other',       iconUrl: `${SKILL_ICONS}java` },
+  { name: 'Flutter',       category: 'Other',       iconUrl: `${SKILL_ICONS}flutter` },
+  { name: 'TensorFlow',    category: 'Other',       iconUrl: `${SKILL_ICONS}tensorflow` },
+  { name: 'Arduino',       category: 'Other',       iconUrl: `${SKILL_ICONS}arduino` },
 ];
+
