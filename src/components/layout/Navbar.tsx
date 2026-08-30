@@ -50,22 +50,20 @@ export default function Navbar() {
             : 'bg-transparent border border-transparent backdrop-blur-none'
         }`}
       >
-        {/* Left: Brand Monogram & Name */}
+        {/* Left: Brand Monogram Icon Only */}
         <a
           href="#hero"
           onClick={(e) => handleClick(e, '#hero')}
-          className="flex items-center gap-2.5 group cursor-pointer"
+          className="flex items-center group cursor-pointer"
+          aria-label="Home"
         >
           {/* Monogram Squircle Badge */}
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white flex items-center justify-center text-black font-serif italic font-black text-xs sm:text-sm group-hover:scale-105 transition-transform duration-300">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white flex items-center justify-center text-black font-serif italic font-black text-xs sm:text-sm group-hover:scale-105 group-hover:bg-[#F28CA6] group-hover:text-white transition-all duration-300 shadow-sm">
             T
           </div>
-          <span className="font-[family-name:var(--font-heading)] font-en-heading text-xs sm:text-sm tracking-[0.16em] text-white/80 group-hover:text-[var(--accent)] transition-colors duration-300">
-            THANAKHON
-          </span>
         </a>
 
-        {/* Center: Desktop Navigation via NavigationMenu (Soft dim text, pink hover, no box) */}
+        {/* Center: Desktop Navigation via NavigationMenu (Soft dim text, pink hover #F28CA6, no box) */}
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="gap-3 lg:gap-5">
             {navItems.map((item) => {
@@ -75,7 +73,8 @@ export default function Navbar() {
                   <NavigationMenuLink
                     href={item.href}
                     onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleClick(e, item.href)}
-                    className="px-1.5 py-1 text-[11px] font-medium tracking-[0.14em] text-white/30 hover:text-[var(--accent)] hover:bg-transparent focus:bg-transparent data-active:bg-transparent bg-transparent transition-colors duration-200 cursor-pointer"
+                    className="px-2 py-1 text-[11px] sm:text-xs font-medium tracking-[0.14em] text-white/40 hover:!text-[#F28CA6] hover:!bg-transparent focus:!bg-transparent focus:!text-[#F28CA6] data-active:!bg-transparent !bg-transparent transition-colors duration-200 cursor-pointer font-sans"
+                    style={{ fontFamily: 'var(--font-body)' }}
                   >
                     {t(`nav.${key}`)}
                   </NavigationMenuLink>
@@ -87,24 +86,21 @@ export default function Navbar() {
 
         {/* Right: Language Switcher + Mobile Hamburger */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Language Switcher */}
+          {/* Language Switcher (Borderless & Clean) */}
           <button
             onClick={toggleLocale}
-            className={`px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 flex items-center gap-1 cursor-pointer ${
-              isScrolled
-                ? 'border border-white/10 bg-white/[0.03] text-white/40 hover:text-[var(--accent)]'
-                : 'border border-transparent bg-transparent text-white/35 hover:text-[var(--accent)]'
-            }`}
+            className="px-2 py-1 bg-transparent text-white/40 hover:text-[#F28CA6] text-[10px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 flex items-center gap-1.5 cursor-pointer font-sans"
+            style={{ fontFamily: 'var(--font-body)' }}
             aria-label="Toggle language"
           >
-            <span className={locale === 'en' ? 'text-white font-bold' : 'opacity-40'}>EN</span>
-            <span className="opacity-20 text-[10px]">|</span>
-            <span className={locale === 'th' ? 'text-white font-bold' : 'opacity-40'}>TH</span>
+            <span className={locale === 'en' ? 'text-white font-bold' : 'text-white/30'}>EN</span>
+            <span className="text-white/20 text-[10px]">|</span>
+            <span className={locale === 'th' ? 'text-white font-bold' : 'text-white/30'}>TH</span>
           </button>
 
           {/* Mobile Menu Hamburger */}
           <button
-            className="md:hidden p-1.5 text-white/60 hover:text-[var(--accent)] transition-colors focus:outline-none cursor-pointer"
+            className="md:hidden p-1.5 text-white/60 hover:text-[#F28CA6] transition-colors focus:outline-none cursor-pointer"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
             aria-label="Toggle menu"
           >
@@ -143,8 +139,9 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className="text-xs font-medium tracking-[0.14em] text-white/40 hover:text-[var(--accent)] px-3 py-2 rounded-lg transition-colors duration-200"
+                className="text-xs font-medium tracking-[0.14em] text-white/40 hover:text-[#F28CA6] px-3 py-2 rounded-lg transition-colors duration-200 font-sans"
                 style={{
+                  fontFamily: 'var(--font-body)',
                   transitionDelay: `${index * 30}ms`,
                 }}
               >
