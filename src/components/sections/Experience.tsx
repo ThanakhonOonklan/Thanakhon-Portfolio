@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,11 +17,120 @@ interface ExperienceItem {
   skills: string[];
 }
 
-const EXPERIENCE_IMAGES: Record<number, string> = {
-  1: '/images/projects/IotEquipmentSystem-Project/Dashboard.png',
-  2: '/images/projects/Internship/Internship-Photo1.jpg',
-  3: '/images/projects/Robot/Robot_7.jpg',
+const EXPERIENCE_IMAGE_SETS: Record<number, string[]> = {
+  0: [
+    '/images/projects/Robot/Robot_7.jpg',
+    '/images/projects/Robot/Robot_1.jpg',
+    '/images/projects/Robot/Robot_2.jpg',
+    '/images/projects/Robot/Robot_3.jpg',
+    '/images/projects/Robot/Robot_4.jpg',
+    '/images/projects/Robot/Robot_5.jpg',
+    '/images/projects/Robot/Robot_6.jpg',
+  ],
+  1: [
+    '/images/projects/Internship/Internship-Photo1.jpg',
+    '/images/projects/Internship/Internship-Photo2.jpg',
+    '/images/projects/Internship/Internship-Photo3.jpg',
+    '/images/projects/Internship/Internship-Photo4.jpg',
+    '/images/projects/Internship/Internship-Photo5.jpg',
+    '/images/projects/Internship/Internship-Photo6.jpg',
+    '/images/projects/Internship/Internship-Photo7.jpg',
+    '/images/projects/Internship/Internship-Photo8.jpg',
+  ],
+  2: [
+    '/images/projects/IotEquipmentSystem-Project/Dashboard.png',
+    '/images/projects/IotEquipmentSystem-Project/borrow.png',
+    '/images/projects/IotEquipmentSystem-Project/equipment.png',
+    '/images/projects/IotEquipmentSystem-Project/history.png',
+    '/images/projects/IotEquipmentSystem-Project/return-equipment.jpg',
+    '/images/projects/IotEquipmentSystem-Project/users.png',
+  ],
+  3: [],
 };
+
+function AutoImageSlider({
+  images,
+  alt,
+  year,
+  onImageClick,
+  isEN,
+  intervalMs = 3500,
+}: {
+  images: string[];
+  alt: string;
+  year: string;
+  onImageClick: (img: string) => void;
+  isEN: boolean;
+  intervalMs?: number;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!images || images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, intervalMs);
+    return () => clearInterval(interval);
+  }, [images, intervalMs]);
+
+  if (!images || images.length === 0) {
+    return (
+      <div className="relative w-full aspect-[16/10] p-2 rounded-2xl bg-white/[0.03] border border-white/10 shadow-xl flex items-center justify-center overflow-hidden">
+        <div className="w-full h-full rounded-xl border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center gap-2">
+          <svg className="w-8 h-8 opacity-20 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+          </svg>
+          <span className="font-[family-name:var(--font-heading)] text-white/20 font-en-heading select-none text-2xl tracking-widest uppercase">
+            {year}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  const currentImg = images[currentIndex];
+
+  return (
+    <div
+      className="relative w-full aspect-[16/10] p-2 rounded-2xl bg-white/[0.03] border border-white/15 shadow-2xl group cursor-pointer hover:border-white/30 transition-all duration-300 overflow-hidden"
+      onClick={() => onImageClick(currentImg)}
+    >
+      <div className="w-full h-full rounded-xl overflow-hidden relative">
+        {images.map((img, i) => (
+          <img
+            key={img}
+            src={img}
+            alt={`${alt} image ${i + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 ease-in-out group-hover:scale-105 rounded-xl ${
+              i === currentIndex ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-102 z-0 pointer-events-none'
+            }`}
+            loading="lazy"
+          />
+        ))}
+
+        {/* Counter Badge */}
+        {images.length > 1 && (
+          <div className="absolute bottom-3 right-3 z-20 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white/80 select-none">
+            {currentIndex + 1} / {images.length}
+          </div>
+        )}
+
+        {/* Hover View Full Image Overlay */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 rounded-xl z-30">
+          <span className="text-white bg-black/70 px-3.5 py-1.5 rounded-full text-xs tracking-wider uppercase backdrop-blur-md font-en-body flex items-center gap-2 border border-white/20 shadow-lg">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+            {isEN ? 'View Image' : 'ดูรูปภาพ'}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Experience() {
   registerGSAP();
@@ -86,7 +195,8 @@ export default function Experience() {
         {/* Timeline List */}
         <div className="flex flex-col gap-12 sm:gap-16">
           {experienceItems.map((exp, index) => {
-            const image = EXPERIENCE_IMAGES[index] || null;
+            const images = EXPERIENCE_IMAGE_SETS[index] || [];
+            const interval = 3200 + index * 400; // Staggered interval so all sliders don't switch at the exact same frame
 
             return (
               <div
@@ -194,32 +304,16 @@ export default function Experience() {
                         )}
                       </div>
 
-                      {/* Single Compact Image Box (Right sub-col) */}
-                      <div className="md:col-span-5">
-                        {image && (
-                          <div
-                            className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-neutral-900 shadow-xl group cursor-pointer"
-                            onClick={() => setSelectedImage(image)}
-                          >
-                            <img
-                              src={image}
-                              alt={`${exp.role} - ${exp.company}`}
-                              className="w-full h-auto object-cover object-top hover:scale-[1.03] transition-transform duration-500 rounded-xl"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                              <span className="text-white bg-black/60 px-3 py-1.5 rounded-full text-xs tracking-wider uppercase backdrop-blur-md font-en-body flex items-center gap-2 border border-white/20">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                                  <circle cx="11" cy="11" r="8"></circle>
-                                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                  <line x1="11" y1="8" x2="11" y2="14"></line>
-                                  <line x1="8" y1="11" x2="14" y2="11"></line>
-                                </svg>
-                                {isEN ? 'View Image' : 'ดูรูปภาพ'}
-                              </span>
-                            </div>
-                          </div>
-                        )}
+                      {/* Single Auto-Transitioning Framed Image Box (Right sub-col) */}
+                      <div className="md:col-span-5 flex items-center justify-center">
+                        <AutoImageSlider
+                          images={images}
+                          alt={`${exp.role} - ${exp.company}`}
+                          year={exp.year}
+                          onImageClick={(img) => setSelectedImage(img)}
+                          isEN={isEN}
+                          intervalMs={interval}
+                        />
                       </div>
 
                     </div>

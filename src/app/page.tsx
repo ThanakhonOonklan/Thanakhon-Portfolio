@@ -22,8 +22,8 @@ export default function Home() {
         <div className="relative z-10">
           <About />
           <Projects />
-          <OtherSkills />
           <Experience />
+          <OtherSkills />
           <Skills />
           <Certificates />
           <Contact />

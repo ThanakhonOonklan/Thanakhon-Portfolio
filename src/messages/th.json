@@ -80,17 +80,31 @@
     "items": [
       {
         "year": "2026",
-        "company": "StepCharge",
-        "role": "Footstep Piezoelectric Energy Harvesting",
+        "company": "การแข่งขันฝีมือแรงงานแห่งชาติ ครั้งที่ 31",
+        "role": "Industrial Robot Control",
         "description": [
-          "ออกแบบและต่อวงจรระบบเก็บเกี่ยวพลังงานครบวงจร (Energy Harvesting Circuit) ตั้งแต่ Piezo Array, Rectifier, Nanopower Harvester จนถึง Battery Storage",
-          "ปรับจูนและ Calibration วงจรบูสต์แรงดัน MT3608 และวงจรชาร์จแบตเตอรี่ TP4056 ให้ทำงานประสานกับ LTC3588",
-          "พัฒนา Firmware ภาษา C++/Arduino บนบอร์ด Arduino UNO R3 สำหรับตรวจวัดระดับพลังงานสะสมและนับก้าวแบบ Real-time",
-          "ทดสอบและยืนยันการทำงานแบบ Standalone จ่ายไฟ 5V 2A สำหรับเลี้ยงระบบและชาร์จโหลดภายนอกได้สำเร็จ"
+          "ฝึกควบคุมหุ่นยนต์อุตสาหกรรม (ABB, KUKA, Yaskawa) สำหรับงานเดินเส้นและหยิบวางชิ้นงานผ่าน Teach Pendant",
+          "เขียนโปรแกรมการเคลื่อนที่แบบ Joint, Linear และ Circular",
+          "ตั้งค่า Tool, Base, WorkObject และ User Frame พร้อมลำดับการทำงานของปุ่ม Start, ไฟสถานะ และ Gripper",
+          "ออกแบบ Template โปรแกรมเพื่อช่วยให้เขียนงานได้เร็วขึ้นในการแข่งขันแบบจำกัดเวลา"
         ],
         "skills": [
-          "Arduino",
-          "C++"
+          "ABB RAPID",
+          "KUKA KRL",
+          "Yaskawa INFORM"
+        ]
+      },
+      {
+        "year": "2025",
+        "company": "Wireless Solution Asia",
+        "role": "Internship — Robotics Engineering",
+        "description": [
+          "พัฒนาหุ่นยนต์ ESP32 ที่ควบคุมผ่านมือถือ พร้อมเขียนคำสั่งการเคลื่อนไหวและการคีบจับ",
+          "สอนและสาธิตการใช้งานหุ่นยนต์ให้กับเด็กนักเรียน",
+          "ร่วมพัฒนาแอปอ่านบัตรประชาชน"
+        ],
+        "skills": [
+          "Arduino"
         ]
       },
       {
@@ -114,31 +128,17 @@
       },
       {
         "year": "2025",
-        "company": "Wireless Solution Asia",
-        "role": "Internship — Robotics Engineering",
+        "company": "StepCharge",
+        "role": "Footstep Piezoelectric Energy Harvesting",
         "description": [
-          "พัฒนาหุ่นยนต์ ESP32 ที่ควบคุมผ่านมือถือ พร้อมเขียนคำสั่งการเคลื่อนไหวและการคีบจับ",
-          "สอนและสาธิตการใช้งานหุ่นยนต์ให้กับเด็กนักเรียน",
-          "ร่วมพัฒนาแอปอ่านบัตรประชาชน"
+          "ออกแบบและต่อวงจรระบบเก็บเกี่ยวพลังงานครบวงจร (Energy Harvesting Circuit) ตั้งแต่ Piezo Array, Rectifier, Nanopower Harvester จนถึง Battery Storage",
+          "ปรับจูนและ Calibration วงจรบูสต์แรงดัน MT3608 และวงจรชาร์จแบตเตอรี่ TP4056 ให้ทำงานประสานกับ LTC3588",
+          "พัฒนา Firmware ภาษา C++/Arduino บนบอร์ด Arduino UNO R3 สำหรับตรวจวัดระดับพลังงานสะสมและนับก้าวแบบ Real-time",
+          "ทดสอบและยืนยันการทำงานแบบ Standalone จ่ายไฟ 5V 2A สำหรับเลี้ยงระบบและชาร์จโหลดภายนอกได้สำเร็จ"
         ],
         "skills": [
-          "Arduino"
-        ]
-      },
-      {
-        "year": "2024",
-        "company": "การแข่งขันฝีมือแรงงานแห่งชาติ ครั้งที่ 31",
-        "role": "Industrial Robot Control",
-        "description": [
-          "ฝึกควบคุมหุ่นยนต์อุตสาหกรรม (ABB, KUKA, Yaskawa) สำหรับงานเดินเส้นและหยิบวางชิ้นงานผ่าน Teach Pendant",
-          "เขียนโปรแกรมการเคลื่อนที่แบบ Joint, Linear และ Circular",
-          "ตั้งค่า Tool, Base, WorkObject และ User Frame พร้อมลำดับการทำงานของปุ่ม Start, ไฟสถานะ และ Gripper",
-          "ออกแบบ Template โปรแกรมเพื่อช่วยให้เขียนงานได้เร็วขึ้นในการแข่งขันแบบจำกัดเวลา"
-        ],
-        "skills": [
-          "ABB RAPID",
-          "KUKA KRL",
-          "Yaskawa INFORM"
+          "Arduino",
+          "C++"
         ]
       }
     ]
