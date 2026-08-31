@@ -45,7 +45,12 @@ const EXPERIENCE_IMAGE_SETS: Record<number, string[]> = {
     '/images/projects/IotEquipmentSystem-Project/return-equipment.jpg',
     '/images/projects/IotEquipmentSystem-Project/users.png',
   ],
-  3: [],
+  3: [
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2834437.jpg',
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2924549_0.jpg',
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2924550_0.jpg',
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2990082.jpg',
+  ],
 };
 
 function AutoImageSlider({
@@ -137,7 +142,7 @@ export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
   const { isEN } = useLocale();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lightboxData, setLightboxData] = useState<{ images: string[], index: number } | null>(null);
 
   const items = t('experience.items', { returnObjects: true }) as ExperienceItem[];
   const experienceItems = Array.isArray(items) ? items : [];
@@ -310,7 +315,7 @@ export default function Experience() {
                           images={images}
                           alt={`${exp.role} - ${exp.company}`}
                           year={exp.year}
-                          onImageClick={(img) => setSelectedImage(img)}
+                          onImageClick={(img) => setLightboxData({ images, index: images.indexOf(img) })}
                           isEN={isEN}
                           intervalMs={interval}
                         />
@@ -327,9 +332,10 @@ export default function Experience() {
 
       {/* Lightbox Modal */}
       <Lightbox
-        isOpen={!!selectedImage}
-        imageUrl={selectedImage}
-        onClose={() => setSelectedImage(null)}
+        isOpen={!!lightboxData}
+        images={lightboxData?.images || []}
+        initialIndex={lightboxData?.index || 0}
+        onClose={() => setLightboxData(null)}
       />
     </section>
   );

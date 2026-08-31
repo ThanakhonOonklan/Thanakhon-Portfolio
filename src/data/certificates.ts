@@ -29,4 +29,11 @@ export const certificates: Certificate[] = [
     year: '24/04/2025',
     imageUrl: '/images/certificates/Certificate-PCB_Design.png',
   },
+  {
+    id: 5,
+    title: 'Industrial Robot Control',
+    organization: 'Department of Skill Development',
+    year: '2026',
+    imageUrl: '/images/certificates/Certificate-Robotic.png',
+  },
 ];

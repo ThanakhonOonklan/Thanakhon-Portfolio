@@ -67,21 +67,31 @@ const SKILL_ICONS_MAP: Record<string, string> = {
   'Bash': 'bash',
 };
 
+// Mapping for custom local icons
+const CUSTOM_ICONS_MAP: Record<string, string> = {
+  'ABB RAPID': '/images/logos/ABB.png',
+  'KUKA KRL': '/images/logos/KUKA.png',
+  'Yaskawa INFORM': '/images/logos/Yaskawa-Photoroom.png',
+};
+
 interface TechIconProps {
   tech: string;
 }
 
 export function TechIcon({ tech }: TechIconProps) {
   const iconSlug = SKILL_ICONS_MAP[tech];
+  const customIconUrl = CUSTOM_ICONS_MAP[tech];
 
-  // If no official SkillIcon exists, render a clean badge
-  if (!iconSlug) {
+  // If no official SkillIcon exists and no custom icon, render a clean badge
+  if (!iconSlug && !customIconUrl) {
     return (
       <span className="inline-flex items-center text-[12px] font-mono font-medium text-[#9CA3AF] px-3 py-1 bg-white/5 border border-white/10 rounded-lg hover:border-white/20 hover:text-white transition-colors select-none">
         {tech}
       </span>
     );
   }
+
+  const iconSrc = customIconUrl || `https://skillicons.dev/icons?i=${iconSlug}`;
 
   return (
     <div
@@ -90,7 +100,7 @@ export function TechIcon({ tech }: TechIconProps) {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`https://skillicons.dev/icons?i=${iconSlug}`}
+        src={iconSrc}
         alt={tech}
         className="w-full h-full object-contain rounded-md"
         draggable={false}

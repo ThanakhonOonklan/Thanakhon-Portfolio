@@ -50,17 +50,20 @@ export default function Certificates() {
                 if (e.key === 'Enter') setActiveCert(cert);
               }}
             >
-              {/* Image itself without dark frame box */}
-              <div className="relative w-full overflow-hidden rounded-lg shadow-xl group-hover:shadow-[0_0_30px_rgba(255,255,255,0.18)] transition-all duration-300 group-hover:scale-[1.03]">
+              {/* Image itself with frame and uniform size */}
+              <div
+                className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-[#14171F] flex items-center justify-center shadow-xl group-hover:shadow-[0_0_30px_rgba(255,255,255,0.18)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30"
+                style={{ aspectRatio: '4/3' }}
+              >
                 <img
                   src={cert.imageUrl!}
                   alt={cert.title}
-                  className="w-full h-auto block object-contain rounded-lg"
+                  className="w-full h-full object-contain p-2 md:p-3"
                   loading="lazy"
                 />
 
                 {/* Hover Overlay with Zoom Icon */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 rounded-lg">
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 rounded-xl">
                   <div className="w-11 h-11 rounded-full bg-black/65 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shadow-2xl">
                     <svg
                       className="w-5 h-5 text-white"

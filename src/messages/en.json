@@ -1,19 +1,19 @@
 {
   "common": {
-    "name_first": "THANAKHON",
-    "name_last": "OONKLAN",
-    "name_full": "THANAKHON OONKLAN",
+    "name_first": "Thanakhon",
+    "name_last": "Oonklan",
+    "name_full": "Thanakhon Oonklan",
     "role": "JUNIOR FULL STACK DEVELOPER"
   },
   "nav": {
     "projects": "Projects",
     "other_skills": "Other Skills",
     "experience": "Experience",
-    "skills": "Skills",
+    "skills": "Tech Stack",
     "certificates": "Certificates",
     "about": "About",
     "contact": "Contact",
-    "hire_me": "Hire Me"
+    "hire_me": "Get In Touch"
   },
   "hero": {
     "caption": "JUNIOR FULL STACK DEVELOPER",
@@ -28,17 +28,19 @@
   "about": {
     "label": "ABOUT ME",
     "headline": "BIOGRAPHY",
+    "role_title": "Full Stack Developer",
+    "university": "King Mongkut's University of Technology",
     "avatar_name": "THANAKHON OONKLAN",
     "stat_projects_label": "PROJECTS",
-    "stat_projects_val": "6+",
+    "stat_projects_val": "6",
     "stat_certificates_label": "CERTIFICATES",
-    "stat_certificates_val": "10",
+    "stat_certificates_val": "5",
     "stat_education_label": "KMUTNB IT GRADUATED",
     "stat_education_val": "2026",
     "bio_heading": "About Me",
-    "bio_intro": "I'm a Software Engineer in Next.js & TypeScript, building engaging web applications and exploring the frontiers of IoT & robotics. I graduated with a Bachelor of Industrial Technology in Information Technology from King Mongkut's University of Technology North Bangkok (Prachinburi Campus).",
+    "bio_intro": "Hello! I am **Thanakhon Oonklan**, nicknamed **“JJ”**, a developer constantly honing my skills toward becoming a **Full Stack Developer**. I possess a solid foundation and particular interest in Frontend Development, UI/UX Design, and Web Application Development, with hands-on experience building real-world projects using technologies such as Next.js, React, Node.js, and TypeScript. Currently, I am expanding my knowledge in **Backend Development** to develop comprehensive capabilities across both frontend and backend. Furthermore, I have a strong interest in IoT and Robotics, enabling me to bridge the gap between software and hardware and apply multidisciplinary knowledge to engineering projects. I graduated with a Bachelor's Degree from **King Mongkut's University of Technology North Bangkok (Prachinburi Campus)** in **Bachelor of Industrial Technology (Industrial Technology and Management)**.",
     "bio_edu_label": "Education",
-    "bio_edu_desc": "Bachelor of Industrial Technology in Information Technology, King Mongkut's University of Technology North Bangkok (Prachinburi Campus).",
+    "bio_edu_desc": "King Mongkut's University of Technology North Bangkok (Prachinburi Campus), Bachelor of Industrial Technology Program in Industrial Technology and Management.",
     "bio_exp_label": "Experience",
     "bio_exp_desc": "Former Robotics Engineering Intern at Wireless Solution Asia and freelance Software Engineer.",
     "bio_rec_label": "Recognition",
@@ -60,33 +62,32 @@
     "what_i_did": "What I Did",
     "tech_stack": "Tech Stack",
     "key_features": "Key Features",
-    "results": "Results"
+    "results": "Results & Impact"
   },
   "other_skills": {
-    "label": "OTHER SKILLS",
+    "label": "Design & Capabilities",
     "title": "Other Skills",
-    "tools_label": "TOOLS USED",
+    "tools_label": "Tools Used",
     "view_image": "View Image"
   },
   "skills_section": {
-    "label": "What I Work With",
+    "label": "Technologies & Tools",
     "title": "TECH STACK"
   },
   "experience": {
     "label": "Career Journey",
     "title": "EXPERIENCE",
-    "description_label": "Description / Responsibilities",
-    "skills_label": "SKILLS",
+    "description_label": "Description & Responsibilities",
+    "skills_label": "Skills Used",
     "items": [
       {
         "year": "2026",
         "company": "31st National Skills Competition",
         "role": "Industrial Robot Control",
         "description": [
-          "Programmed and controlled industrial robots (ABB, KUKA, Yaskawa) for welding-path and pick-and-place tasks via Teach Pendant",
-          "Programmed Joint, Linear, and Circular motion paths",
-          "Configured Tool, Base, WorkObject, and User Frame along with Gripper and I/O sequences",
-          "Designed reusable program templates to accelerate execution in time-limited competitions"
+          "Trained on industrial robots (ABB, KUKA, Yaskawa) for path tracing and pick-and-place via Teach Pendant",
+          "Programmed Joint, Linear, and Circular motions",
+          "Configured Tool, Base, WorkObject, and User Frames with sequential logic for buttons, status lights, and Grippers, alongside using program templates to accelerate execution speed during time-constrained competitions"
         ],
         "skills": [
           "ABB RAPID",
@@ -99,9 +100,9 @@
         "company": "Wireless Solution Asia",
         "role": "Internship — Robotics Engineering",
         "description": [
-          "Developed an ESP32 robot controlled via mobile phone, including movement and gripping commands",
-          "Taught and demonstrated robot usage to students",
-          "Collaborated on developing a National ID card reader application"
+          "Developed mobile-controlled ESP32 robot with custom movement and gripper commands",
+          "Instructed and demonstrated robotics operations to school students",
+          "Collaborated on ID card reader application development"
         ],
         "skills": [
           "Arduino"
@@ -109,12 +110,12 @@
       },
       {
         "year": "2025",
-        "company": "IoT Equipment Borrowing System",
+        "company": "IoT Equipment System",
         "role": "Freelance Full Stack Developer",
         "description": [
-          "Freelance development of an IoT equipment borrowing & returning web application",
-          "Developed both Frontend and Backend, covering equipment and user management systems",
-          "Designed the database schema and UI from scratch to deployment"
+          "Developed full-stack web application for IoT equipment borrowing and returning system",
+          "Built both Frontend and Backend, covering equipment and user management",
+          "Designed database schemas and user interfaces end-to-end"
         ],
         "skills": [
           "React",
@@ -128,13 +129,13 @@
       },
       {
         "year": "2025",
-        "company": "StepCharge",
+        "company": "Freelance IoT System Developer",
         "role": "Footstep Piezoelectric Energy Harvesting",
         "description": [
-          "Designed and built an end-to-end energy harvesting circuit from Piezo Array, Rectifier, Nanopower Harvester, to Battery Storage",
-          "Calibrated MT3608 boost converter and TP4056 charger with LTC3588 for safe 18650 Li-ion charging",
-          "Developed C++/Arduino firmware on Arduino UNO R3 to monitor accumulated energy and count steps in real time",
-          "Verified standalone 5V 2A power output to power microcontrollers and charge external devices"
+          "Designed and assembled an end-to-end energy harvesting circuit",
+          "Calibrated MT3608 boost converter and TP4056 charging circuit to work synchronously with LTC3588",
+          "Developed C++/Arduino firmware on Arduino UNO R3 for step counting and energy accumulation monitoring",
+          "Successfully verified standalone operation delivering 5V 2A to power internal systems and external loads"
         ],
         "skills": [
           "Arduino",
@@ -144,14 +145,14 @@
     ]
   },
   "certificates": {
-    "label": "Continuous Learning",
+    "label": "Certifications",
     "title": "CERTIFICATES"
   },
   "contact": {
-    "label": "GET IN TOUCH",
+    "label": "Get In Touch",
     "title": "CONTACT",
     "badge": "• CONTACT • CONTACT • CONTACT • CONTACT • CONTACT • CONTACT",
-    "desc": "Feel free to reach out for collaborations, projects, or just to say hi! I'm always open to discussing new ideas, and I'll respond as soon as possible.",
-    "exit": "Click anywhere to exit view"
+    "desc": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out — let's build something great together.",
+    "exit": "Click anywhere to close this overlay"
   }
 }

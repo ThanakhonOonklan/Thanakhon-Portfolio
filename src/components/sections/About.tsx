@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslation } from '@/hooks';
+import { useTranslation, useLocale } from '@/hooks';
 import dynamic from 'next/dynamic';
 import { PortraitFallback, Button } from '@/components/ui';
 
@@ -10,10 +10,25 @@ const GitHubCalendar = dynamic(
   { ssr: false }
 );
 
+function renderFormattedBio(text: string) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
+  return parts.map((part, i) => {
+    if (i % 2 === 1) {
+      return (
+        <strong key={i} className="font-semibold text-white">
+          {part}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
+
 export default function About() {
   const [imgError, setImgError] = useState(false);
   const [githubYear, setGithubYear] = useState<number | 'last'>('last');
   const { t } = useTranslation();
+  const { isEN } = useLocale();
   
   const currentYear = new Date().getFullYear();
   const years = [2026, 2025];
@@ -30,9 +45,12 @@ export default function About() {
     >
       {/* Container Matching Navbar max-w-7xl */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 xl:px-4">
-        {/* Top Tag & Main Headline in Anton Font (Size 56px) */}
+        {/* Top Tag & Main Headline */}
         <div className="mb-6 sm:mb-8">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.25em] text-[#9CA3AF] font-mono mb-2">
+          <span
+            className="block text-[11px] font-semibold uppercase tracking-[0.25em] text-[#9CA3AF] mb-2"
+            style={{ fontFamily: isEN ? 'var(--font-mono, monospace)' : 'var(--font-thai)' }}
+          >
             {t('about.label')}
           </span>
           <h2
@@ -61,13 +79,24 @@ export default function About() {
             </div>
 
             <div className="flex flex-col items-center text-center gap-1 mt-1">
-              <span className="text-white font-semibold text-[17px]">Software Engineer</span>
-              <span className="text-[#9CA3AF] text-[14px] max-w-[220px] leading-snug">King Mongkut's University of Technology</span>
+              <span
+                className="text-white font-semibold text-[17px]"
+                style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+              >
+                {t('about.role_title')}
+              </span>
+              <span
+                className="text-[#9CA3AF] text-[14px] max-w-[240px] leading-snug"
+                style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+              >
+                {t('about.university')}
+              </span>
             </div>
 
             <Button 
               variant="outline"
               className="w-full max-w-[220px] bg-[#21262d] border-[#363b42] text-[#c9d1d9] hover:bg-[#30363d] hover:text-white transition-colors h-8 text-xs font-medium"
+              style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
               onClick={() => window.open('/resume.pdf', '_blank')}
             >
               {t('about.resume_link')}
@@ -76,11 +105,11 @@ export default function About() {
 
           {/* Right Column: Name + Stats + Narrative (Strictly aligned in right column) */}
           <div className="flex flex-col gap-3.5 sm:gap-4">
-            {/* Name + Verified Badge in Inter Font */}
+            {/* Name + Verified Badge */}
             <div className="flex items-center gap-2">
               <h3
-                className="font-en-body text-xl sm:text-2xl font-bold tracking-tight text-white uppercase"
-                style={{ fontFamily: 'var(--font-body)' }}
+                className="text-xl sm:text-2xl font-bold tracking-tight text-white uppercase"
+                style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
               >
                 {t('about.avatar_name')}
               </h3>
@@ -95,7 +124,10 @@ export default function About() {
             {/* Stats Row */}
             <div className="flex items-center gap-6 sm:gap-10 pb-1">
               <div>
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#9CA3AF] font-semibold mb-0.5">
+                <span
+                  className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#9CA3AF] font-semibold mb-0.5"
+                  style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+                >
                   {t('about.stat_projects_label')}
                 </span>
                 <span
@@ -107,7 +139,10 @@ export default function About() {
               </div>
 
               <div>
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#9CA3AF] font-semibold mb-0.5">
+                <span
+                  className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#9CA3AF] font-semibold mb-0.5"
+                  style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+                >
                   {t('about.stat_certificates_label')}
                 </span>
                 <span
@@ -119,7 +154,10 @@ export default function About() {
               </div>
 
               <div>
-                <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#9CA3AF] font-semibold mb-0.5">
+                <span
+                  className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#9CA3AF] font-semibold mb-0.5"
+                  style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+                >
                   {t('about.stat_education_label')}
                 </span>
                 <span
@@ -133,8 +171,16 @@ export default function About() {
 
             {/* Bio Narrative */}
             <div className="flex flex-col mt-2">
-              <p className="leading-relaxed whitespace-pre-line" style={{ fontSize: '16px', color: '#9CA3AF', fontFamily: 'var(--font-thai)', fontWeight: 400 }}>
-                {t('about.bio_intro')}
+              <p
+                className="leading-relaxed whitespace-pre-line"
+                style={{
+                  fontSize: '16px',
+                  color: '#9CA3AF',
+                  fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)',
+                  fontWeight: 400,
+                }}
+              >
+                {renderFormattedBio(t('about.bio_intro'))}
               </p>
             </div>
 

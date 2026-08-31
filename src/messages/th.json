@@ -26,25 +26,27 @@
     "scroll": "เลื่อนลง"
   },
   "about": {
-    "label": "ABOUT ME",
+    "label": "เกี่ยวกับฉัน",
     "headline": "BIOGRAPHY",
-    "avatar_name": "THANAKHON OONKLAN",
-    "stat_projects_label": "PROJECTS",
-    "stat_projects_val": "6+",
-    "stat_certificates_label": "CERTIFICATES",
-    "stat_certificates_val": "10",
-    "stat_education_label": "KMUTNB IT GRADUATED",
+    "role_title": "Full Stack Developer",
+    "university": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ",
+    "avatar_name": "ธนกรณ์ อ่อนกลั่น",
+    "stat_projects_label": "ผลงาน",
+    "stat_projects_val": "6",
+    "stat_certificates_label": "ใบรับรอง",
+    "stat_certificates_val": "5",
+    "stat_education_label": "สำเร็จการศึกษา มจพ.",
     "stat_education_val": "2026",
-    "bio_heading": "About Me",
-    "bio_intro": "สวัสดีครับ ผมชื่อ \"เจเจ\" (ธนกรณ์ อ่อนกลั่น) นักพัฒนาที่มุ่งเน้นและมีความหลงใหลในการทำงานด้าน Backend โดยมีเป้าหมายในการพัฒนาตนเองอย่างต่อเนื่องเพื่อก้าวสู่การเป็น Full Stack Developer ที่มีความเชี่ยวชาญรอบด้าน ผมมีพื้นฐานที่แข็งแกร่งด้าน Frontend, การออกแบบ UI/UX และการพัฒนา Web Application สมัยใหม่ พร้อมทั้งมีประสบการณ์จริงในการสร้างและพัฒนาโปรเจกต์ที่ซับซ้อนด้วยเทคโนโลยีอย่าง Next.js, React, Node.js และ TypeScript นอกจากนี้ยังมีความสนใจในด้าน IoT และระบบ Embedded Systems อีกด้วย ผมสำเร็จการศึกษาระดับปริญญาตรีจากมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตปราจีนบุรี หลักสูตรอุตสาหกรรมศาสตรบัณฑิต สาขาเทคโนโลยีสารสนเทศ",
+    "bio_heading": "เกี่ยวกับฉัน",
+    "bio_intro": "สวัสดีครับ ผมชื่อ **ธนกรณ์ อ่อนกลั่น** ชื่อเล่น **“เจเจ”** เป็นนักพัฒนาที่พัฒนาทักษะตัวเอง เพื่อก้าวสู่การเป็น **Full Stack Developer** ผมมีพื้นฐานและความสนใจเป็นพิเศษในด้าน Frontend Development, UI/UX Design และ Web Application Development พร้อมประสบการณ์ในการพัฒนาโปรเจกต์จริงด้วยเทคโนโลยีอย่าง Next.js, React, Node.js และ TypeScript ปัจจุบันผมกำลังต่อยอดความรู้ด้าน **Backend Development** เพื่อพัฒนาความสามารถให้ครอบคลุมทั้งสองด้าน นอกจากนี้ ผมยังมีความสนใจในด้าน IoT และ Robotics ซึ่งช่วยให้สามารถทำงานร่วมกันระหว่าง Software และ Hardware และนำความรู้จากหลายด้านมาประยุกต์ใช้ในการพัฒนาโปรเจกต์ ผมสำเร็จการศึกษาระดับปริญญาตรีจาก **มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตปราจีนบุรี** หลักสูตร **อุตสาหกรรมศาสตรบัณฑิต สาขาเทคโนโลยีและการจัดการอุตสาหกรรม**",
     "bio_edu_label": "การศึกษา",
-    "bio_edu_desc": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตปราจีนบุรี หลักสูตรอุตสาหกรรมศาสตรบัณฑิต สาขาเทคโนโลยีสารสนเทศ",
+    "bio_edu_desc": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตปราจีนบุรี หลักสูตรอุตสาหกรรมศาสตรบัณฑิต สาขาเทคโนโลยีและการจัดการอุตสาหกรรม",
     "bio_exp_label": "ประสบการณ์",
     "bio_exp_desc": "อดีตนักศึกษาฝึกงาน Robotics Engineering ที่ Wireless Solution Asia และรับงานฟรีแลนซ์ในตำแหน่ง Software Engineer",
     "bio_rec_label": "ผลงานเด่น",
     "bio_rec_desc": "รางวัลรองชนะเลิศอันดับ 2 ในการแข่งขันนวัตกรรมระดับชาติ (ESP32 Robot Controller)",
-    "resume_prefix": "Want to know more about my experience?",
-    "resume_link": "Download my resume",
+    "resume_prefix": "ต้องการดูข้อมูลประสบการณ์เพิ่มเติม?",
+    "resume_link": "ดาวน์โหลดเรซูเม่",
     "currently_label": "CURRENTLY",
     "currently_building_title": "Building",
     "currently_building_desc": "Web & digital projects",
@@ -85,8 +87,7 @@
         "description": [
           "ฝึกควบคุมหุ่นยนต์อุตสาหกรรม (ABB, KUKA, Yaskawa) สำหรับงานเดินเส้นและหยิบวางชิ้นงานผ่าน Teach Pendant",
           "เขียนโปรแกรมการเคลื่อนที่แบบ Joint, Linear และ Circular",
-          "ตั้งค่า Tool, Base, WorkObject และ User Frame พร้อมลำดับการทำงานของปุ่ม Start, ไฟสถานะ และ Gripper",
-          "ออกแบบ Template โปรแกรมเพื่อช่วยให้เขียนงานได้เร็วขึ้นในการแข่งขันแบบจำกัดเวลา"
+          "ตั้งค่า Tool, Base, WorkObject และ User Frame พร้อมลำดับการทำงานของปุ่ม , ไฟสถานะ และ Gripper เเละการใช้งานโปรแกรมเพื่อช่วยให้เขียนงานได้เร็วขึ้นในการแข่งขันแบบจำกัดเวลา"
         ],
         "skills": [
           "ABB RAPID",
@@ -99,7 +100,7 @@
         "company": "Wireless Solution Asia",
         "role": "Internship — Robotics Engineering",
         "description": [
-          "พัฒนาหุ่นยนต์ ESP32 ที่ควบคุมผ่านมือถือ พร้อมเขียนคำสั่งการเคลื่อนไหวและการคีบจับ",
+          "พัฒนารถบังคับหุ่นยนต์ควบคุมผ่านมือถือ เขียนคำสั่งการเคลื่อนไหวและการคีบจับ",
           "สอนและสาธิตการใช้งานหุ่นยนต์ให้กับเด็กนักเรียน",
           "ร่วมพัฒนาแอปอ่านบัตรประชาชน"
         ],
@@ -128,12 +129,12 @@
       },
       {
         "year": "2025",
-        "company": "StepCharge",
+        "company": "Freelance รับทำระบบ IOT",
         "role": "Footstep Piezoelectric Energy Harvesting",
         "description": [
-          "ออกแบบและต่อวงจรระบบเก็บเกี่ยวพลังงานครบวงจร (Energy Harvesting Circuit) ตั้งแต่ Piezo Array, Rectifier, Nanopower Harvester จนถึง Battery Storage",
+          "ออกแบบและต่อวงจรระบบเก็บเกี่ยวพลังงานครบวงจร",
           "ปรับจูนและ Calibration วงจรบูสต์แรงดัน MT3608 และวงจรชาร์จแบตเตอรี่ TP4056 ให้ทำงานประสานกับ LTC3588",
-          "พัฒนา Firmware ภาษา C++/Arduino บนบอร์ด Arduino UNO R3 สำหรับตรวจวัดระดับพลังงานสะสมและนับก้าวแบบ Real-time",
+          "พัฒนา Firmware ภาษา C++/Arduino บนบอร์ด Arduino UNO R3 สำหรับตรวจวัดระดับพลังงานสะสมและนับก้าว",
           "ทดสอบและยืนยันการทำงานแบบ Standalone จ่ายไฟ 5V 2A สำหรับเลี้ยงระบบและชาร์จโหลดภายนอกได้สำเร็จ"
         ],
         "skills": [

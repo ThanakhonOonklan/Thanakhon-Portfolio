@@ -13,7 +13,6 @@ export const skills: Skill[] = [
   { name: 'Three.js',     category: 'Frontend',   iconUrl: `${SKILL_ICONS}threejs` },
   { name: 'Tailwind CSS',  category: 'Frontend',    iconUrl: `${SKILL_ICONS}tailwind` },
   { name: 'shadcn/ui',    category: 'Frontend',   iconUrl: '/images/logos/shadcn.svg' },
-  { name: 'Material UI',   category: 'Frontend',    iconUrl: `${SKILL_ICONS}materialui` },
 
   // Backend & Database
   { name: 'Node.js',       category: 'Backend',     iconUrl: `${SKILL_ICONS}nodejs` },
@@ -26,6 +25,7 @@ export const skills: Skill[] = [
   // DevOps & Cloud
   { name: 'Docker',        category: 'DevOps',      iconUrl: `${SKILL_ICONS}docker` },
   { name: 'Vercel',        category: 'DevOps',      iconUrl: `${SKILL_ICONS}vercel` },
+  { name: 'Render',        category: 'DevOps',      iconUrl: '/images/logos/Render.png' },
 
   // Tools & Design
   { name: 'Git',           category: 'Tools',       iconUrl: `${SKILL_ICONS}git` },
@@ -39,6 +39,5 @@ export const skills: Skill[] = [
 
   // Other Technologies
   { name: 'Python',        category: 'Other',       iconUrl: `${SKILL_ICONS}py` },
-  { name: 'Java',          category: 'Other',       iconUrl: `${SKILL_ICONS}java` },
   { name: 'Arduino',       category: 'Other',       iconUrl: `${SKILL_ICONS}arduino` },
 ];

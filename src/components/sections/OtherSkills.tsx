@@ -15,7 +15,7 @@ export default function OtherSkills() {
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
   const { isEN } = useLocale();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lightboxData, setLightboxData] = useState<{ images: string[], index: number } | null>(null);
 
   useGSAP(() => {
     // Reveal animation for section headers (gsap-reveal)
@@ -78,8 +78,8 @@ export default function OtherSkills() {
                 key={item.id}
                 className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 xl:gap-10 items-start"
               >
-                {/* Content Column (40%) */}
-                <div className="flex flex-col gap-6 lg:col-span-5 order-2 lg:order-1">
+                {/* Content Column — always order-1 so it shows above images on mobile */}
+                <div className="flex flex-col gap-6 lg:col-span-5 order-1">
                   {/* Category + Year */}
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-1.5">
@@ -102,7 +102,7 @@ export default function OtherSkills() {
                       className="text-white font-en-heading uppercase leading-tight tracking-wide"
                       style={{
                         fontFamily: 'var(--font-heading)',
-                        fontSize: '37px',
+                        fontSize: 'clamp(28px, 4vw, 37px)',
                         letterSpacing: '0.04em',
                       }}
                     >
@@ -125,14 +125,11 @@ export default function OtherSkills() {
 
                   {/* Tools / Tech Used */}
                   {item.tools && item.tools.length > 0 && (
-                    <div className="border-t border-white/[0.05] pt-6">
-                      <h4
-                        className="font-en-body text-[18px] font-bold text-white uppercase tracking-wider mb-4"
-                        style={{ fontFamily: 'var(--font-body)' }}
-                      >
+                    <div className="pt-2">
+                      <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-[#9CA3AF] font-mono mb-3">
                         {isEN ? 'Tools Used' : 'เครื่องมือที่ใช้'}
-                      </h4>
-                      <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
+                      </span>
+                      <div className="flex flex-wrap items-center gap-3">
                         {item.tools.map((tool) => (
                           <TechIcon key={tool} tech={tool} />
                         ))}
@@ -141,19 +138,20 @@ export default function OtherSkills() {
                   )}
                 </div>
 
-                {/* Image / Gallery Column (60%) */}
-                <div className="lg:col-span-7 order-1 lg:order-2">
+                {/* Image / Gallery Column — order-2 so it shows below content on mobile */}
+                <div className="lg:col-span-7 order-2">
                   {item.images && item.images.length > 0 ? (
-                    <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 sm:gap-4 md:gap-5 space-y-3 sm:space-y-4">
+                    /* Responsive grid: 2-col centered on mobile, 3-col on desktop */
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 lg:gap-4 justify-items-center">
                       {item.images.map((img, i) => (
                         <div
                           key={i}
-                          className="relative overflow-hidden rounded-xl border border-white/10 bg-black/20 flex items-center justify-center break-inside-avoid cursor-pointer group"
-                          onClick={() => setSelectedImage(img)}
+                          className="relative overflow-hidden rounded-xl flex items-center justify-center cursor-pointer group w-full"
+                          onClick={() => setLightboxData({ images: item.images || [], index: i })}
                         >
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                            <span className="text-white bg-black/60 px-3 py-1.5 rounded-full text-xs tracking-wider uppercase backdrop-blur-md font-en-body flex items-center gap-2 border border-white/20">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <span className="text-white bg-black/60 px-2.5 py-1 rounded-full text-[10px] tracking-wider uppercase backdrop-blur-md font-en-body flex items-center gap-1.5 border border-white/20">
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                 <line x1="11" y1="8" x2="11" y2="14"></line>
@@ -166,6 +164,10 @@ export default function OtherSkills() {
                             src={img}
                             alt={`${item.title} image ${i + 1}`}
                             className="w-full h-auto object-contain hover:scale-[1.02] transition-transform duration-500 rounded-xl"
+                            style={{
+                              /* Limit image height on small screens so they don't dominate */
+                              maxHeight: 'min(200px, 40vw)',
+                            }}
                             loading="lazy"
                           />
                         </div>
@@ -194,9 +196,10 @@ export default function OtherSkills() {
 
       {/* Lightbox Modal */}
       <Lightbox
-        isOpen={!!selectedImage}
-        imageUrl={selectedImage}
-        onClose={() => setSelectedImage(null)}
+        isOpen={!!lightboxData}
+        images={lightboxData?.images || []}
+        initialIndex={lightboxData?.index || 0}
+        onClose={() => setLightboxData(null)}
       />
     </section>
   );

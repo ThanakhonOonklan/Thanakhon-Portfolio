@@ -15,7 +15,7 @@ export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const { t } = useTranslation();
-  const { locale, setLocale } = useLocale();
+  const { locale, setLocale, isEN } = useLocale();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,8 +73,8 @@ export default function Navbar() {
                   <NavigationMenuLink
                     href={item.href}
                     onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleClick(e, item.href)}
-                    className="px-2 py-1 text-[11px] sm:text-xs font-medium tracking-[0.14em] text-white/40 hover:!text-[#F28CA6] hover:!bg-transparent focus:!bg-transparent focus:!text-[#F28CA6] data-active:!bg-transparent !bg-transparent transition-colors duration-200 cursor-pointer font-sans"
-                    style={{ fontFamily: 'var(--font-body)' }}
+                    className="px-2 py-1 text-[11px] sm:text-xs font-medium tracking-[0.14em] text-white/40 hover:!text-[#F28CA6] hover:!bg-transparent focus:!bg-transparent focus:!text-[#F28CA6] data-active:!bg-transparent !bg-transparent transition-colors duration-200 cursor-pointer"
+                    style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
                   >
                     {t(`nav.${key}`)}
                   </NavigationMenuLink>
@@ -89,8 +89,8 @@ export default function Navbar() {
           {/* Language Switcher (Borderless & Clean) */}
           <button
             onClick={toggleLocale}
-            className="px-2 py-1 bg-transparent text-white/40 hover:text-[#F28CA6] text-[10px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 flex items-center gap-1.5 cursor-pointer font-sans"
-            style={{ fontFamily: 'var(--font-body)' }}
+            className="px-2 py-1 bg-transparent text-white/40 hover:text-[#F28CA6] text-[10px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 flex items-center gap-1.5 cursor-pointer"
+            style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
             aria-label="Toggle language"
           >
             <span className={locale === 'en' ? 'text-white font-bold' : 'text-white/30'}>EN</span>
@@ -139,9 +139,9 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
-                className="text-xs font-medium tracking-[0.14em] text-white/40 hover:text-[#F28CA6] px-3 py-2 rounded-lg transition-colors duration-200 font-sans"
+                className="text-xs font-medium tracking-[0.14em] text-white/40 hover:text-[#F28CA6] px-3 py-2 rounded-lg transition-colors duration-200"
                 style={{
-                  fontFamily: 'var(--font-body)',
+                  fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)',
                   transitionDelay: `${index * 30}ms`,
                 }}
               >
