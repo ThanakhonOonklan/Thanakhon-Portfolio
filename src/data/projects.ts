@@ -78,8 +78,8 @@ export const projects: Project[] = [
     title: 'Thinking Skills Games for Kids',
     subtitle: 'เว็บแอปพลิเคชันเกมเพื่อการเรียนรู้สำหรับเด็ก ที่ออกแบบช่วยพัฒนา ทักษะการคิดวิเคราะห์ ทักษะการแก้ปัญหา ทักษะการคิดเชิงตรรกะ ทักษะการสังเกต ทักษะการคิดอย่างเป็นลำดับ ผ่านระบบเกมแบบ Interactive',
     whatIDid: [
-      'ในโปรเจกต์นี้ ผมรับหน้าที่เป็น Frontend Developer โดยมีหน้าที่ออกแบบและพัฒนา UI เเละระบบต่างๆ ของทุกหน้า',
-      'เเละออกแบบตัวละครภายในเกม ระบบอนิเมชัน รวมถึงพัฒนา Logic ต่าง ๆ ภายในเกม',
+      'ออกแบบและพัฒนาเว็บแอปพลิเคชันแบบ Interactive ทั้งส่วน UI/UX, ระบบเกม และ Logic การทำงานทั้งหมด',
+      'ออกแบบตัวละครภายในเกม ระบบอนิเมชัน และพัฒนาฟีเจอร์ต่าง ๆ ภายในเกมอย่างครบวงจร',
     ],
     techStack: [
       'Next.js',
@@ -120,8 +120,8 @@ export const projects: Project[] = [
     liveUrl: 'https://pbit-nongbrite.vercel.app/',
     subtitleEn: 'A web-based educational gaming application for kids, designed to develop analytical thinking, problem-solving, logical reasoning, observation, sequential thinking, and classification & memorization skills through interactive gameplay.',
     whatIDidEn: [
-      'Served as Frontend Developer responsible for designing and developing the UX/UI of all pages to suit the target user group.',
-      'Designed in-game characters, animation systems, and developed game logic for all mini-games.',
+      'Designed and developed the interactive web application, including UX/UI, in-game characters, and core game logic.',
+      'Built animation systems and developed features across all mini-games.',
     ],
     featuresEn: [
       '7 interactive mini-games',

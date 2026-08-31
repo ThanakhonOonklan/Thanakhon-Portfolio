@@ -4,9 +4,9 @@
 
 export const SITE_CONFIG = {
   name: 'Thanakhon Oonklan',
-  title: 'Thanakhon Oonklan — Portfolio',
+  title: 'Thanakhon - Portfolio',
   description:
-    'Portfolio of Thanakhon Oonklan — Frontend Developer & Creative Technologist specializing in modern web experiences, interactive design, and IoT projects.',
+    'Portfolio of Thanakhon Oonklan — Full Stack Developer specializing in modern web experiences, full-stack applications, and IoT projects.',
   url: 'https://thanakhon.dev',
 } as const;
 
@@ -19,8 +19,8 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const PERSONAL_INFO = {
-  role: 'Frontend Developer',
+  role: 'Full Stack Developer',
   location: 'Thailand',
   tagline:
-    'Crafting immersive digital experiences through modern frontend development, interactive design, and motion-driven interfaces.',
+    'Crafting robust and scalable digital experiences through modern full-stack development, interactive UI, and IoT solutions.',
 } as const;
