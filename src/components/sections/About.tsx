@@ -103,10 +103,10 @@ export default function About() {
             </Button>
           </div>
 
-          {/* Right Column: Name + Stats + Narrative (Strictly aligned in right column) */}
-          <div className="flex flex-col gap-3.5 sm:gap-4">
+          {/* Right Column: Name + Stats + Narrative (Center on mobile, Left on desktop) */}
+          <div className="flex flex-col gap-3.5 sm:gap-4 items-center md:items-start text-center md:text-left">
             {/* Name + Verified Badge */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center md:justify-start gap-2">
               <h3
                 className="text-xl sm:text-2xl font-bold tracking-tight text-white uppercase"
                 style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
@@ -122,7 +122,7 @@ export default function About() {
             </div>
 
             {/* Stats Row */}
-            <div className="flex items-center gap-6 sm:gap-10 pb-1">
+            <div className="flex items-center justify-center md:justify-start gap-6 sm:gap-10 pb-1 text-center md:text-left">
               <div>
                 <span
                   className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-[#9CA3AF] font-semibold mb-0.5"
@@ -170,9 +170,9 @@ export default function About() {
             </div>
 
             {/* Bio Narrative */}
-            <div className="flex flex-col mt-2">
+            <div className="flex flex-col mt-2 text-center md:text-left">
               <p
-                className="leading-relaxed whitespace-pre-line"
+                className="leading-relaxed whitespace-pre-line text-center md:text-left"
                 style={{
                   fontSize: '16px',
                   color: '#9CA3AF',

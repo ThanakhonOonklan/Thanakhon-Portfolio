@@ -253,8 +253,8 @@ export default function Experience() {
                   <div className="col-span-12 lg:col-span-9 border-l-2 border-white/5 lg:border-l-0 pl-5 lg:pl-0">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-start">
                       
-                      {/* Text details (Left sub-col) */}
-                      <div className="md:col-span-7 flex flex-col gap-5">
+                      {/* Text details (Left sub-col on desktop, order-2 on mobile) */}
+                      <div className="md:col-span-7 flex flex-col gap-5 order-2 md:order-1">
                         {/* Role & Company */}
                         <div>
                           <h3
@@ -309,8 +309,8 @@ export default function Experience() {
                         )}
                       </div>
 
-                      {/* Single Auto-Transitioning Framed Image Box (Right sub-col) */}
-                      <div className="md:col-span-5 flex items-center justify-center">
+                      {/* Single Auto-Transitioning Framed Image Box (Right sub-col on desktop, order-1 on mobile) */}
+                      <div className="md:col-span-5 flex items-center justify-center order-1 md:order-2">
                         <AutoImageSlider
                           images={images}
                           alt={`${exp.role} - ${exp.company}`}

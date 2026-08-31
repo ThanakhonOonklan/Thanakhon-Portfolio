@@ -67,7 +67,7 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
       >
         {/* ── Content Side (40%) ── */}
         <div
-          className={`flex flex-col gap-6 lg:col-span-5 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
+          className={`flex flex-col gap-6 lg:col-span-5 order-2 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
         >
           {/* Header block: Category (above) + Title (Anton 37px) + Year */}
           <div>
@@ -235,8 +235,8 @@ export function ProjectCaseStudy({ project, index }: ProjectCaseStudyProps) {
           </div>
         </div>
 
-        {/* ── Image Side: Gallery with thumbnails (60%, Sticky scroll) ── */}
-        <div className={`lg:col-span-7 sticky top-28 self-start z-10 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+        {/* ── Image Side: Gallery with thumbnails (60%, Sticky scroll on desktop only) ── */}
+        <div className={`lg:col-span-7 relative lg:sticky lg:top-28 lg:self-start z-10 order-1 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
           {allImages.length > 0 ? (
             <div className="flex flex-col gap-3">
               {/* Main Image */}
