@@ -68,11 +68,11 @@ export default function Hero() {
       ref={sectionRef}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="relative h-screen min-h-[850px] w-full flex items-end justify-center overflow-hidden select-none cursor-default"
+      className="relative h-screen min-h-[600px] sm:min-h-[750px] md:min-h-[850px] w-full flex items-end justify-center overflow-hidden select-none cursor-default"
       style={{ backgroundColor: 'var(--bg-primary)', userSelect: 'none', WebkitUserSelect: 'none' }}
     >
-      {/* Background Layer: 3 Concentric Circles (Fixed Scale) */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
+      {/* Background Layer: 3 Concentric Circles (Responsive Scale) */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden scale-75 sm:scale-90 md:scale-100 transition-transform">
         {/* Large Circle */}
         <div className="absolute w-[880px] h-[880px] min-w-[880px] min-h-[880px] rounded-full border border-white/[0.03]" />
         {/* Medium Circle */}
@@ -81,22 +81,15 @@ export default function Hero() {
         <div className="absolute w-[300px] h-[300px] min-w-[300px] min-h-[300px] rounded-full border border-white/[0.04]" />
       </div>
 
-      {/* Giant Stroke Typography Behind Person (Fixed Absolute Scale: z-10) */}
+      {/* Giant Stroke Typography Behind Person (z-10) */}
       <div
         ref={nameRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 pointer-events-none select-none flex items-center justify-center whitespace-nowrap"
+        className="absolute top-[28%] sm:top-[34%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 pointer-events-none select-none flex items-center justify-center whitespace-nowrap w-full px-2"
       >
-        <div ref={textContainerRef} className="relative inline-block">
+        <div ref={textContainerRef} className="relative inline-block max-w-full">
           {/* Base Layer: White Stroke Text */}
           <h1
-            className="font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent block"
-            style={{
-              fontSize: '180px',
-              WebkitTextStroke: '2px rgba(255, 255, 255, 0.45)',
-              lineHeight: 0.95,
-              paddingTop: '35px',
-              paddingBottom: '35px',
-            }}
+            className="hero-background-name font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent block select-none"
           >
             THANAKHON OONKLAN
           </h1>
@@ -104,17 +97,11 @@ export default function Hero() {
           {/* Spotlight Layer: Perfectly Aligned Pixel-for-Pixel with Base Layer */}
           <h1
             aria-hidden="true"
-            className="absolute inset-0 font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent transition-opacity duration-300 pointer-events-none block"
+            className="hero-background-name-spotlight absolute inset-0 font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent transition-opacity duration-300 pointer-events-none block select-none"
             style={{
-              fontSize: '180px',
-              WebkitTextStroke: '2.5px #F28CA6',
-              lineHeight: 0.95,
-              paddingTop: '35px',
-              paddingBottom: '35px',
               opacity: isHovered ? 1 : 0,
               maskImage: `radial-gradient(circle 280px at ${mousePos.x}px ${mousePos.y}px, black 35%, transparent 100%)`,
               WebkitMaskImage: `radial-gradient(circle 280px at ${mousePos.x}px ${mousePos.y}px, black 35%, transparent 100%)`,
-              filter: 'drop-shadow(0 0 16px rgba(242, 140, 166, 0.6))',
             }}
           >
             THANAKHON OONKLAN
@@ -122,7 +109,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Foreground Layer: Person Portrait (Fixed Absolute Scale: z-20) */}
+      {/* Foreground Layer: Person Portrait (z-20) */}
       <div
         className="relative z-20 flex flex-col items-center justify-end pointer-events-none [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
       >
@@ -132,11 +119,11 @@ export default function Hero() {
             alt="Thanakhon Oonklan"
             onError={() => setImgError(true)}
             draggable={false}
-            className="h-[750px] w-auto max-w-none object-contain object-bottom drop-shadow-[0_25px_60px_rgba(0,0,0,0.9)] block select-none pointer-events-none"
+            className="h-[680px] sm:h-[720px] md:h-[760px] lg:h-[800px] w-auto max-w-none object-contain object-bottom drop-shadow-[0_25px_60px_rgba(0,0,0,0.9)] block select-none pointer-events-none"
             style={{ userSelect: 'none', WebkitUserSelect: 'none', WebkitUserDrag: 'none' } as React.CSSProperties}
           />
         ) : (
-          <div className="w-[480px] h-[640px]">
+          <div className="w-[360px] sm:w-[440px] md:w-[500px] h-[600px] sm:h-[680px] md:h-[740px]">
             <PortraitFallback />
           </div>
         )}

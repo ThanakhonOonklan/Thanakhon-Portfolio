@@ -144,3 +144,42 @@ a:hover > .navbar-brand-stroke {
   -webkit-text-stroke: 0.35px #F28CA6;
 }
 
+/* Hero Background Outline Typography */
+.hero-background-name {
+  font-size: clamp(42px, 10.5vw, 180px);
+  -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.45);
+  line-height: 0.95;
+  padding-top: clamp(10px, 2.5vw, 35px);
+  padding-bottom: clamp(10px, 2.5vw, 35px);
+}
+
+.hero-background-name-spotlight {
+  font-size: clamp(42px, 10.5vw, 180px);
+  -webkit-text-stroke: 1.5px #F28CA6;
+  line-height: 0.95;
+  padding-top: clamp(10px, 2.5vw, 35px);
+  padding-bottom: clamp(10px, 2.5vw, 35px);
+}
+
+@media (min-width: 1024px) {
+  .hero-background-name {
+    font-size: clamp(120px, 11vw, 180px);
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.45);
+  }
+
+  .hero-background-name-spotlight {
+    font-size: clamp(120px, 11vw, 180px);
+    -webkit-text-stroke: 2.5px #F28CA6;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-background-name {
+    font-size: 180px;
+  }
+
+  .hero-background-name-spotlight {
+    font-size: 180px;
+  }
+}
+
