@@ -36,6 +36,7 @@ const SKILL_ICONS_MAP: Record<string, string> = {
   'FastAPI': 'fastapi',
   'PostgreSQL': 'postgres',
   'MySQL': 'mysql',
+  'MariaDB': 'mariadb',
   'Supabase': 'supabase',
   'Prisma': 'prisma',
   'Redis': 'redis',

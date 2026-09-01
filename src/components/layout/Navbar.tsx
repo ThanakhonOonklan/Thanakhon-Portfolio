@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { navItems } from '@/data/navigation';
 import { useLocale, useTranslation } from '@/hooks';
 import {
@@ -13,6 +14,9 @@ import {
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+  const pathname = usePathname();
+  const router = useRouter();
 
   const { t } = useTranslation();
   const { locale, setLocale, isEN } = useLocale();
@@ -29,9 +33,21 @@ export default function Navbar() {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileOpen(false);
+
+    if (pathname !== '/') {
+      if (href === '#hero' || href === '#') {
+        router.push('/');
+      } else {
+        router.push(`/${href}`);
+      }
+      return;
+    }
+
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
