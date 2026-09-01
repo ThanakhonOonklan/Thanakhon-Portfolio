@@ -130,3 +130,17 @@
   pointer-events: none;
 }
 
+/* Navbar Brand Outline Typography */
+.navbar-brand-stroke {
+  font-family: var(--font-heading) !important;
+  color: transparent !important;
+  letter-spacing: 0.16em;
+  -webkit-text-stroke: 0.3px rgba(255, 255, 255, 0.65);
+  transition: -webkit-text-stroke 0.25s ease, filter 0.25s ease;
+}
+
+.group:hover .navbar-brand-stroke,
+a:hover > .navbar-brand-stroke {
+  -webkit-text-stroke: 0.35px #F28CA6;
+}
+

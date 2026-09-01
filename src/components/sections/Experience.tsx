@@ -206,7 +206,8 @@ export default function Experience() {
             return (
               <div
                 key={index}
-                className="gsap-reveal"
+                id={`experience-${index}`}
+                className="gsap-reveal scroll-mt-28"
                 data-experience-index={index}
               >
                 {/* Timeline row */}
