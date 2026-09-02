@@ -3,6 +3,7 @@ import { Anton, Inter, Sarabun } from "next/font/google";
 import "./globals.css";
 import { AppProviders } from "@/providers";
 import { SITE_CONFIG } from "@/constants";
+import { CoffeeWidget } from "@/components/ui";
 
 const anton = Anton({
   variable: "--font-heading",
@@ -40,7 +41,10 @@ export default function RootLayout({
         className={`${anton.variable} ${inter.variable} ${sarabun.variable} bg-black text-white antialiased`}
         suppressHydrationWarning
       >
-        <AppProviders>{children}</AppProviders>
+        <AppProviders>
+          {children}
+          <CoffeeWidget />
+        </AppProviders>
       </body>
     </html>
   );

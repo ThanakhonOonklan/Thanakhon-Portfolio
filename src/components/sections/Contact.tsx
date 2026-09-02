@@ -105,9 +105,8 @@ export default function Contact() {
             >
               {/* Resume Button */}
               <a
-                href="/Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={isEN ? '/resume/CV-Thanakhon-Oonklan-EN.pdf' : '/resume/CV-Thanakhon-Oonklan-TH.pdf'}
+                download={isEN ? 'CV-Thanakhon-Oonklan-EN.pdf' : 'CV-Thanakhon-Oonklan-TH.pdf'}
                 className="inline-flex items-center gap-2 px-7 h-11 text-[11px] font-semibold tracking-[0.2em] uppercase rounded-full !bg-white !text-black border border-white hover:!bg-transparent hover:!text-white transition-colors duration-300 shadow-md cursor-pointer select-none"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
