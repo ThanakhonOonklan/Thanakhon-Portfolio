@@ -3,6 +3,8 @@ import { Anton, Inter, Sarabun } from "next/font/google";
 import "./globals.css";
 import { AppProviders } from "@/providers";
 import { SITE_CONFIG } from "@/constants";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const anton = Anton({
   variable: "--font-heading",
@@ -43,6 +45,9 @@ export default function RootLayout({
         <AppProviders>
           {children}
         </AppProviders>
+
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
