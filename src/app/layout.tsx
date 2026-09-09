@@ -27,8 +27,12 @@ const sarabun = Sarabun({
 });
 
 export const metadata: Metadata = {
-  title: SITE_CONFIG.title,
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: 'Thanakhon Oonklan | Full Stack Developer',
   description: SITE_CONFIG.description,
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({
