@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   title: 'Thanakhon - Portfolio',
   description:
     'Portfolio of Thanakhon Oonklan — Full Stack Developer specializing in modern web experiences, full-stack applications, and IoT projects.',
-  url: 'https://thanakhon.dev',
+  url: 'https://thanakhon-portfolio.vercel.app',
 } as const;
 
 export const SOCIAL_LINKS = {
