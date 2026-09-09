@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { registerGSAP } from '@/lib/gsap';
 import { PortraitFallback } from '@/components/ui';
@@ -114,9 +115,12 @@ export default function Hero() {
         className="relative z-20 flex flex-col items-center justify-end pointer-events-none [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
       >
         {!imgError ? (
-          <img
+          <Image
             src="/images/profile/profile-3.jpg"
             alt="Thanakhon Oonklan"
+            width={600}
+            height={800}
+            priority
             onError={() => setImgError(true)}
             draggable={false}
             className="h-[680px] sm:h-[720px] md:h-[760px] lg:h-[800px] w-auto max-w-none object-contain object-bottom drop-shadow-[0_25px_60px_rgba(0,0,0,0.9)] block select-none pointer-events-none"
