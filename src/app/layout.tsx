@@ -5,6 +5,7 @@ import { AppProviders } from "@/providers";
 import { SITE_CONFIG } from "@/constants";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { VisitorTracker } from "@/components/VisitorTracker";
 
 const anton = Anton({
   variable: "--font-heading",
@@ -52,6 +53,7 @@ export default function RootLayout({
 
         <Analytics />
         <SpeedInsights />
+        <VisitorTracker />
       </body>
     </html>
   );
