@@ -97,9 +97,9 @@ export default function About() {
               href={isEN ? '/resume/CV-Thanakhon-Oonklan-EN.pdf' : '/resume/CV-Thanakhon-Oonklan-TH.pdf'}
               download={isEN ? 'CV-Thanakhon-Oonklan-EN.pdf' : 'CV-Thanakhon-Oonklan-TH.pdf'}
               className="w-full max-w-[220px] bg-[#21262d] border border-[#363b42] text-[#c9d1d9] hover:bg-[#30363d] hover:text-white transition-colors h-8 text-xs font-medium rounded-md inline-flex items-center justify-center select-none"
-              style={{ fontFamily: isEN ? 'var(--font-body)' : 'var(--font-thai)' }}
+              style={{ fontFamily: 'var(--font-body)' }}
             >
-              {t('about.resume_link')}
+              Download my resume
             </a>
           </div>
 

@@ -153,6 +153,14 @@
     "title": "CONTACT",
     "badge": "• CONTACT • CONTACT • CONTACT • CONTACT • CONTACT • CONTACT",
     "desc": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out — let's build something great together.",
-    "exit": "Click anywhere to close this overlay"
+    "exit": "Click anywhere to close this overlay",
+    "links": [
+      { "type": "email",    "label": "Email",     "value": "thanakhonyocj@gmail.com",                          "href": "https://mail.google.com/mail/?view=cm&to=thanakhonyocj@gmail.com" },
+      { "type": "phone",    "label": "Phone",     "value": "089-614-1138",                                     "href": "tel:+66896141138" },
+      { "type": "linkedin", "label": "LinkedIn",  "value": "linkedin.com/in/thanakhon-oonklan-431766292",     "href": "https://www.linkedin.com/in/thanakhon-oonklan-431766292/" },
+      { "type": "github",   "label": "GitHub",    "value": "github.com/ThanakhonOonklan",                    "href": "https://github.com/ThanakhonOonklan" },
+      { "type": "facebook", "label": "Facebook",  "value": "facebook.com/thanakhon.oonklan",                 "href": "https://www.facebook.com/thanakhon.oonklan" },
+      { "type": "line",     "label": "Line",      "value": "089-614-1138",                                    "href": "https://line.me/ti/p/~0896141138" }
+    ]
   }
 }

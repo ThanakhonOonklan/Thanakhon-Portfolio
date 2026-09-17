@@ -153,6 +153,14 @@
     "title": "CONTACT",
     "badge": "• CONTACT • CONTACT • CONTACT • CONTACT • CONTACT • CONTACT",
     "desc": "สนใจอยากร่วมงานหรืออยากพูดคุยก็ยินดีเสมอครับ ไม่ว่าจะเป็นโปรเจกต์ ความร่วมมือ หรือแค่อยากแลกเปลี่ยนความคิดเห็น ติดต่อมาได้เลยครับ — ยินดีคุยเสมอ",
-    "exit": "คลิกที่ใดก็ได้เพื่อปิดหน้าต่างนี้"
+    "exit": "คลิกที่ใดก็ได้เพื่อปิดหน้าต่างนี้",
+    "links": [
+      { "type": "email",    "label": "Email",         "value": "thanakhonyocj@gmail.com",                          "href": "https://mail.google.com/mail/?view=cm&to=thanakhonyocj@gmail.com" },
+      { "type": "phone",    "label": "เบอร์โทรศัพท์",  "value": "089-614-1138",                                     "href": "tel:+66896141138" },
+      { "type": "linkedin", "label": "LinkedIn",      "value": "linkedin.com/in/thanakhon-oonklan-431766292",     "href": "https://www.linkedin.com/in/thanakhon-oonklan-431766292/" },
+      { "type": "github",   "label": "GitHub",        "value": "github.com/ThanakhonOonklan",                    "href": "https://github.com/ThanakhonOonklan" },
+      { "type": "facebook", "label": "Facebook",      "value": "facebook.com/thanakhon.oonklan",                 "href": "https://www.facebook.com/thanakhon.oonklan" },
+      { "type": "line",     "label": "Line",          "value": "089-614-1138",                                    "href": "https://line.me/ti/p/~0896141138" }
+    ]
   }
 }
