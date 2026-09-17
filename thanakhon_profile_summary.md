@@ -1,190 +1,198 @@
-# 👤 Thanakhon Oonklan — Profile Summary
+# Thanakhon Oonklan — Profile Summary
 
 > **Junior Full Stack Developer** | KMUTNB Prachinburi Campus | Graduated 2026
 
 ---
 
-## 🧑‍💻 About Me
+## About Me
 
 ชื่อ **ธนกรณ์ อ่อนกลั่น** (ชื่อเล่น: **"JJ"**)  
 นักพัฒนาที่มุ่งมั่นพัฒนาทักษะสู่ Full Stack Developer โดยมีความถนัดและความสนใจหลักด้าน **Frontend Development**, **UI/UX Design**, และ **Web Application Development**
 
-- 🎓 **การศึกษา**: ปริญญาตรี เทคโนโลยีบัณฑิต (เทคโนโลยีอุตสาหกรรมและการจัดการ)  
-  มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ วิทยาเขตปราจีนบุรี
-- 📅 **สำเร็จการศึกษา**: 2026
-- 📊 **Projects**: 6 | **Certificates**: 6
-
-**ติดต่อ**  
-- 📧 thanakhonyocj@gmail.com  
-- 📞 089-614-1138  
-- 🔗 [LinkedIn](https://www.linkedin.com/in/thanakhon-oonklan-431766292/)  
-- 🐙 [GitHub](https://github.com/ThanakhonOonklan)
+| | |
+|---|---|
+| **อีเมล** | thanakhonyocj@gmail.com |
+| **โทรศัพท์** | 089-614-1138 |
+| **LinkedIn** | linkedin.com/in/thanakhon-oonklan-431766292 |
+| **GitHub** | github.com/ThanakhonOonklan |
+| **Portfolio** | thanakhon-portfolio.vercel.app |
 
 ---
 
-## 💼 Experience
+## Education
 
-### 1. Industrial Robot Control — 31st National Skills Competition `2026`
-**ทักษะที่ใช้:** ABB RAPID · KUKA KRL · Yaskawa INFORM
-
-- ฝึกและแข่งขันควบคุมหุ่นยนต์อุตสาหกรรม (ABB, KUKA, Yaskawa) สำหรับ Path Tracing และ Pick-and-Place ผ่าน Teach Pendant
-- โปรแกรม Joint, Linear, Circular Motions
-- ตั้งค่า Tool/Base/WorkObject Frames พร้อม Logic ปุ่ม, ไฟสัญญาณ, และ Gripper ในเวลาจำกัด
+| | |
+|---|---|
+| **ปริญญา** | Bachelor of Industrial Technology Program |
+| **สาขา** | เทคโนโลยีอุตสาหกรรมและการจัดการ (Industrial Technology and Management) |
+| **มหาวิทยาลัย** | King Mongkut's University of Technology North Bangkok (Prachinburi Campus) |
+| **จบการศึกษา** | 2026 |
 
 ---
 
-### 2. Internship — Robotics Engineering @ Wireless Solution Asia `2025`
-**ทักษะที่ใช้:** Arduino · Embedded C
+## Work Experience
 
-- พัฒนาหุ่นยนต์ ESP32 ควบคุมผ่านมือถือ พร้อม Custom Movement และ Gripper Commands
+### Programmer — 31st National Skills Competition `มิ.ย. 2026 – ก.ค. 2026` `(2 เดือน)`
+**สังกัด:** กระทรวงแรงงาน / WorldSkills Thailand 2026
+
+- Programmed industrial robots (ABB, KUKA, Yaskawa) for Joint, Linear, and Circular motions via Teach Pendant
+- Configured Tool, Base, WorkObject, and User Frames with sequential logic for buttons, status lights, and Grippers
+- ใช้ program templates เพื่อเพิ่มความเร็วในการ execute ในสนามแข่งขัน
+
+**Skills:** ABB RAPID · KUKA KRL · Yaskawa INFORM
+
+---
+
+### Internship — Robotics & Software Engineering @ Wireless Solution Asia `เม.ย. 2025 – พ.ค. 2025` `(2 เดือน)`
+
+- ออกแบบและประกอบชุดหุ่นยนต์รถบังคับด้วยบอร์ด ESP32 ควบคุมแบบไร้สาย
+- ใช้เครื่อง 3D Printer ในการขึ้นรูปชิ้นส่วนโครงสร้างหุ่นยนต์
+- พัฒนา Mobile-controlled ESP32 robot พร้อม Custom movement และ Gripper commands
 - สอนและสาธิตการทำงานของหุ่นยนต์ให้กับนักเรียน
 - ร่วมพัฒนา Application อ่านบัตรประชาชน
 
----
-
-### 3. Freelance Full Stack Developer — IoT Equipment System `2025`
-**ทักษะที่ใช้:** React · TypeScript · Tailwind CSS · PHP · MySQL · Supabase · Vercel
-
-- พัฒนาระบบยืม-คืนอุปกรณ์ IoT แบบ Web Application แบบ Full Stack คนเดียว
-- ออกแบบ Database Schema และ UI ตั้งแต่ต้นจนถึง Deploy
+**Skills:** Arduino · Embedded C · 3D Printing
 
 ---
 
-### 4. Freelance IoT Developer — Footstep Piezoelectric Energy Harvesting `2025`
-**ทักษะที่ใช้:** Arduino · C++
+### Freelance IoT System Developer `ก.ย. 2025 – ก.ย. 2026` `(1 ปี 1 เดือน)`
+**งานอิสระ**
 
-- ออกแบบและประกอบวงจร Energy Harvesting แบบครบวงจร
-- ปรับเทียบ MT3608 Boost Converter + TP4056 Charging Circuit ร่วมกับ LTC3588
-- เขียน Firmware บน Arduino UNO R3 สำหรับนับก้าวและมอนิเตอร์พลังงาน
-- ระบบทำงานได้อิสระ ส่งไฟ 5V 2A สำหรับโหลดภายนอก
+- ออกแบบและประกอบวงจรระบบเก็บเกี่ยวพลังงานจากการเดิน (Footstep Piezoelectric Energy Harvesting)
+- ปรับจูนและ Calibration วงจรบูสต์แรงดัน MT3608 และวงจรชาร์จ TP4056 ร่วมกับ LTC3588
+- พัฒนา Firmware บน Arduino UNO R3 สำหรับนับก้าวและมอนิเตอร์พลังงาน
+- พัฒนาระบบยืม-คืนอุปกรณ์ IoT แบบ Full Stack (Frontend + Backend) ให้เพื่อนนักศึกษาเป็นโปรเจ็คจบการศึกษา
+
+**Skills:** Arduino · C++ · React · TypeScript · PHP · MySQL · Supabase · Vercel
 
 ---
 
-## 🚀 Projects
+## Projects
 
-### 🥇 RalphGuard — In-silico Irritation & Toxicity Risk Screening Platform `2026`
-**Category:** AI & Web Application  
-**ทักษะ:** Next.js · TypeScript · Tailwind CSS · Three.js · FastAPI · Python · Scikit-learn · PostgreSQL · Redis · Docker · Vercel
+### RalphGuard — In-silico Irritation & Toxicity Risk Screening Platform `2026`
+**Category:** AI & Web Application
 
-**บทบาท:**
-- รับผิดชอบ Frontend Development ทั้งหมด และ 3D Visualization ด้วย React Three Fiber
+- รับผิดชอบ **Frontend Development ทั้งหมด** และ 3D Visualization ด้วย React Three Fiber
 - พัฒนาหน้า Formula Builder แบบ Interactive และแสดงผลการประเมิน Real-time
-- เข้าประกวด **NSC 2026 (สวทช.) หมวดที่ 14** → **เข้ารอบชิง 13 ทีมสุดท้าย**
+- **ผ่านรอบชิงชนะเลิศ NSC 2026** (สวทช. + วช.) — ระบบประเมินความเสี่ยงการระคายเคืองและความเป็นพิษของสารเคมี
 
-**ฟีเจอร์:**
-- ฐานข้อมูลสารเคมี 465,780 สาร ครอบคลุม 6 Endpoints
-- ประเมิน Skin Irritation, Eye Irritation, Skin Sensitization, Acute Toxicity
-- รับ Input หลายรูปแบบ (ชื่อสาร, SMILES, CSV)
-- 3D Anatomy Visualization แสดงผลตาม Day 1/3/7
-- อ่านฉลากส่วนผสมจากรูปภาพ + Export PDF
-
-🔗 [GitHub](https://github.com/ThanakhonOonklan/ralphguard) | [Live](https://ralphguard.vercel.app/)
+**Stack:** Next.js · TypeScript · Tailwind CSS · Three.js · FastAPI · Python · Scikit-learn · PostgreSQL · Redis · Docker · Vercel  
+**Links:** [GitHub](https://github.com/ThanakhonOonklan/ralphguard) | [Live](https://ralphguard.vercel.app/)
 
 ---
 
-### 🎮 Thinking Skills Games for Kids `2026`
-**Category:** Web Application  
-**ทักษะ:** Next.js · TypeScript · Tailwind CSS · Node.js · Express · Prisma · PostgreSQL
+### Thinking Skills Games for Kids `2026`
+**Category:** Web Application
 
-**บทบาท:**
 - ออกแบบและพัฒนา UI/UX, ระบบเกม, Logic, ตัวละคร และ Animation ทั้งหมด
+- มินิเกม 7 เกม · รองรับ 2 ภาษา · Scoreboard · Responsive
 
-**ฟีเจอร์:**
-- มินิเกม 7 เกม ช่วยพัฒนาทักษะการคิดวิเคราะห์, แก้ปัญหา, ตรรกะ
-- ระบบ Scoreboard, รองรับ 2 ภาษา (ไทย/อังกฤษ), Responsive Design
-
-🔗 [GitHub](https://github.com/ThanakhonOonklan/pbit-nongbrite-project-Frontend_2) | [Live](https://pbit-nongbrite.vercel.app/)
+**Stack:** Next.js · TypeScript · Tailwind CSS · Node.js · Express · Prisma · PostgreSQL  
+**Links:** [GitHub](https://github.com/ThanakhonOonklan/pbit-nongbrite-project-Frontend_2) | [Live](https://pbit-nongbrite.vercel.app/)
 
 ---
 
-### 🖥️ IoT Equipment System `2025`
-**Category:** Web Application  
-**ทักษะ:** React · TypeScript · Tailwind CSS · PHP · MySQL · Supabase · Vercel
+### IoT Equipment System `2025`
+**Category:** Web Application (Freelance)
 
-**บทบาท:**
-- รับจ้างพัฒนาระบบยืม-คืนอุปกรณ์ IoT ให้เพื่อนนักศึกษาเป็นโปรเจ็คจบการศึกษา
-- รับผิดชอบ Full Stack คนเดียว ตั้งแต่ออกแบบถึง Deploy
+- รับผิดชอบ Full Stack คนเดียว ตั้งแต่ออกแบบถึง Deploy ตาม SDLC
+- Real-time Tracking · Admin/User Management · Dashboard · Notification System
 
-**ฟีเจอร์:**
-- Real-time Tracking, Admin/User Management, Dashboard, Notification System
-
-🔗 [GitHub](https://github.com/ThanakhonOonklan/iot_equipment_system)
+**Stack:** React · TypeScript · Tailwind CSS · PHP · MySQL · Supabase · Vercel  
+**Links:** [GitHub](https://github.com/ThanakhonOonklan/iot_equipment_system)
 
 ---
 
-### 🤖 ESP32 Robot Controller `2023`
-**Category:** IoT  
-**ทักษะ:** Arduino · C++
+### ESP32 Robot Controller `2023`
+**Category:** IoT / Hardware
 
-**บทบาท:**
-- ออกแบบและประกอบรถหุ่นยนต์ Omnidirectional 4 ล้อ ควบคุมผ่านมือแบบ Wireless ด้วย ESP32
-- ทำตั้งแต่ PCB → Hardware → Firmware คนเดียว
+- ออกแบบและประกอบรถหุ่นยนต์ Omnidirectional 4 ล้อ Mecanum ควบคุมผ่านมือแบบ Wireless
+- ทำตั้งแต่ PCB fabrication → Hardware assembly → Firmware → Wireless Control คนเดียว
+- **ได้รับรางวัลที่ 2** จากการแข่งขัน
 
-**ผลลัพธ์:**
-- 🥈 **ได้รับรางวัลที่ 2** จากการแข่งขัน National Contest of the New Generation
-
-🔗 [GitHub](https://github.com/ThanakhonOonklan/esp32-gesture-car)
+**Stack:** Arduino · C++  
+**Links:** [GitHub](https://github.com/ThanakhonOonklan/esp32-gesture-car)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
-| Technology | |
-|---|---|
-| HTML5, CSS3 | พื้นฐาน Web |
-| JavaScript, TypeScript | ภาษาหลัก |
-| React, Next.js | Framework |
-| Three.js | 3D Visualization |
-| Tailwind CSS, shadcn/ui | Styling |
+`HTML5` `CSS3` `JavaScript` `TypeScript` `React` `Next.js` `Three.js` `Tailwind CSS` `shadcn/ui`
 
 ### Backend & Database
-| Technology | |
-|---|---|
-| Node.js, Express | Server |
-| FastAPI (Python) | AI/ML API |
-| PHP | Legacy Backend |
-| MySQL, PostgreSQL | Relational DB |
-| Supabase, Redis | Cloud DB/Cache |
+`Node.js` `Express` `FastAPI (Python)` `PHP` `MySQL` `PostgreSQL` `Supabase` `Redis` `Prisma`
 
 ### DevOps & Cloud
-| Technology | |
-|---|---|
-| Docker | Containerization |
-| Vercel | Frontend Deploy |
-| Render | Backend Deploy |
+`Docker` `Vercel` `Render`
 
 ### Tools & Design
-| Technology | |
-|---|---|
-| Git, GitHub | Version Control |
-| VS Code | Editor |
-| Figma, Canva | Design |
-| Notion, Trello | Project Management |
-| CapCut | Video Editing |
+`Git` `GitHub` `VS Code` `Figma` `Canva` `Notion` `Trello`
 
 ### Other
-| Technology | |
+`Python` `Arduino` `C++`
+
+---
+
+## Soft Skills
+
+| ทักษะ | รายละเอียด |
 |---|---|
-| Python | AI/ML |
-| Arduino, C++ | Embedded/IoT |
+| **พัฒนาเว็บไซต์** | มีประสบการณ์พัฒนา Web Application จริงตั้งแต่ออกแบบ UI/UX จนถึง Deploy |
+| **เปิดรับความคิดเห็น** | ยินดีรับ Feedback และนำไปปรับปรุงงานเสมอ |
+| **ทำงานเป็นทีม** | เคยทำงานเป็นทีมในโปรเจ็คแข่งขันระดับชาติและโปรเจ็คจบการศึกษา |
+| **ทำงานตาม SDLC** | คุ้นเคยกับกระบวนการ Requirements → Design → Development → Testing → Deploy |
+| **ทักษะในการเรียนรู้** | เรียนรู้เร็ว ชอบลองสิ่งใหม่ ชอบลงมือทำจริง ไม่ยอมแพ้ง่าย |
 
 ---
 
-## 📜 Certificates
+## Personality
 
-| ปี | ใบประกาศ | องค์กร |
+> ฉันเป็นคนไม่ยอมแพ้อะไรง่าย ๆ ชอบท้าทายตัวเอง ชอบลอง ชอบลงมือทำจริง  
+> เชื่อว่าการเรียนรู้จากการทำจริงคือวิธีที่ดีที่สุด
+
+---
+
+## Career Goals
+
+**ตำแหน่งที่ต้องการ (เรียงลำดับ)**
+1. Full Stack Developer
+2. Coding & Robotics Instructor
+
+**เงินเดือนที่คาดหวัง:** 22,000 – 25,000 บาท
+
+**สถานะ:** กำลังสมัครงานอยู่ในสาย Software Development / Tech Education
+
+**สิ่งที่ต้องการจากที่ทำงาน**
+- โอกาสได้พัฒนาทักษะอย่างต่อเนื่อง
+- งานที่ท้าทายและได้ลงมือทำจริง
+- ทีมที่เปิดรับความคิดเห็นและเรียนรู้ไปด้วยกัน
+
+---
+
+## Language
+
+| ภาษา | การอ่าน | การเขียน | การพูด |
+|---|---|---|---|
+| ไทย | เจ้าของภาษา | เจ้าของภาษา | เจ้าของภาษา |
+| อังกฤษ | พอใช้ได้ | แปลพอได้ | ติดขัดบ้าง |
+
+---
+
+## Certificates & Awards
+
+| ปี | รางวัล / ใบประกาศ | องค์กร |
 |---|---|---|
-| 2026/08/24 | 🏆 The 28th National Software Contest (NSC 2026) — **Finalist** | NSTDA & NRCT |
-| 2026/05/01 | 🔐 Cyber Security | สำนักคอมพิวเตอร์ มจพ. |
-| 2026 | 🤖 Industrial Robot Control | Department of Skill Development |
-| 2025/04/25 | 🤖 Generative AI | Wireless Solution Asia Co., Ltd |
-| 2025/04/24 | 🖨️ PCB Design | Wireless Solution Asia Co., Ltd |
-| 2023/12/20 | 🥈 National Contest of the New Generation — **2nd Place** | Suphanburi Technical College |
+| ส.ค. 2026 | การแข่งขันพัฒนาโปรแกรมคอมพิวเตอร์แห่งประเทศไทย ครั้งที่ 28 — **ผ่านรอบชิงชนะเลิศ** | สวทช. + วช. (NSC 2026) |
+| ก.ค. 2026 | WorldSkills Thailand 2026 — เข้าร่วมแข่งขันฝีมือแรงงานแห่งชาติ ครั้งที่ 31 ระดับภาค สาขาการควบคุมหุ่นยนต์อุตสาหกรรม | กระทรวงแรงงาน |
+| พ.ค. 2026 | Cyber Security: รู้ทันภัยไซเบอร์เบื้องต้น | สำนักคอมพิวเตอร์และเทคโนโลยีสารสนเทศ มจพ. |
+| เม.ย. 2025 | Generative AI เปิดโลกเทคโนโลยี เปลี่ยนวิธีคิด (Upgrade-Skill Training) | Wireless Solution Asia Co., Ltd |
+| เม.ย. 2025 | PCB Design | Wireless Solution Asia Co., Ltd |
+| ธ.ค. 2023 | รางวัลชมเชย ระดับเหรียญทอง ประเภทที่ 2 — สิ่งประดิษฐ์ด้านนวตกรรมและเทคโนโลยีดิจิทัลปัญญาประดิษฐ์ ผลงาน "สมาร์ทไฮโดรรถหุ่นยนต์ควบคุม (ESP32)" | สำนักงานคณะกรรมการการอาชีวศึกษา |
 
 ---
 
-## 🎨 Other Skills
+## Other Skills
 
 ### Infographic Design `2025`
 **Tools:** Figma · Canva  
@@ -192,15 +200,20 @@
 
 ---
 
-## 📌 Summary
+## Summary
 
-| หัวข้อ | รายละเอียด |
+| | |
 |---|---|
 | **ชื่อ** | ธนกรณ์ อ่อนกลั่น (JJ) |
 | **บทบาทปัจจุบัน** | Junior Full Stack Developer |
 | **ความถนัดหลัก** | Frontend · Next.js · React · TypeScript |
 | **ความสนใจรอง** | IoT · Robotics · AI/ML · 3D Web |
-| **จำนวนโปรเจ็ค** | 6 Projects |
-| **ใบประกาศ** | 6 Certificates |
-| **รางวัล** | NSC 2026 Finalist · 2nd Place National Robot Contest |
-| **จบการศึกษา** | KMUTNB IT — 2026 |
+| **ประสบการณ์ทำงาน** | Internship 2 เดือน + Freelance 1 ปี + Competition 2 เดือน |
+| **โปรเจ็คใน Portfolio** | 4 Projects |
+| **ใบประกาศ / รางวัล** | 6 รายการ |
+| **รางวัลสำคัญ** | NSC 2026 Finalist · WorldSkills Thailand 2026 · รางวัลเหรียญทอง ESP32 Robot |
+| **จบการศึกษา** | KMUTNB (Prachinburi) — 2026 |
+
+---
+
+> *อัปเดตล่าสุด: 17 กันยายน 2026*

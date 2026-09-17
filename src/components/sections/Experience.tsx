@@ -36,6 +36,8 @@ const EXPERIENCE_IMAGE_SETS: Record<number, string[]> = {
     '/images/projects/Internship/Internship-Photo6.jpg',
     '/images/projects/Internship/Internship-Photo7.jpg',
     '/images/projects/Internship/Internship-Photo8.jpg',
+    '/images/projects/Internship/IMG_6017.JPG',
+    '/images/projects/Internship/IMG_5760.JPG',
   ],
   2: [
     '/images/projects/IotEquipmentSystem-Project/Dashboard.png',
