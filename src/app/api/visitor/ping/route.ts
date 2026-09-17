@@ -11,8 +11,8 @@ const resend = new Resend(process.env.RESEND_API_KEY!);
 
 const ONLINE_KEY_PREFIX = 'visitor:online:';
 const RATE_LIMIT_KEY = 'visitor:email:last_sent';
-const ONLINE_TTL = 5 * 60; // 5 minutes (seconds)
-const RATE_LIMIT_SECONDS = 30 * 60; // 30 minutes
+const ONLINE_TTL = 5 * 60;        // 5 minutes (seconds)
+const RATE_LIMIT_SECONDS = 5 * 60; // 5 minutes
 
 function getOnlineKey(sessionId: string) {
   return `${ONLINE_KEY_PREFIX}${sessionId}`;
@@ -57,18 +57,15 @@ export async function POST(request: Request) {
     const shouldSendEmail = !lastSent || now - Number(lastSent) > RATE_LIMIT_SECONDS * 1000;
 
     if (shouldSendEmail) {
-      // ✅ Set rate limit key ก่อนส่งเมล เพื่อป้องกัน race condition
-      // (ถ้า 2 request มาพร้อมกัน จะได้ไม่ส่งเมล 2 ครั้ง)
+      // Set rate limit key before sending email to prevent race condition
       await redis.set(RATE_LIMIT_KEY, now, { ex: RATE_LIMIT_SECONDS });
-
 
       const thaiTime = formatThaiTime(new Date());
 
-      // Send notification email
       await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: process.env.NOTIFY_EMAIL!,
-        subject: `📊 มีคนเข้าชม Portfolio ของคุณ — ${thaiTime}`,
+        subject: `[Portfolio] มีผู้เข้าชม — ${thaiTime}`,
         html: `
           <!DOCTYPE html>
           <html lang="th">
@@ -76,78 +73,49 @@ export async function POST(request: Request) {
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           </head>
-          <body style="margin:0;padding:0;background-color:#0a0a0a;font-family:'Segoe UI',Arial,sans-serif;">
-            <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0a0a0a;padding:40px 20px;">
+          <body style="margin:0;padding:0;background-color:#f5f5f5;font-family:Arial,sans-serif;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f5f5;padding:32px 16px;">
               <tr>
                 <td align="center">
-                  <table width="520" cellpadding="0" cellspacing="0" style="background-color:#111111;border:1px solid #222222;border-radius:16px;overflow:hidden;max-width:520px;width:100%;">
-                    
+                  <table width="480" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border:1px solid #e0e0e0;max-width:480px;width:100%;">
+
                     <!-- Header -->
                     <tr>
-                      <td style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding:36px 40px 28px;text-align:center;">
-                        <div style="font-size:40px;margin-bottom:12px;">👀</div>
-                        <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:700;letter-spacing:0.5px;">มีคนเข้าชม Portfolio</h1>
-                        <p style="margin:8px 0 0;color:#94a3b8;font-size:14px;">Thanakhon Oonklan — Portfolio Visitor Alert</p>
+                      <td style="background-color:#1a1a1a;padding:16px 28px;">
+                        <p style="margin:0;color:#ffffff;font-size:13px;letter-spacing:0.5px;">PORTFOLIO VISITOR ALERT</p>
                       </td>
                     </tr>
 
                     <!-- Body -->
                     <tr>
-                      <td style="padding:32px 40px;">
+                      <td style="padding:28px;">
 
-                        <!-- Stats Row -->
-                        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                        <p style="margin:0 0 20px 0;font-size:15px;color:#111111;line-height:1.6;">
+                          มีผู้เข้าชม Portfolio ของคุณ
+                        </p>
+
+                        <!-- Info rows -->
+                        <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e0e0e0;margin-bottom:24px;">
                           <tr>
-                            <td width="50%" style="padding-right:8px;">
-                              <div style="background-color:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:20px;text-align:center;">
-                                <div style="font-size:32px;font-weight:800;color:#3b82f6;margin-bottom:4px;">${onlineCount}</div>
-                                <div style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:1px;">Online ตอนนี้</div>
-                              </div>
+                            <td style="padding:10px 14px;border-bottom:1px solid #e0e0e0;background-color:#fafafa;">
+                              <span style="font-size:12px;color:#888888;display:block;margin-bottom:2px;">เวลา</span>
+                              <span style="font-size:14px;color:#111111;">${thaiTime}</span>
                             </td>
-                            <td width="50%" style="padding-left:8px;">
-                              <div style="background-color:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:20px;text-align:center;">
-                                <div style="font-size:14px;font-weight:600;color:#10b981;margin-bottom:4px;">🟢 Active</div>
-                                <div style="font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:1px;">สถานะ</div>
-                              </div>
+                          </tr>
+                          <tr>
+                            <td style="padding:10px 14px;border-bottom:1px solid #e0e0e0;">
+                              <span style="font-size:12px;color:#888888;display:block;margin-bottom:2px;">ผู้ใช้ที่ Online อยู่ในขณะนี้</span>
+                              <span style="font-size:14px;color:#111111;">${onlineCount} คน</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding:10px 14px;background-color:#fafafa;">
+                              <span style="font-size:12px;color:#888888;display:block;margin-bottom:2px;">เว็บไซต์</span>
+                              <a href="https://thanakhon-portfolio.vercel.app" style="font-size:14px;color:#1a1a1a;text-decoration:none;">thanakhon-portfolio.vercel.app</a>
                             </td>
                           </tr>
                         </table>
 
-                        <!-- Time Info -->
-                        <div style="background-color:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:20px;margin-bottom:24px;">
-                          <table width="100%" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td style="padding:6px 0;border-bottom:1px solid #222;">
-                                <span style="color:#64748b;font-size:13px;">🕐 เวลา</span>
-                                <span style="color:#e2e8f0;font-size:13px;float:right;font-weight:500;">${thaiTime}</span>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td style="padding:6px 0;">
-                                <span style="color:#64748b;font-size:13px;">🌐 Site</span>
-                                <span style="color:#3b82f6;font-size:13px;float:right;font-weight:500;">thanakhon-portfolio.vercel.app</span>
-                              </td>
-                            </tr>
-                          </table>
-                        </div>
-
-                        <!-- CTA -->
-                        <div style="text-align:center;margin-bottom:8px;">
-                          <a href="https://thanakhon-portfolio.vercel.app" style="display:inline-block;background:linear-gradient(135deg,#3b82f6,#6366f1);color:#ffffff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;letter-spacing:0.3px;">
-                            ดู Portfolio →
-                          </a>
-                        </div>
-
-                      </td>
-                    </tr>
-
-                    <!-- Footer -->
-                    <tr>
-                      <td style="background-color:#0d0d0d;padding:16px 40px;text-align:center;border-top:1px solid #1a1a1a;">
-                        <p style="margin:0;color:#374151;font-size:12px;">
-                          ส่งโดยอัตโนมัติ · Rate limit 1 เมล / 30 นาที<br/>
-                          <span style="color:#1f2937;">thanakhon-portfolio visitor tracker</span>
-                        </p>
                       </td>
                     </tr>
 
