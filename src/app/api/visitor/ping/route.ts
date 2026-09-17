@@ -54,11 +54,13 @@ export async function POST(request: Request) {
     // Check rate limit — has an email been sent recently?
     const lastSent = await redis.get<number>(RATE_LIMIT_KEY);
     const now = Date.now();
-    const shouldSendEmail = !lastSent || now - lastSent > RATE_LIMIT_SECONDS * 1000;
+    const shouldSendEmail = !lastSent || now - Number(lastSent) > RATE_LIMIT_SECONDS * 1000;
 
     if (shouldSendEmail) {
-      // Update rate limit timestamp
+      // ✅ Set rate limit key ก่อนส่งเมล เพื่อป้องกัน race condition
+      // (ถ้า 2 request มาพร้อมกัน จะได้ไม่ส่งเมล 2 ครั้ง)
       await redis.set(RATE_LIMIT_KEY, now, { ex: RATE_LIMIT_SECONDS });
+
 
       const thaiTime = formatThaiTime(new Date());
 
