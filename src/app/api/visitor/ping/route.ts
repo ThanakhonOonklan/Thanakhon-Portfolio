@@ -70,11 +70,30 @@ export async function POST(request: Request) {
 
       const thaiTime = formatThaiTime(new Date());
 
-      // อ่าน geo จาก Vercel headers (ทำงานเฉพาะบน production/Vercel)
-      const city = request.headers.get('x-vercel-ip-city')
+      // อ่าน geo จาก Vercel headers ก่อน (production)
+      let city = request.headers.get('x-vercel-ip-city')
         ? decodeURIComponent(request.headers.get('x-vercel-ip-city')!)
         : null;
-      const country = request.headers.get('x-vercel-ip-country');
+      let country = request.headers.get('x-vercel-ip-country');
+
+      // Fallback: ถ้าไม่มี Vercel headers → ใช้ ip-api.com (ฟรี ไม่ต้องมี key)
+      if (!city || !country) {
+        try {
+          const ip =
+            request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+            request.headers.get('x-real-ip') ||
+            '';
+          if (ip && ip !== '::1' && ip !== '127.0.0.1') {
+            const geo = await fetch(`http://ip-api.com/json/${ip}?fields=city,country,countryCode&lang=en`)
+              .then((r) => r.json());
+            if (geo.city) city = geo.city;
+            if (geo.countryCode) country = geo.countryCode;
+          }
+        } catch {
+          // Silent fail — geo ไม่สำคัญพอที่จะทำให้เมลไม่ส่ง
+        }
+      }
+
       const locationLine = city && country
         ? `\nจาก: ${city}, ${country} ${countryFlag(country)}`
         : '';
