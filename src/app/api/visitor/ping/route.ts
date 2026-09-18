@@ -31,6 +31,15 @@ function formatThaiTime(date: Date): string {
   });
 }
 
+/** แปลง country code ("TH") เป็น flag emoji ("🇹🇭") */
+function countryFlag(code: string): string {
+  return code
+    .toUpperCase()
+    .split('')
+    .map((c) => String.fromCodePoint(0x1f1e6 + c.charCodeAt(0) - 65))
+    .join('');
+}
+
 async function getOnlineCount(): Promise<number> {
   const keys = await redis.keys(`${ONLINE_KEY_PREFIX}*`);
   return keys.length;
@@ -61,11 +70,20 @@ export async function POST(request: Request) {
 
       const thaiTime = formatThaiTime(new Date());
 
+      // อ่าน geo จาก Vercel headers (ทำงานเฉพาะบน production/Vercel)
+      const city = request.headers.get('x-vercel-ip-city')
+        ? decodeURIComponent(request.headers.get('x-vercel-ip-city')!)
+        : null;
+      const country = request.headers.get('x-vercel-ip-country');
+      const locationLine = city && country
+        ? `\nจาก: ${city}, ${country} ${countryFlag(country)}`
+        : '';
+
       await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: process.env.NOTIFY_EMAIL!,
         subject: `มีผู้เข้าชม Portfolio ของคุณ ${onlineCount} คน`,
-        text: `เวลา: ${thaiTime}`,
+        text: `เวลา: ${thaiTime}${locationLine}`,
       });
     }
 
