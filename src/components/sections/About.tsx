@@ -98,6 +98,7 @@ export default function About() {
               download={isEN ? 'CV-Thanakhon-Oonklan-EN.pdf' : 'CV-Thanakhon-Oonklan-TH.pdf'}
               className="w-full max-w-[220px] bg-[#21262d] border border-[#363b42] text-[#c9d1d9] hover:bg-[#30363d] hover:text-white transition-colors h-8 text-xs font-medium rounded-md inline-flex items-center justify-center select-none"
               style={{ fontFamily: 'var(--font-body)' }}
+              onClick={() => fetch('/api/visitor/resume', { method: 'POST' }).catch(() => {})}
             >
               Download my resume
             </a>
