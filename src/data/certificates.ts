@@ -43,4 +43,11 @@ export const certificates: Certificate[] = [
     year: '2026',
     imageUrl: '/images/certificates/Certificate-Robotic.png',
   },
+  {
+    id: 7,
+    title: 'Network Technology Skills (Silver Medal - 1st Runner-up)',
+    organization: 'Suphanburi Vocational Education Commission',
+    year: '03/11/2023',
+    imageUrl: '/images/certificates/Certificate-VocationalSkills.png',
+  },
 ];
