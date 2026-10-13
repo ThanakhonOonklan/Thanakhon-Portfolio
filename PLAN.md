@@ -19,6 +19,7 @@ Branch: `chore/audit-and-ui-refresh` (from `main`)
 | `src/components/ui/marquee.tsx` | only re-exported in `ui/index.ts` |
 | `src/components/ui/button.tsx` | only used by dead carousel/sheet (+ unused import in `About.tsx`) |
 | `src/lib/gsap/presets.ts` | empty placeholder |
+| `projects/ProjectCard.tsx`, `ProjectGallery.tsx`, `ProjectTechStack.tsx` | only re-exported from barrel; `/projects` page uses its own list markup |
 | `global.d.ts` meshline/JSX/`*.glb` declarations | no three.js/meshline code exists (source of 4 `any` lint errors) |
 | deps: `three`, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`, `meshline`, `ogl` | zero imports in `src` |
 | deps: `react-icons`, `embla-carousel-react` (`react-github-calendar` is used in About — kept) | zero imports (embla only by dead carousel) |
@@ -60,3 +61,11 @@ Branch: `chore/audit-and-ui-refresh` (from `main`)
 ## 3. Out of scope
 
 - Content/translation edits, Resume files, Vercel/env configuration.
+
+## 4. Status (end of this branch)
+
+- ✅ Cleanup done: dead UI/components + 8 unused deps removed, all 10 lint errors fixed (0 errors; 11 `<img>` warnings remain, tracked in 1.3 #5).
+- ✅ API hardened: shared `src/lib/visitor.ts` (lazy clients → 503 instead of import crash, `sessionId` validation, `SCAN` instead of `KEYS`, `ip-api` fallback dev-only).
+- ✅ React Bits (vendored in `src/components/reactbits/`, added via shadcn registry `@react-bits`): `ShinyText` on all 7 section headings, `SpotlightCard` on certificate cards, `ClickSpark` on the home page. `BlurText` is installed but not yet used.
+- ⏭ Not done: `<img>` → `next/image`, moving personal `.md` files out of repo, Resend custom sender domain.
+- ⚠ Not tested: real Redis/Resend paths (no env vars locally) — verify on a Vercel preview.

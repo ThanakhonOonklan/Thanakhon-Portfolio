@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
 import dynamic from 'next/dynamic';
 import { PortraitFallback } from '@/components/ui';
+import ShinyText from '@/components/reactbits/ShinyText';
 
 const GitHubCalendar = dynamic(
   () => import('react-github-calendar').then((mod) => mod.GitHubCalendar),
@@ -57,7 +58,7 @@ export default function About() {
             className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            {t('about.headline')}
+            <ShinyText text={t('about.headline')} color="#ffffff" shineColor="#F28CA6" speed={4} />
           </h2>
         </div>
 

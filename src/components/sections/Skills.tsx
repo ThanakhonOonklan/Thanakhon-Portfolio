@@ -2,6 +2,7 @@
 
 import { skills } from '@/data/skills';
 import { useTranslation, useLocale } from '@/hooks';
+import ShinyText from '@/components/reactbits/ShinyText';
 
 export default function Skills() {
   const { t } = useTranslation();
@@ -30,7 +31,7 @@ export default function Skills() {
             className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            {t('skills_section.title')}
+            <ShinyText text={t('skills_section.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
           </h2>
         </div>
 

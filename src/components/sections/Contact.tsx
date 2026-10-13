@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
+import ShinyText from '@/components/reactbits/ShinyText';
 
 // SVG Icons
 function EmailIcon() {
@@ -173,8 +174,8 @@ export default function Contact() {
                 className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase mb-4 gsap-reveal"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                {t('contact.title')}
-              </h2>
+            <ShinyText text={t('contact.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
+          </h2>
 
               <p
                 className="leading-relaxed max-w-sm sm:max-w-md gsap-reveal mx-auto md:mx-0"

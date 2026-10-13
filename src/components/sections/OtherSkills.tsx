@@ -9,6 +9,7 @@ import { useGSAP } from '@gsap/react';
 import { registerGSAP } from '@/lib/gsap';
 import { Lightbox } from '@/components/ui';
 import { TechIcon } from '@/components/projects/TechIcon';
+import ShinyText from '@/components/reactbits/ShinyText';
 
 export default function OtherSkills() {
   registerGSAP();
@@ -64,7 +65,7 @@ export default function OtherSkills() {
             className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            {t('other_skills.title')}
+            <ShinyText text={t('other_skills.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
           </h2>
         </div>
 

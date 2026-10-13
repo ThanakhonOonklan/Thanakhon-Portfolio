@@ -5,6 +5,8 @@ import { certificates } from '@/data/certificates';
 import { useTranslation } from '@/hooks';
 import { Lightbox } from '@/components/ui';
 import type { Certificate } from '@/types';
+import SpotlightCard from '@/components/reactbits/SpotlightCard';
+import ShinyText from '@/components/reactbits/ShinyText';
 
 export default function Certificates() {
   const { t } = useTranslation();
@@ -31,7 +33,7 @@ export default function Certificates() {
             className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            {t('certificates.title')}
+            <ShinyText text={t('certificates.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
           </h2>
         </div>
 
@@ -51,9 +53,11 @@ export default function Certificates() {
               }}
             >
               {/* Image itself with frame and uniform size */}
-              <div
-                className="relative w-full overflow-hidden rounded-xl border border-white/10 bg-[#14171F] flex items-center justify-center shadow-xl group-hover:shadow-[0_0_30px_rgba(255,255,255,0.18)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-white/30"
-                style={{ aspectRatio: '4/3' }}
+              <SpotlightCard
+                spotlightColor="#F28CA6"
+                intensity={0.22}
+                className="w-full flex items-center justify-center !p-0 !rounded-xl shadow-xl transition-transform duration-300 group-hover:scale-[1.03]"
+                style={{ aspectRatio: '4/3', backgroundColor: '#14171F' }}
               >
                 <img
                   src={cert.imageUrl!}
@@ -80,7 +84,7 @@ export default function Certificates() {
                     </svg>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </div>
           ))}
         </div>
