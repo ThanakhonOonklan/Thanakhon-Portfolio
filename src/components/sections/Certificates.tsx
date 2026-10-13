@@ -5,7 +5,7 @@ import { certificates } from '@/data/certificates';
 import { useTranslation } from '@/hooks';
 import { Lightbox } from '@/components/ui';
 import type { Certificate } from '@/types';
-import SpotlightCard from '@/components/reactbits/SpotlightCard';
+import GlareHover from '@/components/reactbits/GlareHover';
 import ShinyText from '@/components/reactbits/ShinyText';
 import Image from 'next/image';
 
@@ -53,23 +53,31 @@ export default function Certificates() {
                 if (e.key === 'Enter') setActiveCert(cert);
               }}
             >
-              {/* Image itself with frame and uniform size */}
-              <SpotlightCard
-                spotlightColor="#F28CA6"
-                intensity={0.22}
-                className="w-full flex items-center justify-center !p-0 !rounded-xl shadow-xl transition-transform duration-300 group-hover:scale-[1.03]"
-                style={{ aspectRatio: '4/3', backgroundColor: '#14171F' }}
+              {/* Image only (no frame/background) — glare sweeps across the certificate on hover */}
+              <GlareHover
+                width="auto"
+                height="auto"
+                background="transparent"
+                borderColor="transparent"
+                borderRadius="6px"
+                glareColor="#ffffff"
+                glareOpacity={0.45}
+                glareAngle={-30}
+                glareSize={35}
+                rimGlint={false}
+                className="max-w-full transition-transform duration-300 group-hover:scale-[1.03]"
               >
                 <Image
                   src={cert.imageUrl!}
                   alt={cert.title}
-                  fill
+                  width={1600}
+                  height={1200}
                   sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 100vw"
-                  className="object-contain p-2 md:p-3"
+                  className="block w-auto h-auto max-w-full max-h-[320px] rounded-md shadow-xl"
                 />
 
                 {/* Hover Overlay with Zoom Icon */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 rounded-xl">
+                <div className="absolute inset-0 z-[3] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   <div className="w-11 h-11 rounded-full bg-black/65 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shadow-2xl">
                     <svg
                       className="w-5 h-5 text-white"
@@ -86,7 +94,7 @@ export default function Certificates() {
                     </svg>
                   </div>
                 </div>
-              </SpotlightCard>
+              </GlareHover>
             </div>
           ))}
         </div>
