@@ -46,6 +46,8 @@ export const projects: Project[] = [
       '/images/projects/RalphGuard/05-risk-analysis-chart.png',
       '/images/projects/RalphGuard/06-formula-mixture-flow.png',
       '/images/projects/RalphGuard/07-pdf-export.png',
+      '/images/projects/RalphGuard/08-booth-demo-photo.jpg',
+      '/images/projects/RalphGuard/09-booth-visitors-photo.jpg',
     ],
     category: 'AI & Web Application',
     year: '2026',
