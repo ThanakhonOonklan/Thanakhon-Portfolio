@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
+import BlurText from '@/components/reactbits/BlurText';
 import ShinyText from '@/components/reactbits/ShinyText';
 import Image from 'next/image';
 
@@ -179,11 +180,11 @@ export default function Contact() {
                 className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase mb-4 gsap-reveal"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-            <ShinyText text={t('contact.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
-          </h2>
+                <ShinyText text={t('contact.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
+              </h2>
 
-              <p
-                className="leading-relaxed max-w-sm sm:max-w-md gsap-reveal mx-auto md:mx-0"
+              <div
+                className="leading-relaxed max-w-sm sm:max-w-md mx-auto md:mx-0"
                 style={{
                   fontSize: '16px',
                   color: '#9CA3AF',
@@ -192,8 +193,14 @@ export default function Contact() {
                   marginBottom: 'clamp(24px, 3.5vh, 40px)',
                 }}
               >
-                {t('contact.desc')}
-              </p>
+                <BlurText
+                  key={isEN ? 'en' : 'th'}
+                  text={t('contact.desc')}
+                  delay={60}
+                  stepDuration={0.3}
+                  className="justify-center md:justify-start"
+                />
+              </div>
 
               {/* Social Icon Row */}
               {links.length > 0 && (

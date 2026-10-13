@@ -57,3 +57,12 @@
   to   { transform: scaleX(1); }
 }
 
+
+/* React Bits BlurText: show text immediately for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .blur-text > span {
+    filter: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
