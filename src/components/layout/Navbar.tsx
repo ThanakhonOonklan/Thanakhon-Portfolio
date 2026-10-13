@@ -167,7 +167,7 @@ export default function Navbar() {
         aria-label="Site menu"
         aria-hidden={!isMenuOpen}
         inert={!isMenuOpen}
-        className={`fixed top-0 right-0 bottom-0 z-40 w-[min(360px,88vw)] pt-24 pb-10 pl-4 pr-6 flex flex-col justify-center drop-shadow-[0_0_14px_rgba(0,0,0,0.9)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed top-0 right-0 bottom-0 z-40 w-[min(360px,88vw)] backdrop-blur-xl pt-24 pb-10 pl-4 pr-6 flex flex-col justify-center drop-shadow-[0_0_14px_rgba(0,0,0,0.9)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{ fontFamily: bodyFont }}
