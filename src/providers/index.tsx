@@ -17,7 +17,6 @@ export function AppProviders({ children }: { children: ReactNode }) {
   );
 }
 
-export { useSmoothScroll } from './SmoothScrollProvider';
 export { useLocaleContext } from './LocaleProvider';
 export { ThemeProvider } from './ThemeProvider';
 export { SmoothScrollProvider } from './SmoothScrollProvider';

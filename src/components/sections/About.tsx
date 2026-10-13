@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
 import dynamic from 'next/dynamic';
-import { PortraitFallback, Button } from '@/components/ui';
+import { PortraitFallback } from '@/components/ui';
 
 const GitHubCalendar = dynamic(
   () => import('react-github-calendar').then((mod) => mod.GitHubCalendar),

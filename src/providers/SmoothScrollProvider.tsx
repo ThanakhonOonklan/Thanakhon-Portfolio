@@ -1,16 +1,12 @@
 'use client';
 
-import { useEffect, useRef, createContext, useContext } from 'react';
+import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { registerGSAP } from '@/lib/gsap';
 
-const SmoothScrollContext = createContext<Lenis | null>(null);
-
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null);
-
   useEffect(() => {
     // Ensure GSAP and ScrollTrigger are registered
     registerGSAP();
@@ -23,8 +19,6 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       gestureOrientation: 'vertical',
       smoothWheel: true,
     });
-
-    lenisRef.current = lenis;
 
     // Sync Lenis scroll events with GSAP ScrollTrigger updates
     lenis.on('scroll', ScrollTrigger.update);
@@ -42,13 +36,5 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     };
   }, []);
 
-  return (
-    <SmoothScrollContext.Provider value={lenisRef.current}>
-      {children}
-    </SmoothScrollContext.Provider>
-  );
-}
-
-export function useSmoothScroll() {
-  return useContext(SmoothScrollContext);
+  return <>{children}</>;
 }

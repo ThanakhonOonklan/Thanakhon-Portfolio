@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback, useState } from 'react';
+import { useEffect, useCallback, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 
 interface LightboxProps {
@@ -20,19 +20,22 @@ export function Lightbox({
   alt = 'Expanded view',
   onClose,
 }: LightboxProps) {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
   const allImages: string[] =
     images.length > 0 ? images : imageUrl ? [imageUrl] : [];
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
+  // Reset to the requested slide each time the lightbox opens (adjust state during render)
+  const [wasOpen, setWasOpen] = useState(isOpen);
+  if (isOpen !== wasOpen) {
+    setWasOpen(isOpen);
     if (isOpen) setActiveIndex(initialIndex);
-  }, [isOpen, initialIndex]);
+  }
 
   const goPrev = useCallback(() => {
     setActiveIndex((i) => (i - 1 + allImages.length) % allImages.length);

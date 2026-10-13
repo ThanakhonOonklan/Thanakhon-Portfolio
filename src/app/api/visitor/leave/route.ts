@@ -1,29 +1,20 @@
 import { NextResponse } from 'next/server';
-import { Redis } from '@upstash/redis';
-
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-});
-
-const ONLINE_KEY_PREFIX = 'visitor:online:';
+import { getRedis, isValidSessionId, ONLINE_KEY_PREFIX } from '@/lib/visitor';
 
 /** รองรับทั้ง application/json และ text/plain (จาก sendBeacon string)
  *  และ application/json จาก sendBeacon Blob */
 async function parseSessionId(request: Request): Promise<string | null> {
   try {
     const contentType = request.headers.get('content-type') ?? '';
-    let raw: string;
-
     if (contentType.includes('application/json')) {
       const body = await request.json();
-      return typeof body?.sessionId === 'string' ? body.sessionId : null;
+      return isValidSessionId(body?.sessionId) ? body.sessionId : null;
     }
 
     // text/plain หรืออื่น ๆ — parse เป็น JSON เอง
-    raw = await request.text();
+    const raw = await request.text();
     const parsed = JSON.parse(raw);
-    return typeof parsed?.sessionId === 'string' ? parsed.sessionId : null;
+    return isValidSessionId(parsed?.sessionId) ? parsed.sessionId : null;
   } catch {
     return null;
   }
@@ -31,6 +22,9 @@ async function parseSessionId(request: Request): Promise<string | null> {
 
 export async function POST(request: Request) {
   try {
+    const redis = getRedis();
+    if (!redis) return NextResponse.json({ error: 'Not configured' }, { status: 503 });
+
     const sessionId = await parseSessionId(request);
 
     if (!sessionId) {
