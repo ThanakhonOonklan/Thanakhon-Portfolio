@@ -54,6 +54,9 @@ export interface Certificate {
   id: number;
   title: string;
   organization: string;
+  organizationEn?: string;
+  /** 'award' = competition result, 'course' = training/course completion */
+  kind?: 'award' | 'course';
   year: string;
   imageUrl?: string;
   isPortrait?: boolean;
