@@ -4,7 +4,6 @@
 import { skills } from '@/data/skills';
 import { useTranslation, useLocale } from '@/hooks';
 import GlareHover from '@/components/reactbits/GlareHover';
-import ShinyText from '@/components/reactbits/ShinyText';
 
 export default function Skills() {
   const { t } = useTranslation();
@@ -30,10 +29,10 @@ export default function Skills() {
             {t('skills_section.label')}
           </span>
           <h2
-            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
+            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] leading-[1.05] uppercase gsap-reveal"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            <ShinyText text={t('skills_section.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
+            {t('skills_section.title')}
           </h2>
         </div>
 

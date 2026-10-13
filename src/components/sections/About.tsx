@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
 import dynamic from 'next/dynamic';
 import { PortraitFallback } from '@/components/ui';
-import ShinyText from '@/components/reactbits/ShinyText';
 import Image from 'next/image';
 
 const GitHubCalendar = dynamic(
@@ -56,10 +55,10 @@ export default function About() {
             {t('about.label')}
           </span>
           <h2
-            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase"
+            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] leading-[1.05] uppercase"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            <ShinyText text={t('about.headline')} color="#ffffff" shineColor="#F28CA6" speed={4} />
+            {t('about.headline')}
           </h2>
         </div>
 

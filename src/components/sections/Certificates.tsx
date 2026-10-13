@@ -6,7 +6,6 @@ import { useTranslation } from '@/hooks';
 import { Lightbox } from '@/components/ui';
 import type { Certificate } from '@/types';
 import GlareHover from '@/components/reactbits/GlareHover';
-import ShinyText from '@/components/reactbits/ShinyText';
 import Image from 'next/image';
 
 export default function Certificates() {
@@ -31,10 +30,10 @@ export default function Certificates() {
             {t('certificates.label')}
           </span>
           <h2
-            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
+            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] leading-[1.05] uppercase gsap-reveal"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            <ShinyText text={t('certificates.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
+            {t('certificates.title')}
           </h2>
         </div>
 

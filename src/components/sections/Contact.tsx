@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
 import BlurText from '@/components/reactbits/BlurText';
-import ShinyText from '@/components/reactbits/ShinyText';
 import Image from 'next/image';
 
 // SVG Icons
@@ -177,10 +176,10 @@ export default function Contact() {
               </span>
 
               <h2
-                className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase mb-4 gsap-reveal"
+                className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] leading-[1.05] uppercase mb-4 gsap-reveal"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                <ShinyText text={t('contact.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
+                {t('contact.title')}
               </h2>
 
               <div

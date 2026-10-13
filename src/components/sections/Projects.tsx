@@ -3,7 +3,6 @@
 import { projects } from '@/data/projects';
 import { ProjectCaseStudy } from '@/components/projects/ProjectCaseStudy';
 import { useTranslation, useLocale } from '@/hooks';
-import ShinyText from '@/components/reactbits/ShinyText';
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -27,10 +26,10 @@ export default function Projects() {
               {t('projects.label')}
             </span>
             <h2
-              className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
+              className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] leading-[1.05] uppercase gsap-reveal"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-            <ShinyText text={t('projects.title')} color="#ffffff" shineColor="#F28CA6" speed={4} />
+            {t('projects.title')}
           </h2>
           </div>
 
