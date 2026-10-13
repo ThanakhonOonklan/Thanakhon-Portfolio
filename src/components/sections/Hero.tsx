@@ -5,17 +5,13 @@ import Image from 'next/image';
 import { gsap } from 'gsap';
 import { registerGSAP } from '@/lib/gsap';
 import { PortraitFallback } from '@/components/ui';
+import TechText from '@/components/reactbits/TechText';
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
-  const textContainerRef = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const [imgError, setImgError] = useState(false);
-
-  // Spotlight Mouse Coordinates (relative to textContainerRef)
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     registerGSAP();
@@ -49,26 +45,10 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (!textContainerRef.current) return;
-    const rect = textContainerRef.current.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-    setIsHovered(true);
-  };
-
-  const handlePointerLeave = () => {
-    setIsHovered(false);
-  };
-
   return (
     <section
       id="hero"
       ref={sectionRef}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
       className="relative h-screen min-h-[600px] sm:min-h-[750px] md:min-h-[850px] w-full flex items-end justify-center overflow-hidden select-none cursor-default"
       style={{ backgroundColor: 'var(--bg-primary)', userSelect: 'none', WebkitUserSelect: 'none' }}
     >
@@ -82,32 +62,27 @@ export default function Hero() {
         <div className="absolute w-[300px] h-[300px] min-w-[300px] min-h-[300px] rounded-full border border-white/[0.04]" />
       </div>
 
-      {/* Giant Stroke Typography Behind Person (z-10) */}
+      {/* Giant Tech Typography Behind Person (z-10) — canvas, interactive (hover reveal, drag letters) */}
       <div
         ref={nameRef}
-        className="absolute top-[28%] sm:top-[34%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10 pointer-events-none select-none flex items-center justify-center whitespace-nowrap w-full px-2"
+        className="absolute top-[28%] sm:top-[34%] md:top-1/2 left-0 right-0 -translate-y-1/2 z-10 h-[clamp(90px,17vw,320px)]"
       >
-        <div ref={textContainerRef} className="relative inline-block max-w-full">
-          {/* Base Layer: White Stroke Text */}
-          <h1
-            className="hero-background-name font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent block select-none"
-          >
-            THANAKHON OONKLAN
-          </h1>
-
-          {/* Spotlight Layer: Perfectly Aligned Pixel-for-Pixel with Base Layer */}
-          <h1
-            aria-hidden="true"
-            className="hero-background-name-spotlight absolute inset-0 font-en-heading tracking-wide uppercase whitespace-nowrap text-transparent transition-opacity duration-300 pointer-events-none block select-none"
-            style={{
-              opacity: isHovered ? 1 : 0,
-              maskImage: `radial-gradient(circle 280px at ${mousePos.x}px ${mousePos.y}px, black 35%, transparent 100%)`,
-              WebkitMaskImage: `radial-gradient(circle 280px at ${mousePos.x}px ${mousePos.y}px, black 35%, transparent 100%)`,
-            }}
-          >
-            THANAKHON OONKLAN
-          </h1>
-        </div>
+        <TechText
+          text="THANAKHON OONKLAN"
+          className="font-en-heading uppercase"
+          style={{ fontFamily: 'var(--font-heading)' }}
+          fontWeight={400}
+          fontSize={400}
+          letterSpacing={0.025}
+          color="rgba(255, 255, 255, 0.28)"
+          accentColor="#F28CA6"
+          reveal="area"
+          reach={280}
+          strokeWidth={1.2}
+          dashLength={6}
+          dashGap={3}
+          lineStyle="dashed"
+        />
       </div>
 
       {/* Foreground Layer: Person Portrait (z-20) */}
