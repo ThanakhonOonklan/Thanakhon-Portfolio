@@ -69,5 +69,6 @@ Branch: `chore/audit-and-ui-refresh` (from `main`)
 - ✅ React Bits (vendored in `src/components/reactbits/`, added via shadcn registry `@react-bits`): `ShinyText` on all 7 section headings, `SpotlightCard` on certificate cards, `ClickSpark` on the home page. `BlurText` is installed but not yet used.
 - ✅ `<img>` → `next/image` for About, Contact, Certificates, Experience (lint warnings now 0). Intentionally kept `<img>` (with eslint-disable + reason): Skills (external skillicons.dev), OtherSkills (unknown dimensions), Lightbox (full-size viewer).
 - ✅ Rate limit on `/api/visitor/*` (Redis INCR+EXPIRE per IP: ping 20/min, leave 30/min, resume 10/10min → 429). Verified locally: 30 OK then 429. Note: rate-limit keys share the same Redis; email notification throttle (5 min) is unchanged.
+- ✅ Mobile check (375×812): no horizontal scroll, all 7 ShinyText headings fit (36px, no overflow), certificate Lightbox fits viewport, no console errors. Not verified: real-device touch behaviour of ClickSpark (layer is pointer-events:none so taps pass through).
 - ⏭ Not done: moving personal `.md` files out of repo, Resend custom sender domain.
 - ⚠ Not tested: real Redis/Resend paths (no env vars locally) — verify on a Vercel preview.
