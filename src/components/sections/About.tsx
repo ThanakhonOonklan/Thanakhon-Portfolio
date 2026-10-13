@@ -55,7 +55,7 @@ export default function About() {
             {t('about.label')}
           </span>
           <h2
-            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.9)] leading-[1.05] uppercase"
+            className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             {t('about.headline')}
