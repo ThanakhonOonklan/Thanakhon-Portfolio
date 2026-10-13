@@ -74,14 +74,10 @@ export default function Hero() {
           fontWeight={400}
           fontSize={400}
           letterSpacing={0.025}
-          color="rgba(255, 255, 255, 0.28)"
+          color="rgba(255, 255, 255, 0.5)"
           accentColor="#F28CA6"
-          reveal="area"
-          reach={280}
-          strokeWidth={1.2}
-          dashLength={6}
-          dashGap={3}
-          lineStyle="dashed"
+          reveal="none"
+          sweep={false}
         />
       </div>
 
