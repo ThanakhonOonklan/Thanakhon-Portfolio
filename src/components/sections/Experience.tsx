@@ -10,6 +10,7 @@ import { Lightbox } from '@/components/ui';
 import { TechIcon } from '@/components/projects/TechIcon';
 import ShinyText from '@/components/reactbits/ShinyText';
 import Image from 'next/image';
+import GlareHover from '@/components/reactbits/GlareHover';
 
 interface ExperienceItem {
   year: string;
@@ -104,7 +105,16 @@ function AutoImageSlider({
       className="relative w-full aspect-[16/10] group cursor-pointer overflow-hidden"
       onClick={() => onImageClick(currentImg)}
     >
-      <div className="w-full h-full rounded-xl overflow-hidden relative">
+      <GlareHover
+        width="100%"
+        height="100%"
+        borderRadius="12px"
+        glareColor="#ffffff"
+        glareOpacity={0.4}
+        glareAngle={-30}
+        glareSize={35}
+        rimGlint={false}
+      >
         {images.map((img, i) => (
           <Image
             key={img}
@@ -137,7 +147,7 @@ function AutoImageSlider({
             {isEN ? 'View Image' : 'ดูรูปภาพ'}
           </span>
         </div>
-      </div>
+      </GlareHover>
     </div>
   );
 }

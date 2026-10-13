@@ -10,6 +10,7 @@ import { registerGSAP } from '@/lib/gsap';
 import { Lightbox } from '@/components/ui';
 import { TechIcon } from '@/components/projects/TechIcon';
 import ShinyText from '@/components/reactbits/ShinyText';
+import GlareHover from '@/components/reactbits/GlareHover';
 
 export default function OtherSkills() {
   registerGSAP();
@@ -161,17 +162,29 @@ export default function OtherSkills() {
                               {t('other_skills.view_image')}
                             </span>
                           </div>
-                          {/* eslint-disable-next-line @next/next/no-img-element -- size unknown at build time, intrinsic aspect ratio needed */}
-                          <img
-                            src={img}
-                            alt={`${item.title} image ${i + 1}`}
-                            className="w-full h-auto object-contain hover:scale-[1.02] transition-transform duration-500"
-                            style={{
-                              /* Limit image height on small screens so they don't dominate */
-                              maxHeight: 'min(200px, 40vw)',
-                            }}
-                            loading="lazy"
-                          />
+                          <GlareHover
+                            width="auto"
+                            height="auto"
+                            borderRadius="8px"
+                            glareColor="#ffffff"
+                            glareOpacity={0.45}
+                            glareAngle={-30}
+                            glareSize={35}
+                            rimGlint={false}
+                            className="max-w-full hover:scale-[1.02] transition-transform duration-500"
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element -- size unknown at build time, intrinsic aspect ratio needed */}
+                            <img
+                              src={img}
+                              alt={`${item.title} image ${i + 1}`}
+                              className="block w-full h-auto object-contain"
+                              style={{
+                                /* Limit image height on small screens so they don't dominate */
+                                maxHeight: 'min(200px, 40vw)',
+                              }}
+                              loading="lazy"
+                            />
+                          </GlareHover>
                         </div>
                       ))}
                     </div>
