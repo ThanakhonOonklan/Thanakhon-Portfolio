@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- small external skillicons.dev icons, optimization gives no benefit */
 'use client';
 
 import { skills } from '@/data/skills';

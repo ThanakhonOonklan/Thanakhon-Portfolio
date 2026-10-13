@@ -100,6 +100,7 @@ export function Lightbox({
         )}
 
         {/* Image */}
+        {/* eslint-disable-next-line @next/next/no-img-element -- full-size viewer, avoid downscaling */}
         <img
           src={currentSrc}
           alt={`${alt} ${activeIndex + 1}`}
@@ -150,6 +151,7 @@ export function Lightbox({
               style={{ width: '60px', height: '60px' }}
               aria-label={`Go to image ${i + 1}`}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element -- full-size viewer, avoid downscaling */}
               <img src={src} alt={`Thumbnail ${i + 1}`} className="w-full h-full object-cover" draggable={false} />
             </button>
           ))}

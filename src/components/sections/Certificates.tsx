@@ -7,6 +7,7 @@ import { Lightbox } from '@/components/ui';
 import type { Certificate } from '@/types';
 import SpotlightCard from '@/components/reactbits/SpotlightCard';
 import ShinyText from '@/components/reactbits/ShinyText';
+import Image from 'next/image';
 
 export default function Certificates() {
   const { t } = useTranslation();
@@ -59,11 +60,12 @@ export default function Certificates() {
                 className="w-full flex items-center justify-center !p-0 !rounded-xl shadow-xl transition-transform duration-300 group-hover:scale-[1.03]"
                 style={{ aspectRatio: '4/3', backgroundColor: '#14171F' }}
               >
-                <img
+                <Image
                   src={cert.imageUrl!}
                   alt={cert.title}
-                  className="w-full h-full object-contain p-2 md:p-3"
-                  loading="lazy"
+                  fill
+                  sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 100vw"
+                  className="object-contain p-2 md:p-3"
                 />
 
                 {/* Hover Overlay with Zoom Icon */}

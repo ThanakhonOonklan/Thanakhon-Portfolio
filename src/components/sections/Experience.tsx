@@ -9,6 +9,7 @@ import { registerGSAP } from '@/lib/gsap';
 import { Lightbox } from '@/components/ui';
 import { TechIcon } from '@/components/projects/TechIcon';
 import ShinyText from '@/components/reactbits/ShinyText';
+import Image from 'next/image';
 
 interface ExperienceItem {
   year: string;
@@ -105,14 +106,15 @@ function AutoImageSlider({
     >
       <div className="w-full h-full rounded-xl overflow-hidden relative">
         {images.map((img, i) => (
-          <img
+          <Image
             key={img}
             src={img}
             alt={`${alt} image ${i + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 ease-in-out group-hover:scale-105 rounded-xl ${
+            fill
+            sizes="(min-width: 1024px) 600px, 100vw"
+            className={`object-cover object-center transition-all duration-700 ease-in-out group-hover:scale-105 rounded-xl ${
               i === currentIndex ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-102 z-0 pointer-events-none'
             }`}
-            loading="lazy"
           />
         ))}
 

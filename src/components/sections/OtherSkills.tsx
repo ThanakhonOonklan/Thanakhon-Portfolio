@@ -161,6 +161,7 @@ export default function OtherSkills() {
                               {t('other_skills.view_image')}
                             </span>
                           </div>
+                          {/* eslint-disable-next-line @next/next/no-img-element -- size unknown at build time, intrinsic aspect ratio needed */}
                           <img
                             src={img}
                             alt={`${item.title} image ${i + 1}`}
