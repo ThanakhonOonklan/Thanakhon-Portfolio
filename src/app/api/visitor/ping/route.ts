@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
 import {
+  allowRequest,
   countOnline,
   formatThaiTime,
+  getClientIp,
   getRedis,
   getResend,
   isValidSessionId,
   ONLINE_KEY_PREFIX,
+  tooManyRequests,
 } from '@/lib/visitor';
 
 const RATE_LIMIT_KEY = 'visitor:email:last_sent';
@@ -29,6 +32,10 @@ export async function POST(request: Request) {
   try {
     const redis = getRedis();
     if (!redis) return NextResponse.json({ error: 'Not configured' }, { status: 503 });
+
+    if (!(await allowRequest(redis, 'ping', getClientIp(request), 20, 60))) {
+      return tooManyRequests();
+    }
 
     const body = await request.json();
     const { sessionId } = body as { sessionId?: unknown };

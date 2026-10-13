@@ -1,5 +1,12 @@
 import { NextResponse } from 'next/server';
-import { getRedis, isValidSessionId, ONLINE_KEY_PREFIX } from '@/lib/visitor';
+import {
+  allowRequest,
+  getClientIp,
+  getRedis,
+  isValidSessionId,
+  ONLINE_KEY_PREFIX,
+  tooManyRequests,
+} from '@/lib/visitor';
 
 /** รองรับทั้ง application/json และ text/plain (จาก sendBeacon string)
  *  และ application/json จาก sendBeacon Blob */
@@ -24,6 +31,10 @@ export async function POST(request: Request) {
   try {
     const redis = getRedis();
     if (!redis) return NextResponse.json({ error: 'Not configured' }, { status: 503 });
+
+    if (!(await allowRequest(redis, 'leave', getClientIp(request), 30, 60))) {
+      return tooManyRequests();
+    }
 
     const sessionId = await parseSessionId(request);
 

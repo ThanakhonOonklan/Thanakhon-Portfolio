@@ -58,3 +58,35 @@ export function formatThaiTime(date: Date): string {
     hour12: false,
   });
 }
+
+/** Best-effort client IP (Vercel sets x-forwarded-for / x-real-ip). */
+export function getClientIp(request: Request): string {
+  return (
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+  );
+}
+
+/**
+ * Fixed-window rate limit using INCR + EXPIRE (no extra dependency).
+ * Returns true when the request is allowed.
+ */
+export async function allowRequest(
+  redis: Redis,
+  bucket: string,
+  ip: string,
+  limit: number,
+  windowSeconds: number
+): Promise<boolean> {
+  const key = `ratelimit:${bucket}:${ip}`;
+  const count = await redis.incr(key);
+  if (count === 1) await redis.expire(key, windowSeconds);
+  return count <= limit;
+}
+
+export const tooManyRequests = () =>
+  new Response(JSON.stringify({ error: 'Too many requests' }), {
+    status: 429,
+    headers: { 'Content-Type': 'application/json', 'Retry-After': '60' },
+  });
