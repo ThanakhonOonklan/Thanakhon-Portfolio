@@ -180,9 +180,8 @@ export default function Navbar() {
           fontSize={1.5}
           itemGap={26}
           markerLength={56}
-          maxShift={20}
-          exclusive
-          smoothing={160}
+          maxShift={28}
+          proximityRadius={110}
           onItemClick={handleItemClick}
         />
       </aside>

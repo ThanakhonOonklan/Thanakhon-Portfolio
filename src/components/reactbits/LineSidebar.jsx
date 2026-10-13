@@ -42,7 +42,6 @@ const LineSidebar = ({
   fontSize = 1.1,
   smoothing = 100,
   defaultActive = null,
-  exclusive = false, // local addition: only the nearest item reacts to the pointer
   onItemClick,
   className = ''
 }) => {
@@ -103,23 +102,16 @@ const LineSidebar = ({
       const pointerY = e.clientY - rect.top;
       const ease = FALLOFF_CURVES[falloff] ?? FALLOFF_CURVES.linear;
       const items = itemRefs.current;
-      let nearest = -1;
-      let nearestDistance = Infinity;
       for (let i = 0; i < items.length; i++) {
         const el = items[i];
         if (!el) continue;
         const center = el.offsetTop + el.offsetHeight / 2;
         const distance = Math.abs(pointerY - center);
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearest = i;
-        }
-        targetsRef.current[i] = exclusive ? 0 : ease(Math.max(0, 1 - distance / proximityRadius));
+        targetsRef.current[i] = ease(Math.max(0, 1 - distance / proximityRadius));
       }
-      if (exclusive && nearest >= 0) targetsRef.current[nearest] = 1;
       startLoop();
     },
-    [falloff, proximityRadius, exclusive, startLoop]
+    [falloff, proximityRadius, startLoop]
   );
 
   const handlePointerLeave = useCallback(() => {

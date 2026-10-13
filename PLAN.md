@@ -71,7 +71,6 @@ Branch: `chore/audit-and-ui-refresh` (from `main`)
 - ✅ Rate limit on `/api/visitor/*` (Redis INCR+EXPIRE per IP: ping 20/min, leave 30/min, resume 10/10min → 429). Verified locally: 30 OK then 429. Note: rate-limit keys share the same Redis; email notification throttle (5 min) is unchanged.
 - ✅ Mobile check (375×812): no horizontal scroll, all 7 ShinyText headings fit (36px, no overflow), certificate Lightbox fits viewport, no console errors. Not verified: real-device touch behaviour of ClickSpark (layer is pointer-events:none so taps pass through).
 - ✅ Navbar: removed the inline links/dropdowns/mobile menu; right side now has EN|TH and a "Menu +" button that opens React Bits `LineSidebar` (slide-in panel). Choosing an item closes the panel and scrolls to the section; Esc/backdrop/Close also close it. Removed dead `ui/navigation-menu`, `data/navigation.ts` and deps `@base-ui/react`, `class-variance-authority`. Sub-links (individual projects/experience) are no longer in the menu.
-- ✅ LineSidebar (vendored, locally patched): new `exclusive` prop highlights only the nearest item (was proximity-based, neighbours also lit); smoothing 160ms.
 - ⏭ Not done: moving personal `.md` files out of repo, Resend custom sender domain.
 - ⚠ Not tested: real Redis/Resend paths (no env vars locally) — verify on a Vercel preview.
 
