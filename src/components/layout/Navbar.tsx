@@ -151,9 +151,9 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Blurred (colourless) backdrop — click anywhere outside the menu to close */}
+      {/* Backdrop — click to close */}
       <div
-        className={`fixed inset-0 z-40 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
           isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setIsMenuOpen(false)}
@@ -167,7 +167,7 @@ export default function Navbar() {
         aria-label="Site menu"
         aria-hidden={!isMenuOpen}
         inert={!isMenuOpen}
-        className={`fixed top-0 right-0 bottom-0 z-40 w-[min(360px,88vw)] backdrop-blur-xl pt-24 pb-10 pl-4 pr-6 flex flex-col justify-center drop-shadow-[0_0_14px_rgba(0,0,0,0.9)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed top-0 right-0 bottom-0 z-40 w-[min(360px,88vw)] bg-[#0F0F0F]/95 backdrop-blur-xl border-l border-white/[0.08] pt-24 pb-10 pl-4 pr-6 flex flex-col justify-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{ fontFamily: bodyFont }}
