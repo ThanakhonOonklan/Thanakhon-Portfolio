@@ -8,6 +8,8 @@ import { useGSAP } from '@gsap/react';
 import { registerGSAP } from '@/lib/gsap';
 import { Lightbox } from '@/components/ui';
 import { TechIcon } from '@/components/projects/TechIcon';
+import Image from 'next/image';
+import GlareHover from '@/components/reactbits/GlareHover';
 
 interface ExperienceItem {
   year: string;
@@ -19,39 +21,39 @@ interface ExperienceItem {
 
 const EXPERIENCE_IMAGE_SETS: Record<number, string[]> = {
   0: [
-    '/images/projects/Robot/Robot_7.jpg',
-    '/images/projects/Robot/Robot_1.jpg',
-    '/images/projects/Robot/Robot_2.jpg',
-    '/images/projects/Robot/Robot_3.jpg',
-    '/images/projects/Robot/Robot_4.jpg',
-    '/images/projects/Robot/Robot_5.jpg',
-    '/images/projects/Robot/Robot_6.jpg',
+    '/images/projects/Robot/07-blue-robot-arm-station.jpg',
+    '/images/projects/Robot/01-orange-robot-arm-cell.jpg',
+    '/images/projects/Robot/02-white-robot-arm-operator.jpg',
+    '/images/projects/Robot/03-training-group-orange-robot.jpg',
+    '/images/projects/Robot/04-orange-robot-pick-and-place.jpg',
+    '/images/projects/Robot/05-nachi-robot-arm.jpg',
+    '/images/projects/Robot/06-orange-robot-training-station.jpg',
   ],
   1: [
-    '/images/projects/Internship/Internship-Photo1.jpg',
-    '/images/projects/Internship/Internship-Photo2.jpg',
-    '/images/projects/Internship/Internship-Photo3.jpg',
-    '/images/projects/Internship/Internship-Photo4.jpg',
-    '/images/projects/Internship/Internship-Photo5.jpg',
-    '/images/projects/Internship/Internship-Photo6.jpg',
-    '/images/projects/Internship/Internship-Photo7.jpg',
-    '/images/projects/Internship/Internship-Photo8.jpg',
-    '/images/projects/Internship/IMG_6017.JPG',
-    '/images/projects/Internship/IMG_5760.JPG',
+    '/images/projects/Internship/01-upskill-workshop-group-photo.jpg',
+    '/images/projects/Internship/02-students-robot-arm-class.jpg',
+    '/images/projects/Internship/03-teaching-students-robot-car.jpg',
+    '/images/projects/Internship/04-students-line-following-mat.jpg',
+    '/images/projects/Internship/05-students-group-activity.jpg',
+    '/images/projects/Internship/06-mecanum-robot-programming.jpg',
+    '/images/projects/Internship/07-blue-robot-car.jpg',
+    '/images/projects/Internship/08-mecanum-robot-board.jpg',
+    '/images/projects/Internship/09-workshop-banner-photo.jpg',
+    '/images/projects/Internship/10-coding-at-desk.jpg',
   ],
   2: [
-    '/images/projects/IotEquipmentSystem-Project/Dashboard.png',
-    '/images/projects/IotEquipmentSystem-Project/borrow.png',
-    '/images/projects/IotEquipmentSystem-Project/equipment.png',
-    '/images/projects/IotEquipmentSystem-Project/history.png',
-    '/images/projects/IotEquipmentSystem-Project/return-equipment.jpg',
-    '/images/projects/IotEquipmentSystem-Project/users.png',
+    '/images/projects/IotEquipmentSystem-Project/01-dashboard.png',
+    '/images/projects/IotEquipmentSystem-Project/02-borrow-equipment.png',
+    '/images/projects/IotEquipmentSystem-Project/03-equipment-list.png',
+    '/images/projects/IotEquipmentSystem-Project/04-history.png',
+    '/images/projects/IotEquipmentSystem-Project/05-return-equipment.jpg',
+    '/images/projects/IotEquipmentSystem-Project/06-users.png',
   ],
   3: [
-    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2834437.jpg',
-    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2924549_0.jpg',
-    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2924550_0.jpg',
-    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/S__2990082.jpg',
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/01-piezo-sensors.jpg',
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/02-breadboard-circuit.jpg',
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/03-breadboard-circuit-led-on.jpg',
+    '/images/projects/Footstep-Piezoelectric-Energy-Harvesting/04-charging-module-battery.jpg',
   ],
 };
 
@@ -82,8 +84,8 @@ function AutoImageSlider({
 
   if (!images || images.length === 0) {
     return (
-      <div className="relative w-full aspect-[16/10] p-2 rounded-2xl bg-white/[0.03] border border-white/10 shadow-xl flex items-center justify-center overflow-hidden">
-        <div className="w-full h-full rounded-xl border border-white/5 bg-white/[0.02] flex flex-col items-center justify-center gap-2">
+      <div className="relative w-full aspect-[16/10] flex items-center justify-center overflow-hidden">
+        <div className="w-full h-full flex flex-col items-center justify-center gap-2">
           <svg className="w-8 h-8 opacity-20 text-white" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
           </svg>
@@ -99,19 +101,29 @@ function AutoImageSlider({
 
   return (
     <div
-      className="relative w-full aspect-[16/10] p-2 rounded-2xl bg-white/[0.03] border border-white/15 shadow-2xl group cursor-pointer hover:border-white/30 transition-all duration-300 overflow-hidden"
+      className="relative w-full aspect-[16/10] group cursor-pointer overflow-hidden"
       onClick={() => onImageClick(currentImg)}
     >
-      <div className="w-full h-full rounded-xl overflow-hidden relative">
+      <GlareHover
+        width="100%"
+        height="100%"
+        borderRadius="12px"
+        glareColor="#ffffff"
+        glareOpacity={0.4}
+        glareAngle={-30}
+        glareSize={35}
+        rimGlint={false}
+      >
         {images.map((img, i) => (
-          <img
+          <Image
             key={img}
             src={img}
             alt={`${alt} image ${i + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 ease-in-out group-hover:scale-105 rounded-xl ${
+            fill
+            sizes="(min-width: 1024px) 600px, 100vw"
+            className={`object-cover object-center transition-all duration-700 ease-in-out group-hover:scale-105 rounded-xl ${
               i === currentIndex ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-102 z-0 pointer-events-none'
             }`}
-            loading="lazy"
           />
         ))}
 
@@ -134,7 +146,7 @@ function AutoImageSlider({
             {isEN ? 'View Image' : 'ดูรูปภาพ'}
           </span>
         </div>
-      </div>
+      </GlareHover>
     </div>
   );
 }

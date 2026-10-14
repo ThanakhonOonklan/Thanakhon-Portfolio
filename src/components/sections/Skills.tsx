@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element -- small external skillicons.dev icons, optimization gives no benefit */
 'use client';
 
 import { skills } from '@/data/skills';
 import { useTranslation, useLocale } from '@/hooks';
+import GlareHover from '@/components/reactbits/GlareHover';
 
 export default function Skills() {
   const { t } = useTranslation();
@@ -51,13 +53,25 @@ export default function Skills() {
                 className="group flex flex-col items-center gap-3 cursor-default"
               >
                 {skill.iconUrl ? (
-                  <img
-                    src={skill.iconUrl}
-                    alt={skill.name}
-                    width={52}
-                    height={52}
-                    className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 object-contain opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)] rounded-md"
-                  />
+                  <GlareHover
+                    width="auto"
+                    height="auto"
+                    borderRadius="8px"
+                    glareColor="#ffffff"
+                    glareOpacity={0.55}
+                    glareAngle={-30}
+                    glareSize={40}
+                    rimGlint={false}
+                    className="opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+                  >
+                    <img
+                      src={skill.iconUrl}
+                      alt={skill.name}
+                      width={52}
+                      height={52}
+                      className="block w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 object-contain"
+                    />
+                  </GlareHover>
                 ) : (
                   <div className="w-13 h-13 rounded bg-white/5" />
                 )}
@@ -90,13 +104,25 @@ export default function Skills() {
                 className="group flex flex-col items-center gap-3 cursor-default"
               >
                 {skill.iconUrl ? (
-                  <img
-                    src={skill.iconUrl}
-                    alt={skill.name}
-                    width={52}
-                    height={52}
-                    className="w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 object-contain opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)] rounded-md"
-                  />
+                  <GlareHover
+                    width="auto"
+                    height="auto"
+                    borderRadius="8px"
+                    glareColor="#ffffff"
+                    glareOpacity={0.55}
+                    glareAngle={-30}
+                    glareSize={40}
+                    rimGlint={false}
+                    className="opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.08)] group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.2)]"
+                  >
+                    <img
+                      src={skill.iconUrl}
+                      alt={skill.name}
+                      width={52}
+                      height={52}
+                      className="block w-10 h-10 sm:w-12 sm:h-12 lg:w-13 lg:h-13 object-contain"
+                    />
+                  </GlareHover>
                 ) : (
                   <div className="w-13 h-13 rounded bg-white/5" />
                 )}
