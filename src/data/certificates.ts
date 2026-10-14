@@ -3,7 +3,6 @@ import { Certificate } from '@/types';
 export const certificates: Certificate[] = [
   {
     id: 1,
-    kind: 'award',
     title: 'The 28th National Software Contest (NSC 2026)',
     organization: 'NSTDA & NRCT',
     year: '24/08/2026',
@@ -11,7 +10,6 @@ export const certificates: Certificate[] = [
   },
   {
     id: 2,
-    kind: 'course',
     title: 'Generative AI',
     organization: 'Wireless Solution Asia Co., Ltd',
     year: '25/04/2025',
@@ -19,16 +17,13 @@ export const certificates: Certificate[] = [
   },
   {
     id: 3,
-    kind: 'course',
     title: 'Cyber Security',
     organization: 'สำนักคอมพิวเตอร์และเทคโนโลยีสารสนเทศ มจพ.',
-    organizationEn: 'Computer and Information Technology Center, KMUTNB',
     year: '01/05/2026',
     imageUrl: '/images/certificates/Certificate-CyberSecurity.png',
   },
   {
     id: 4,
-    kind: 'award',
     title: 'National Contest of the New Generation',
     organization: 'Suphanburi Technical College',
     year: '20/12/2023',
@@ -36,7 +31,6 @@ export const certificates: Certificate[] = [
   },
   {
     id: 5,
-    kind: 'course',
     title: 'PCB Design',
     organization: 'Wireless Solution Asia Co., Ltd',
     year: '24/04/2025',
@@ -44,7 +38,6 @@ export const certificates: Certificate[] = [
   },
   {
     id: 6,
-    kind: 'award',
     title: 'Industrial Robot Control',
     organization: 'Department of Skill Development',
     year: '2026',
@@ -52,7 +45,6 @@ export const certificates: Certificate[] = [
   },
   {
     id: 7,
-    kind: 'award',
     title: 'Network Technology Skills (Silver Medal - 1st Runner-up)',
     organization: 'Suphanburi Vocational Education Commission',
     year: '03/11/2023',

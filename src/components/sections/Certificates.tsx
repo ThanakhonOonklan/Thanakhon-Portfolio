@@ -2,27 +2,17 @@
 
 import { useState } from 'react';
 import { certificates } from '@/data/certificates';
-import { useTranslation, useLocale } from '@/hooks';
+import { useTranslation } from '@/hooks';
 import { Lightbox } from '@/components/ui';
 import type { Certificate } from '@/types';
-import CardSwap, { Card } from '@/components/reactbits/CardSwap';
+import GlareHover from '@/components/reactbits/GlareHover';
 import Image from 'next/image';
-
-/** Data stores full dates (dd/mm/yyyy) or a bare year — show only the year */
-const yearOf = (value: string) => value.slice(-4);
 
 export default function Certificates() {
   const { t } = useTranslation();
-  const { isEN } = useLocale();
   const [activeCert, setActiveCert] = useState<Certificate | null>(null);
-  // Index (in certList) of the card currently at the front of the stack
-  const [frontIndex, setFrontIndex] = useState(0);
 
   const certList = certificates.filter((c) => !!c.imageUrl);
-  const bodyFont = isEN ? 'var(--font-body)' : 'var(--font-thai)';
-
-  const kindLabel = (cert: Certificate) =>
-    cert.kind === 'award' ? (isEN ? 'Award' : 'รางวัล') : isEN ? 'Course' : 'หลักสูตร';
 
   return (
     <section
@@ -47,85 +37,65 @@ export default function Certificates() {
           </h2>
         </div>
 
-        {/* 60 / 40 split — descriptions on the left, swapping card stack on the right */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-center">
-          {/* Left (60%): short description of every certificate */}
-          <ol className="lg:col-span-3 order-2 lg:order-1 flex flex-col" style={{ fontFamily: bodyFont }}>
-            {certList.map((cert, index) => {
-              const isFront = index === frontIndex;
-              const organization = isEN && cert.organizationEn ? cert.organizationEn : cert.organization;
-              return (
-                <li key={cert.id}>
-                  <button
-                    type="button"
-                    onClick={() => setActiveCert(cert)}
-                    className={`group w-full text-left flex gap-4 sm:gap-5 py-4 border-b border-white/[0.06] transition-colors duration-300 cursor-pointer ${
-                      isFront ? 'text-white' : 'text-white/55 hover:text-white/85'
-                    }`}
-                    aria-label={`${isEN ? 'View' : 'ดู'} ${cert.title}`}
-                  >
-                    <span
-                      className={`font-mono text-[12px] pt-1 w-6 shrink-0 transition-colors duration-300 ${
-                        isFront ? 'text-[#F28CA6]' : 'text-white/30'
-                      }`}
-                    >
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="flex-1 min-w-0">
-                      <span className="flex items-baseline justify-between gap-3">
-                        <span className="text-[15px] sm:text-[16px] font-semibold leading-snug">{cert.title}</span>
-                        <span className="font-mono text-[12px] sm:text-[13px] text-[#9CA3AF] shrink-0">
-                          {yearOf(cert.year)}
-                        </span>
-                      </span>
-                      <span className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-[#9CA3AF]">
-                        <span
-                          className={`text-[10px] uppercase tracking-[0.18em] font-semibold ${
-                            cert.kind === 'award' ? 'text-[#F28CA6]' : 'text-white/45'
-                          }`}
-                        >
-                          {kindLabel(cert)}
-                        </span>
-                        <span className="text-white/20">·</span>
-                        <span>{organization}</span>
-                      </span>
-                    </span>
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-
-          {/* Right (40%): CardSwap stack — click the front card to enlarge, other cards to bring them forward */}
-          <div className="lg:col-span-2 order-1 lg:order-2 w-full h-[320px] sm:h-[420px] lg:h-[480px]">
-            <CardSwap
-              width={420}
-              height={315}
-              cardDistance={40}
-              verticalDistance={45}
-              delay={4500}
-              cardRadius={14}
-              onChange={setFrontIndex}
-              onCardClick={(index: number) => {
-                if (index === frontIndex) setActiveCert(certList[index]);
+        {/* Certificate Items Grid — Pure image display with no dark background boxes/borders */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-center">
+          {certList.map((cert, index) => (
+            <div
+              key={cert.id}
+              className="gsap-reveal group relative flex items-center justify-center cursor-pointer"
+              data-cert-index={index}
+              onClick={() => setActiveCert(cert)}
+              role="button"
+              aria-label={`View ${cert.title}`}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') setActiveCert(cert);
               }}
             >
-              {certList.map((cert) => (
-                <Card key={cert.id}>
-                  <div className="relative w-full h-full bg-[#14171F]">
-                    <Image
-                      src={cert.imageUrl!}
-                      alt={cert.title}
-                      fill
-                      sizes="420px"
-                      className="object-contain p-2"
-                      draggable={false}
-                    />
+              {/* Image only (no frame/background) — glare sweeps across the certificate on hover */}
+              <GlareHover
+                width="auto"
+                height="auto"
+                background="transparent"
+                borderColor="transparent"
+                borderRadius="6px"
+                glareColor="#ffffff"
+                glareOpacity={0.45}
+                glareAngle={-30}
+                glareSize={35}
+                rimGlint={false}
+                className="max-w-full transition-transform duration-300 group-hover:scale-[1.03]"
+              >
+                <Image
+                  src={cert.imageUrl!}
+                  alt={cert.title}
+                  width={1600}
+                  height={1200}
+                  sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 100vw"
+                  className="block w-auto h-auto max-w-full max-h-[320px] rounded-md shadow-xl"
+                />
+
+                {/* Hover Overlay with Zoom Icon */}
+                <div className="absolute inset-0 z-[3] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="w-11 h-11 rounded-full bg-black/65 backdrop-blur-md border border-white/25 flex items-center justify-center text-white shadow-2xl">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6"
+                      />
+                    </svg>
                   </div>
-                </Card>
-              ))}
-            </CardSwap>
-          </div>
+                </div>
+              </GlareHover>
+            </div>
+          ))}
         </div>
       </div>
 
