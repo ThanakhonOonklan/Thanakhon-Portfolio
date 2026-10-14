@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
+import BlurText from '@/components/reactbits/BlurText';
+import Image from 'next/image';
 
 // SVG Icons
 function EmailIcon() {
@@ -48,14 +50,6 @@ function LineIcon() {
     </svg>
   );
 }
-function XIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 6 6 18M6 6l12 12" />
-    </svg>
-  );
-}
-
 interface ContactLink {
   type: string;
   label: string;
@@ -92,9 +86,11 @@ function LineQRModal({ onClose }: { onClose: () => void }) {
       <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" />
 
       {/* QR Image only — click stops propagation so only backdrop closes */}
-      <img
+      <Image
         src="/images/logos/S__4612100.jpg"
         alt="Line QR Code"
+        width={380}
+        height={380}
         className="relative z-10 w-[min(80vw,380px)] h-[min(80vw,380px)] object-contain rounded-xl cursor-default"
         onClick={e => e.stopPropagation()}
       />
@@ -151,11 +147,13 @@ export default function Contact() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
 
                   {!imgError ? (
-                    <img
+                    <Image
                       src="/images/profile/profile-3.jpg"
                       alt="Thanakhon Oonklan - Contact"
+                      fill
+                      sizes="(min-width: 768px) 250px, (min-width: 640px) 210px, 180px"
                       onError={() => setImgError(true)}
-                      className="w-full h-full object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="object-cover object-top scale-105 group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-neutral-950 to-neutral-900 flex flex-col items-center justify-center p-4">
@@ -184,8 +182,8 @@ export default function Contact() {
                 {t('contact.title')}
               </h2>
 
-              <p
-                className="leading-relaxed max-w-sm sm:max-w-md gsap-reveal mx-auto md:mx-0"
+              <div
+                className="leading-relaxed max-w-sm sm:max-w-md mx-auto md:mx-0"
                 style={{
                   fontSize: '16px',
                   color: '#9CA3AF',
@@ -194,8 +192,14 @@ export default function Contact() {
                   marginBottom: 'clamp(24px, 3.5vh, 40px)',
                 }}
               >
-                {t('contact.desc')}
-              </p>
+                <BlurText
+                  key={isEN ? 'en' : 'th'}
+                  text={t('contact.desc')}
+                  delay={60}
+                  stepDuration={0.3}
+                  className="justify-center md:justify-start"
+                />
+              </div>
 
               {/* Social Icon Row */}
               {links.length > 0 && (

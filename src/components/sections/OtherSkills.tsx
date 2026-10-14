@@ -9,6 +9,7 @@ import { useGSAP } from '@gsap/react';
 import { registerGSAP } from '@/lib/gsap';
 import { Lightbox } from '@/components/ui';
 import { TechIcon } from '@/components/projects/TechIcon';
+import GlareHover from '@/components/reactbits/GlareHover';
 
 export default function OtherSkills() {
   registerGSAP();
@@ -146,10 +147,10 @@ export default function OtherSkills() {
                       {item.images.map((img, i) => (
                         <div
                           key={i}
-                          className="relative overflow-hidden rounded-xl flex items-center justify-center cursor-pointer group w-full"
+                          className="relative flex items-center justify-center cursor-pointer group w-full"
                           onClick={() => setLightboxData({ images: item.images || [], index: i })}
                         >
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                          <div className="absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                             <span className="text-white bg-black/60 px-2.5 py-1 rounded-full text-[10px] tracking-wider uppercase backdrop-blur-md font-en-body flex items-center gap-1.5 border border-white/20">
                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <circle cx="11" cy="11" r="8"></circle>
@@ -160,23 +161,36 @@ export default function OtherSkills() {
                               {t('other_skills.view_image')}
                             </span>
                           </div>
-                          <img
-                            src={img}
-                            alt={`${item.title} image ${i + 1}`}
-                            className="w-full h-auto object-contain hover:scale-[1.02] transition-transform duration-500 rounded-xl"
-                            style={{
-                              /* Limit image height on small screens so they don't dominate */
-                              maxHeight: 'min(200px, 40vw)',
-                            }}
-                            loading="lazy"
-                          />
+                          <GlareHover
+                            width="auto"
+                            height="auto"
+                            borderRadius="8px"
+                            glareColor="#ffffff"
+                            glareOpacity={0.45}
+                            glareAngle={-30}
+                            glareSize={35}
+                            rimGlint={false}
+                            className="max-w-full hover:scale-[1.02] transition-transform duration-500"
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element -- size unknown at build time, intrinsic aspect ratio needed */}
+                            <img
+                              src={img}
+                              alt={`${item.title} image ${i + 1}`}
+                              className="block w-full h-auto object-contain"
+                              style={{
+                                /* Limit image height on small screens so they don't dominate */
+                                maxHeight: 'min(200px, 40vw)',
+                              }}
+                              loading="lazy"
+                            />
+                          </GlareHover>
                         </div>
                       ))}
                     </div>
                   ) : (
                     /* Placeholder when no images */
                     <div
-                      className="w-full flex items-center justify-center border border-white/10 bg-[var(--bg-elevated)] rounded-2xl shadow-xl"
+                      className="w-full flex items-center justify-center"
                       style={{ aspectRatio: '16/10' }}
                     >
                       <span

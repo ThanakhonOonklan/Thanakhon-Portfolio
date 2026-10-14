@@ -28,6 +28,7 @@ export const certificates: Certificate[] = [
     organization: 'Suphanburi Technical College',
     year: '20/12/2023',
     imageUrl: '/images/certificates/Certificate-ESP32RobotCar.png',
+    isPortrait: true,
   },
   {
     id: 5,
@@ -42,6 +43,7 @@ export const certificates: Certificate[] = [
     organization: 'Department of Skill Development',
     year: '2026',
     imageUrl: '/images/certificates/Certificate-Robotic.png',
+    isPortrait: true,
   },
   {
     id: 7,

@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/layout';
 import { WavyBackground } from '@/components/ui';
+import ClickSpark from '@/components/reactbits/ClickSpark';
 import {
   Hero,
   Projects,
@@ -13,6 +14,7 @@ import {
 
 export default function Home() {
   return (
+    <ClickSpark sparkColor="#F28CA6" sparkSize={10} sparkRadius={22} sparkCount={8} duration={450} className="!h-auto">
     <main className="min-h-screen relative" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <Navbar />
       <Hero />
@@ -30,5 +32,6 @@ export default function Home() {
         </div>
       </div>
     </main>
+    </ClickSpark>
   );
 }

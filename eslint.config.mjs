@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored React Bits components (upstream code, not edited here)
+    "src/components/reactbits/**",
   ]),
 ]);
 

@@ -29,8 +29,8 @@ export default function Projects() {
               className="font-en-heading text-[36px] sm:text-[48px] md:text-[56px] tracking-wide text-white leading-[1.05] uppercase gsap-reveal"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              {t('projects.title')}
-            </h2>
+            {t('projects.title')}
+          </h2>
           </div>
 
           {/* Projects List */}

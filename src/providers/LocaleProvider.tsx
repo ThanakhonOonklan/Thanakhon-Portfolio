@@ -1,7 +1,7 @@
 'use client';
 
 import '@/lib/i18n'; // Initialize i18next
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Locale } from '@/types';
 
@@ -14,27 +14,18 @@ const LocaleContext = createContext<LocaleContextType | null>(null);
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const { i18n } = useTranslation();
-  const [locale, setLocaleState] = useState<Locale>('en');
+  // Derived from i18n so there is a single source of truth (re-renders on languageChanged)
+  const locale: Locale = i18n.language === 'th' ? 'th' : 'en';
 
-  // Sync initial language from i18n
+  // Restore persisted locale choice after hydration
   useEffect(() => {
-    const currentLang = i18n.language as Locale;
-    if (currentLang === 'en' || currentLang === 'th') {
-      setLocaleState(currentLang);
-    }
-  }, [i18n.language]);
-
-  // Read persisted locale choice from localStorage
-  useEffect(() => {
-    const savedLocale = localStorage.getItem('portfolio-locale') as Locale;
+    const savedLocale = localStorage.getItem('portfolio-locale');
     if (savedLocale === 'en' || savedLocale === 'th') {
-      setLocaleState(savedLocale);
       i18n.changeLanguage(savedLocale);
     }
   }, [i18n]);
 
   const setLocale = (newLocale: Locale) => {
-    setLocaleState(newLocale);
     i18n.changeLanguage(newLocale);
     localStorage.setItem('portfolio-locale', newLocale);
   };

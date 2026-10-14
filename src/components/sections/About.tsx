@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useTranslation, useLocale } from '@/hooks';
 import dynamic from 'next/dynamic';
-import { PortraitFallback, Button } from '@/components/ui';
+import { PortraitFallback } from '@/components/ui';
+import Image from 'next/image';
 
 const GitHubCalendar = dynamic(
   () => import('react-github-calendar').then((mod) => mod.GitHubCalendar),
@@ -67,11 +68,13 @@ export default function About() {
           <div className="flex flex-col items-center gap-4">
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/20 bg-neutral-900 shrink-0 shadow-xl mx-auto">
               {!imgError ? (
-                <img
+                <Image
                   src="/images/profile/profile-3.jpg"
                   alt="Thanakhon Oonklan"
+                  fill
+                  sizes="(min-width: 768px) 192px, (min-width: 640px) 160px, 128px"
                   onError={() => setImgError(true)}
-                  className="w-full h-full object-cover object-top"
+                  className="object-cover object-top"
                 />
               ) : (
                 <PortraitFallback />
@@ -114,9 +117,11 @@ export default function About() {
               >
                 {t('about.avatar_name')}
               </h3>
-              <img
+              <Image
                 src="/images/about/badge.png"
                 alt="Verified"
+                width={24}
+                height={24}
                 className="about-profile-badge w-5 h-5 sm:w-6 sm:h-6 object-contain shrink-0 select-none pointer-events-none"
                 draggable={false}
               />

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { SITE_CONFIG } from '@/constants';
 
 export const metadata: Metadata = {
   title: 'Technical Projects | Thanakhon Oonklan',
